@@ -1,99 +1,92 @@
 <!DOCTYPE html>
-<html lang="pt-BR" dir="ltr">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Pressell</title>
+    <title>Página de Pressell Centralizada</title>
     
-    <!-- Meta Tags -->
-    <meta name="robots" content="noindex, nofollow">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.instituteflow.com/pre3-110">
-    <meta property="og:title" content="Page">
-    <meta property="og:description" content="Descrição">
-    <meta property="og:image" content="https://media.atomicatpages.com/Images/ogimage.png">
-
     <!-- CSS Externo -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:400,500,600|Nunito:600,700,400&display=swap" rel="preload" as="style" media="all" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- CSS Interno para Centralização -->
     <style>
-        /* Estilos principais da página */
-        html { scroll-behavior: smooth; }
+        /* Centralizar todo o conteúdo da página */
         body {
-            font-family: Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+            margin: 0;
+            font-family: Roboto, sans-serif;
             background: #adb7c2;
         }
-        h1 { font-size: 2em; }
-        a { color: inherit; text-decoration: none; }
-        .atomicat-big-container {
-            width: 100%;
-            margin: 0 auto;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            max-width: 100%;
+
+        /* Contêiner principal */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        /* Botão de chamada para ação */
+
+        /* Estilos adicionais */
+        h1, h4, p {
+            margin: 10px 0;
+        }
+
         .cta-button {
             background: #12692d;
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 8px;
             font-weight: bold;
             text-align: center;
-            display: inline-block;
+            text-decoration: none;
             margin-top: 20px;
             transition: background-color 0.3s;
         }
+
         .cta-button:hover {
             background: #108521;
+        }
+
+        footer {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
+    <!-- Contêiner Principal Centralizado -->
+    <div class="container">
+        <header>
+            <h1>This Ancient Secret Reversed Health Problems</h1>
+            <h4>Pastor Matthew's 5-minute video shows it all:</h4>
+        </header>
 
-    <header>
-        <h1>This Ancient Secret Reversed Health Problems</h1>
-        <h4>Pastor Matthew's 5-minute video shows it all:</h4>
-    </header>
+        <!-- Conteúdo Principal Centralizado -->
+        <main>
+            <section id="content">
+                <img src="https://media.atomicatpages.com/u/X9IbhsKUcscwfjU9vshMFp46V772/Pictures/uWkxwf8534831.png" alt="Imagem Relacionada" style="max-width: 100%; height: auto; border-radius: 8px;">
+                <p>
+                    A Isriali doctor by the name of Dr. Yosef Friedman has revealed what is being called "The possible ultimate solution to health problems".
+                    But you have to find out quickly, because the corrupt pharmaceutical industry is censoring the revealing video showing this secret.
+                </p>
+                <a href="https://www.instituteflow.com/vsl1-g2-ing/" class="cta-button">Click Here To Watch The Video</a>
+            </section>
+        </main>
 
-    <!-- Conteúdo Principal -->
-    <main>
-        <section id="content">
-            <img src="https://media.atomicatpages.com/u/X9IbhsKUcscwfjU9vshMFp46V772/Pictures/uWkxwf8534831.png" alt="Imagem Relacionada">
-            <p>
-                A Isriali doctor by the name of Dr. Yosef Friedman has revealed what is being called "The possible ultimate solution to health problems".
-                But you have to find out quickly, because the corrupt pharmaceutical industry is censoring the revealing video showing this secret.
-            </p>
-            <a href="https://www.instituteflow.com/vsl1-g2-ing/" class="cta-button">Click Here To Watch The Video</a>
-        </section>
-    </main>
-
-    <!-- Rodapé -->
-    <footer>
-        <p>© 2024 by Vitality and Healthy Guide. All rights reserved.</p>
-        <p>This site is not a part of the META website or Meta Inc. Additionally, This site is NOT endorsed by Meta in any way. META is a trademark of META, Inc.</p>
-        <a href="https://www.instituteflow.com/vsl1-g2-ing/">Privacy Policy</a> | 
-        <a href="https://www.instituteflow.com/vsl1-g2-ing/">Terms of Use</a>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://connect.facebook.net/en_US/fbevents.js" async></script>
-    <script>
-        !function(f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function() {
-                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n; n.loaded = !0; n.version = '2.0';
-            n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s);
-        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1520304738727187');
-        fbq('track', 'PageView');
-    </script>
+        <!-- Rodapé Centralizado -->
+        <footer>
+            <p>© 2024 by Vitality and Healthy Guide. All rights reserved.</p>
+            <p>This site is not a part of the META website or Meta Inc. Additionally, This site is NOT endorsed by Meta in any way. META is a trademark of META, Inc.</p>
+            <a href="https://www.instituteflow.com/vsl1-g2-ing/">Privacy Policy</a> | 
+            <a href="https://www.instituteflow.com/vsl1-g2-ing/">Terms of Use</a>
+        </footer>
+    </div>
 </body>
 </html>
+
