@@ -272,4 +272,10 @@ tr {
       font-style: italic;
       text-shadow: #000000 0px 1px 0px;
     }
-
+body {
+  background-image: url('./assets/img/66e7cb31849df10e12d67b47.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
