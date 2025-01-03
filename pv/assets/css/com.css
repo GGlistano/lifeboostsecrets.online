@@ -22,12 +22,8 @@
 }
 
 body {
-  background-image: url('./assets/img/66e7cb31849df10e12d67b47.png');
-  background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
-  background-repeat: no-repeat; /* Evita repetição da imagem */
-  background-attachment: fixed; /* Cria um efeito de paralaxe */
-  background-position: center; /* Centraliza a imagem */
-
+ 
+  background-color: blue; /* Define um fundo azul sólido */
   font-size: 16px;
 }
 
