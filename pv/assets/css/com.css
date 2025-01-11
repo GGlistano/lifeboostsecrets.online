@@ -279,3 +279,26 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
+/* Ajuste do container da headline */
+.headline-container {
+  max-width: 600px; /* Limita a largura máxima do container */
+  margin: 0 auto; /* Centraliza o container horizontalmente */
+  padding: 0 15px; /* Adiciona margens internas laterais no mobile */
+  text-align: left; /* Garante que o texto fique alinhado à esquerda */
+}
+
+/* Estilo da headline */
+.headline-container h1, .headline-container h2, .headline-container p {
+  font-size: 1.2rem; /* Ajusta o tamanho da fonte para melhor visualização no mobile */
+  line-height: 1.6; /* Aumenta o espaçamento entre linhas para melhorar a legibilidade */
+  color: #000; /* Garante um bom contraste com o fundo */
+  margin-bottom: 15px; /* Espaçamento abaixo do texto */
+}
+
+/* Ajustes específicos para telas menores */
+@media (max-width: 768px) {
+  .headline-container h1, .headline-container h2, .headline-container p {
+    font-size: 1rem; /* Reduz o tamanho da fonte em telas pequenas */
+    line-height: 1.4; /* Ajusta o espaçamento entre linhas para caber melhor */
+  }
+}
