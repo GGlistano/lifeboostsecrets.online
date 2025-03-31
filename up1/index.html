@@ -1,13 +1,5 @@
 <!DOCTYPE html><html lang="en"><head>
-    <script>
-  window.pixelId = "67b6e33d5cbd067bd519e172";
-  var a = document.createElement("script");
-  a.setAttribute("async", "");
-  a.setAttribute("defer", "");
-  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-  document.head.appendChild(a);
-</script>
-    <script src="js/latest.js" data-utmify-prevent-subids="" async="" defer=""></script>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,8 +12,6 @@
    
     <style>.setas {font-size: 120px;}</style>
     
-     <!-- Novo script adicionado -->
-    <script src="js/latest.js" data-utmify-prevent-subids="" async="" defer=""></script>
 </head>
 
 <body>
@@ -42,19 +32,16 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 
-                <!-- HOTMART - Upsell Widget -->
-<div id="box_hotmart"></div>
-<script src="js/hotmart.upsell_checkout.js"></script>
+                <!-- HOTMART - Sales Funnel Widget -->
+<!--- sales funnel container --->
+<div id="hotmart-sales-funnel"></div>
 
+<!--- script load and setup --->
+<script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
 <script>
-opts = {
-key: 'USL-142750-480483-27208874517dc97828e14c41f5b26cca',
-width: '650' ,
-height: '420'
-};
-Upsell.Widget.show(opts);
+checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
 </script>
-<!-- HOTMART - Upsell Widget [end] -->
+<!-- HOTMART - Sales Funnel Widget -->
                 
                 <div class="col-lg-8 offset-lg-2 text-center">
                     <p><strong>DESPUÉS DE HACER CLIC EN EL BOTÓN 
