@@ -2,202 +2,78 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>¡Atención! Oferta especial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reconquista</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-    }
-
-    .header {
-      background-color: red;
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .content {
+    .bloco-reconquista {
       max-width: 600px;
-      margin: 30px auto;
-      background: white;
+      margin: 0 auto;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       text-align: center;
+      font-family: Arial, sans-serif;
+      color: #000;
     }
 
-    .content h1 {
-      font-size: 24px;
-      margin-bottom: 15px;
-      color: #333;
+    .bloco-reconquista p {
+      margin: 20px 0;
     }
 
-    .content p {
-      font-size: 18px;
-      color: #444;
-      margin-bottom: 20px;
+    .bloco-reconquista .destaque-vermelho {
+      color: red;
+      font-weight: bold;
+      font-size: 20px;
     }
 
-    .btn {
-      background-color: #ff5a5f;
-      color: white;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      text-decoration: none;
-      cursor: pointer;
+    .bloco-reconquista .subtitulo {
+      font-size: 20px;
       font-weight: bold;
     }
 
-    /* Popup */
-    #popup-container {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
+    .bloco-reconquista .texto-normal {
+      font-size: 15px;
     }
 
-    #popup-container .popup {
-      background: white;
-      padding: 25px 35px;
-      border-radius: 8px;
-      max-width: 90%;
-      text-align: center;
-      font-family: sans-serif;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    .bloco-reconquista .final-vermelho {
+      color: red;
+      font-weight: bold;
+      font-size: 14px;
     }
 
-    #popup-container h2 {
-      margin-bottom: 15px;
-      font-size: 22px;
-    }
+    @media (max-width: 600px) {
+      .bloco-reconquista .destaque-vermelho,
+      .bloco-reconquista .subtitulo {
+        font-size: 18px;
+      }
 
-    #popup-container p {
-      margin-bottom: 20px;
-      font-size: 16px;
+      .bloco-reconquista .texto-normal {
+        font-size: 14px;
+      }
+
+      .bloco-reconquista .final-vermelho {
+        font-size: 13px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    ¡ATENCIÓN! Oferta válida solo por hoy
+  <div class="bloco-reconquista">
+    <p class="destaque-vermelho">
+      Mientras sigues haciendo <span style="font-style: italic;">"esa cosa"</span> que solo la aleja…
+    </p>
+    <p class="subtitulo">
+      Existe un método oculto de 4 pasos para reconectarse que<br>
+      <span style="text-decoration: underline;">hace que ella quiera volver</span> corriendo.
+    </p>
+    <p class="texto-normal">
+      Sin tener que humillarte, sin declararte, sin demostrar que<br>
+      cambiaste, y sin tener que ver videos en YouTube ni aplicar el<br>
+      famoso contacto cero.
+    </p>
+    <p class="final-vermelho">
+      Ella no tendrá forma de ignorarte…
+    </p>
   </div>
-
-  <div class="content">
-    <h1>Recibe un 70% de descuento</h1>
-    <p>Por tiempo limitado, obtén acceso exclusivo con esta promoción especial.</p>
-    <a href="https://tulink.com/oferta" class="btn">Accede ahora</a>
-  </div>
-
-  <!-- POPUP COM CONTADOR -->
-  <div id="popup-container">
-    <div class="popup">
-      <h2>¡Oferta especial solo por hoy!</h2>
-      <p>Esta ventana se cierra en <span id="countdown" style="font-weight: bold;">00:30</span></p>
-      <a href="https://tulink.com/oferta" class="btn">Aprovecha la oferta</a>
-    </div>
-  </div>
-
-  <script>
-    // Mostra o popup depois de 10 segundos
-    setTimeout(function () {
-      document.getElementById("popup-container").style.display = "flex";
-      startCountdown();
-    }, 10000);
-
-    function startCountdown() {
-      let timeLeft = 30;
-      const countdown = document.getElementById("countdown");
-      const interval = setInterval(function () {
-        timeLeft--;
-        countdown.textContent = `00:${timeLeft < 10 ? "0" : ""}${timeLeft}`;
-        if (timeLeft <= 0) {
-          clearInterval(interval);
-          document.getElementById("popup-container").style.display = "none";
-        }
-      }, 1000);
-    }
-  </script>
-<style>
-  .bloco-reconquista {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    color: #000;
-  }
-
-  .bloco-reconquista p {
-    margin: 20px 0;
-  }
-
-  .bloco-reconquista .destaque-vermelho {
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-  }
-
-  .bloco-reconquista .subtitulo {
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  .bloco-reconquista .texto-normal {
-    font-size: 15px;
-  }
-
-  .bloco-reconquista .final-vermelho {
-    color: red;
-    font-weight: bold;
-    font-size: 14px;
-  }
-
-  @media (max-width: 600px) {
-    .bloco-reconquista .destaque-vermelho,
-    .bloco-reconquista .subtitulo {
-      font-size: 18px;
-    }
-
-    .bloco-reconquista .texto-normal {
-      font-size: 14px;
-    }
-
-    .bloco-reconquista .final-vermelho {
-      font-size: 13px;
-    }
-  }
-</style>
-
-<div class="bloco-reconquista">
-  <p class="destaque-vermelho">
-    Mientras sigues haciendo <span style="font-style: italic;">"esa cosa"</span> que solo la aleja…
-  </p>
-  <p class="subtitulo">
-    Existe un método oculto de 4 pasos para reconectarse que<br>
-    <span style="text-decoration: underline;">hace que ella quiera volver</span> corriendo.
-  </p>
-  <p class="texto-normal">
-    Sin tener que humillarte, sin declararte, sin demostrar que<br>
-    cambiaste, y sin tener que ver videos en YouTube ni aplicar el<br>
-    famoso contacto cero.
-  </p>
-  <p class="final-vermelho">
-    Ella no tendrá forma de ignorarte…
-  </p>
-</div>
-
-
 
 </a></div></div></div></div></div></div></section><section class="elementor-section elementor-top-section elementor-element elementor-element-f1960e5 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f1960e5" data-element_type="section" data-settings="{" background_background":"classic"}"=""><div class="elementor-background-overlay"></div><div class="elementor-container elementor-column-gap-default"><div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-813d7d3" data-id="813d7d3" data-element_type="column"><div class="elementor-widget-wrap elementor-element-populated"><section class="elementor-section elementor-inner-section elementor-element elementor-element-57f5c64 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="57f5c64" data-element_type="section"><div class="elementor-container elementor-column-gap-default"><div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-037413a" data-id="037413a" data-element_type="column"><div class="elementor-widget-wrap elementor-element-populated"><div class="elementor-element elementor-element-7bbb9a5 elementor-widget elementor-widget-image" data-id="7bbb9a5" data-element_type="widget" data-widget_type="image.default"><div class="elementor-widget-container">
 <img decoding="async" width="800" height="800" src="images/sobre-rela.png.webp" class="attachment-large size-large wp-image-566" alt="" srcset="images/sobre-rela.png.webp 1024w, images/sobre-rela.png-300x300.webp 300w, images/sobre-rela.png-150x150.webp 150w, images/sobre-rela.png-768x768.webp 768w, images/sobre-rela.png-600x600.webp 600w, images/sobre-rela.png-100x100.webp 100w" sizes="(max-width: 800px) 100vw, 800px"></div></div></div></div><div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-b314439" data-id="b314439" data-element_type="column"><div class="elementor-widget-wrap elementor-element-populated"><div class="elementor-element elementor-element-845dc3d elementor-widget elementor-widget-heading" data-id="845dc3d" data-element_type="widget" data-widget_type="heading.default"><div class="elementor-widget-container"><h2 class="elementor-heading-title elementor-size-default">¿Te sientes ignorada, invisible o simplemente cansada de dar más de lo que recibes?</h2></div></div><div class="elementor-element elementor-element-6293a6a elementor-widget elementor-widget-text-editor" data-id="6293a6a" data-element_type="widget" data-widget_type="text-editor.default"><div class="elementor-widget-container"><div id="KnM9nf" class="PZPZlf" data-attrid="tw-sourceArea" data-entityname="Google Translate"><div id="tw-source"><p class="" data-start="1048" data-end="1148"><strong>Intentaste ser comprensiva, amable, paciente…</strong><br data-start="1093" data-end="1096">Pero él no reacciona. O peor: se aleja cada vez más.</p><p class="" data-start="1150" data-end="1251">💔 Él dejó de buscarte<br data-start="1172" data-end="1175">💬 Sus mensajes son cada vez más fríos<br data-start="1213" data-end="1216">📉 Tú das todo… y él cada vez menos</p><p class="" data-start="1253" data-end="1417">La verdad es simple (y dolorosa):<br data-start="1286" data-end="1289"><strong data-start="1289" data-end="1328">Ellos no se enamoran como nosotras.</strong><br data-start="1328" data-end="1331">Ellos responden a <strong data-start="1349" data-end="1373">instintos primitivos</strong>. Y si no los activas… te vuelves invisible.</p></div></div></div></div></div></div></div></section><div class="elementor-element elementor-element-4f58974 elementor-widget elementor-widget-text-editor" data-id="4f58974" data-element_type="widget" data-widget_type="text-editor.default"><div class="elementor-widget-container"><h3 id="tw-target-text" class="tw-data-text tw-text-large tw-ta" dir="ltr" data-placeholder="Tradução" data-ved="2ahUKEwiekqbj9NmMAxWxHrkGHYhBKbUQ3ewLegQICBAV" aria-label="Texto traduzido: Imagínate esto… Él se siente tentado por ti, por escribirte, por sentir que te necesita. Habla con calma, con seguridad, sin necesidad de mendigar amor.  Él siente que sin ti, algo falta. Todo es posible para activar los 3 instintos masculinos. Cuando se despiertan tres instintos… Él te está acosando. Él te ama. Él está obsesionado contigo.">Imagina esto…</h3><p class="" data-start="1484" data-end="1623">Él no puede dejar de pensar en ti.<br data-start="1518" data-end="1521">Siente deseo. Curiosidad. Urgencia por hablarte.<br data-start="1569" data-end="1572">Empieza a buscarte. A valorarte. A <strong data-start="1607" data-end="1622">necesitarte</strong>.</p><p class="" data-start="1625" data-end="1690">Y todo gracias a 3 activaciones simples que puedes hacer <strong data-start="1682" data-end="1689">HOY</strong>.</p><p class="" data-start="1692" data-end="1786">👉 No es magia.<br data-start="1707" data-end="1710">👉 No es manipulación.<br data-start="1732" data-end="1735">👉 Es psicología emocional aplicada con estrategia.</p></div></div></div></div></div></section><section class="elementor-section elementor-top-section elementor-element elementor-element-1960e042 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="1960e042" data-element_type="section" data-settings="{" background_background":"classic"}"=""><div class="elementor-background-overlay"></div><div class="elementor-container elementor-column-gap-default"><div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3b3a9a17" data-id="3b3a9a17" data-element_type="column"><div class="elementor-widget-wrap elementor-element-populated"><div class="elementor-element elementor-element-78e8e341 elementor-widget elementor-widget-heading" data-id="78e8e341" data-element_type="widget" data-widget_type="heading.default"><div class="elementor-widget-container"><h2 class="elementor-heading-title elementor-size-default">¿Qué es el Desafío Exprés 72H?</h2></div></div><section class="elementor-section elementor-inner-section elementor-element elementor-element-77dae1c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="77dae1c" data-element_type="section"><div class="elementor-container elementor-column-gap-default"><div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-5b3c5712" data-id="5b3c5712" data-element_type="column"><div class="elementor-widget-wrap elementor-element-populated"><div class="elementor-element elementor-element-7821f103 elementor-widget elementor-widget-image" data-id="7821f103" data-element_type="widget" data-widget_type="image.default"><div class="elementor-widget-container">
