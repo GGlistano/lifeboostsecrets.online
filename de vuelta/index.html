@@ -280,6 +280,127 @@
   </a>
 </div>
 
+    <style>
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 20px;
+  }
+
+  .faq-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  .faq-item {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: bold;
+    padding: 15px 20px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 20px;
+    position: absolute;
+    right: 20px;
+    transition: transform 0.3s;
+  }
+
+  .faq-question.active::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    display: none;
+    background-color: #fff;
+    padding: 15px 20px;
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 600px) {
+    .faq-container {
+      padding: 20px 10px;
+    }
+
+    .faq-container h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<div class="faq-container">
+  <h2>Preguntas Frecuentes</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">¿Qué es el Método de Reconexión de 4 Pasos?</div>
+    <div class="faq-answer">Es un conjunto de técnicas paso a paso que puedes aplicar desde casa. Son estrategias muy poderosas que te ayudarán a reconquistar a tu pareja y a convertirte en un hombre imposible de ignorar.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">¿Qué voy a recibir?</div>
+    <div class="faq-answer">Recibirás un correo electrónico con acceso al Método, y además tendrás acceso a una plataforma VIP donde encontrarás todo el contenido explicado paso a paso para que empieces hoy mismo.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">¿Qué pasa después de hacer mi inscripción?</div>
+    <div class="faq-answer">Después de completar tu inscripción, recibirás el acceso en tu correo electrónico en menos de 1 minuto tras el pago. Si no lo ves, revisa tu carpeta de spam. Y si aún no está, solo tienes que contactar a nuestro equipo de soporte al cliente. (Recibirás nuestro contacto exclusivo para clientes justo después de la compra).</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">¿Cuánto tiempo toma ver resultados?</div>
+    <div class="faq-answer">Tenemos casos increíbles de hombres que lograron reconquistar a sus mujeres en menos de un mes, y al seguir aplicando el método por más tiempo, transformaron completamente su relación y a ellos mismos.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">¿Funciona para mí?</div>
+    <div class="faq-answer">Si sigues el método y cumples con el cronograma de las técnicas, puedes estar seguro de que lograrás resultados increíbles y volverás a conquistarla.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">¿Tiene contraindicaciones?</div>
+    <div class="faq-answer">No. Estas son técnicas emocionales suaves que cualquier hombre puede realizar.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">¿Qué voy a recibir?</div>
+    <div class="faq-answer">En menos de 1 minuto después del pago, recibirás en tu correo electrónico el método completo de reconexión de 4 pasos, diseñado de acuerdo a tu evaluación. Y tendrás acceso al método de por vida en tu computadora o celular.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">¿Cuáles son las formas de pago?</div>
+    <div class="faq-answer">Tarjeta de crédito y PayPal, en una página segura, la misma página de pagos utilizada por Amazon.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">¿Tiene garantía?</div>
+    <div class="faq-answer">SÍ. Tienes una garantía incondicional de 60 días y puedes pedir tu dinero de vuelta en cualquier momento dentro de este período si no estás satisfecho con el producto.</div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      q.classList.toggle('active');
+      const answer = q.nextElementSibling;
+      answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+    });
+  });
+</script>
+
     <!-- BLOCO 12: GARANTIA -->
     <div class="garantia">
       <h2>✅ Garantía de 60 Días</h2>
