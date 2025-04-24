@@ -455,11 +455,18 @@
     div.className = "notification";
     div.innerHTML = `<span><strong>${nombre}</strong> compró ${tiempo}</span>`;
     document.body.appendChild(div);
-    setTimeout(() => { div.remove(); }, 5000);
-    const proximoIntervalo = Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000;
+
+    // Remove após 5 segundos
+    setTimeout(() => {
+      div.remove();
+    }, 5000);
+
+    // Próxima notificação entre 5s e 20s
+    const proximoIntervalo = Math.floor(Math.random() * (20000 - 5000 + 1)) + 5000;
     setTimeout(crearNotificacion, proximoIntervalo);
   }
 
+  // Primeira notificação depois de 3 segundos
   setTimeout(crearNotificacion, 3000);
 </script>
 
