@@ -403,5 +403,65 @@
   });
 </script>
   </div>
+  <style>
+  .notification {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #e8fce8;
+    color: #2d5c2d;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.5s ease;
+    border-left: 5px solid #2ecc71;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+</style>
+<script>
+  const nombresMasculinos = [
+    "Juan", "Carlos", "Andrés", "Miguel", "Fernando", "José", "Manuel",
+    "Ricardo", "Antonio", "Santiago", "Luis", "Javier", "Pablo", "Mateo",
+    "Álvaro", "Diego", "Joaquín", "Ramón", "Gabriel", "Héctor", "Cristian",
+    "Rafael", "Bruno", "Iván", "Sebastián", "Marco", "Daniel", "Lucas"
+  ];
+
+  function tiempoAleatorio() {
+    const tipo = Math.floor(Math.random() * 3);
+    const valor = Math.floor(Math.random() * (tipo === 0 ? 50 : tipo === 1 ? 59 : 5)) + 1;
+    const unidad = tipo === 0 ? "segundos" : tipo === 1 ? "minutos" : "horas";
+    return `hace ${valor} ${unidad}`;
+  }
+
+  function crearNotificacion() {
+    const nombre = nombresMasculinos[Math.floor(Math.random() * nombresMasculinos.length)];
+    const tiempo = tiempoAleatorio();
+    const div = document.createElement("div");
+    div.className = "notification";
+    div.innerHTML = `<span><strong>${nombre}</strong> compró ${tiempo}</span>`;
+    document.body.appendChild(div);
+    setTimeout(() => { div.remove(); }, 5000);
+    const proximoIntervalo = Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000;
+    setTimeout(crearNotificacion, proximoIntervalo);
+  }
+
+  setTimeout(crearNotificacion, 3000);
+</script>
+
 </body>
 </html>
