@@ -11,27 +11,27 @@ const quizData = [
   },
   {
     question: 'Qual é o slogan atual da Movitel?',
-    image: 'todo.jpg',
+    image: 'img/11mov.jpg',
     options: ['Sempre em Movimento', 'A rede que te conecta', 'Ligando Moçambique', 'Em todo lugar a todo momento']
   },
   {
     question: 'Quais destes serviços são oferecidos pela Movitel?',
-    image: 'servicos.jpg',
+    image: 'img/10mov.jpg',
     options: ['m-Pesa', 'm-Kesh', 'emola', 'soprati']
   },
   {
     question: 'Quem são os principais concorrentes da Movitel no mercado moçambicano?',
-    image: 'concorrentes.jpg',
+    image: 'img/4mov.jpg',
     options: ['Tmcel e Vodacom', 'Orange e Airtel', 'Mcel e Unitel', 'Tim e Unitel']
   },
   {
     question: 'Que tipo de tecnologia a Movitel oferece em seus serviços?',
-    image: '4g.jpg',
+    image: 'img/3mov.jpg',
     options: ['Apenas 3G', '4G e fibra óptica', '2G e rede de satélite', 'Wi-Fi gratuito']
   },
   {
     question: 'Você recomendaria a sua família a usar a Movitel?',
-    image: 'familia.jpg',
+    image: 'img/5mov.jpg',
     options: ['Sim', 'Não']
   }
 ];
