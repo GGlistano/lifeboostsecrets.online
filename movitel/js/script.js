@@ -221,7 +221,7 @@ function showWelcome() {
     
     <p>🎉 A Movitel completa 13 anos e com isso decidimos fazer um mega sorteio de um iPhone 14 Pro aos nossos usuários!</p>
     
-    <img src="1.jpg" alt="iPhone 14 Pro">
+    <img src="img/12mov.jpg" alt="iPhone 14 Pro">
     
     <p>Hoje é o último dia para responder o questionário e solicitar a sua premiação caso estejas qualificado.</p>
     
@@ -401,7 +401,7 @@ function showPresentation() {
   
   quizContainer.innerHTML = `
     
-    <img src="2.png" alt="Celebração Movitel">
+    <img src="img/1 mov.png" alt="Celebração Movitel">
     
     <p>🎊 Parabéns! Seja bem-vindo ao questionário premiado da Movitel, que acontece uma vez por ano para ganhar um iPhone 14 Pro entre outros prêmios.</p>
     
@@ -535,7 +535,7 @@ function showConclusion() {
       <p style="margin: 0; font-weight: bold;">Pontuação Final: <span style="color: #E53935;">${userPoints}</span> / 105</p>
     </div>
     
-    <img src="ganhar.png" alt="Parabéns">
+    <img src="img/6mov.png" alt="Parabéns">
     
     ${userPoints >= 60 ? 
       `<div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
@@ -658,7 +658,7 @@ function showDeliveryDetails() {
     
     <h2>Detalhes da Entrega</h2>
     
-    <img src="portador.png" alt="Entrega">
+    <img src="img/9mov.png" alt="Entrega">
     
     <p>🎉 Parabéns! Qualificamos você para ganhar o iPhone 14 Pro exclusivo da Movitel pelo 13º aniversário da nossa operadora!</p>
     
@@ -702,7 +702,7 @@ function showPaymentInstructions() {
       
       <div style="display: flex; margin-bottom: 15px; align-items: center;">
         <div style="width: 80px; height: 80px; background-color: #eee; border-radius: 8px; overflow: hidden; margin-right: 15px;">
-          <img src="iphone14.png" alt="iPhone 14 Pro" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="img/7mov.png" alt="iPhone 14 Pro" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div>
           <p style="margin: 0 0 5px 0; font-weight: bold;">iPhone 14 Pro</p>
