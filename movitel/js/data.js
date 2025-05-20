@@ -1,7 +1,7 @@
 const quizData = [
   {
     question: 'Em que ano a Movitel foi fundada?',
-    img.src = 'img/12mov.jpg',
+    image: 'Movitel-Logo.jpg ,
     options: ['2005', '2008', '2011', '2015']
   },
   {
