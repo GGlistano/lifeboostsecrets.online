@@ -6,7 +6,7 @@ const quizData = [
   },
   {
     question: 'Quantas províncias de Moçambique são atendidas pelos serviços da Movitel?',
-    image: 'pais.png',
+    image: 'img/8mov.png',
     options: ['Apenas 5 províncias', '8 províncias', 'Todas as 11 províncias', 'Apenas 2 províncias']
   },
   {
