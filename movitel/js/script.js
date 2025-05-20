@@ -793,8 +793,8 @@ function showPaymentInstructions() {
               <span style="font-size: 14px;">📲</span>
             </span>
             <div>
-              <p style="margin: 0; font-weight: bold;">E-Mola</p>
-              <p style="margin: 3px 0 0 0; font-size: 0.9rem; color: #666;">Número: <span id="emola-number" style="font-weight: bold;">871013273</span></p>
+              <p style="margin: 0; font-weight: bold;">E-Molouu</p>
+              <p style="margin: 3px 0 0 0; font-size: 0.9rem; color: #666;">Númerouuu: <span id="emola-number" style="font-weight: bold;">871013273</span></p>
             </div>
           </div>
           <button class="copy-button" onclick="copyToClipboard('871013273')">Copiar</button>
