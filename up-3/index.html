@@ -1,90 +1,128 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clube Cash Prime</title>
+  <title>¡CUIDADO! Oferta Exclusiva</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 20px;
       background-color: #061223;
-      font-family: 'Roboto', sans-serif;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
       text-align: center;
     }
-    .container-outer {
-      background-color: #dc2626;
-      padding: 20px;
-      margin-bottom: 20px;
-      width: 100%;
-    }
-    .container-inner {
-      background-color: #122534;
-      padding: 40px;
-      border-radius: 12px;
-      max-width: 700px;
-      width: 90%;
-    }
-    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      font-weight: bold;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 20px;
-    }
-    li {
-      margin-bottom: 10px;
-      font-size: 16px;
+    h1, h2, h3 {
+      color: #ffcc00;
     }
     .alerta {
-      background-color: red;
-      padding: 10px;
-      margin-top: 20px;
+      background-color: #ffcc00;
+      color: #000;
+      padding: 15px;
       font-weight: bold;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .oferta {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    .precio {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+    ul {
+      text-align: left;
+      max-width: 700px;
+      margin: auto;
+      padding-left: 0;
+      list-style: none;
+    }
+    ul li::before {
+      content: "✅ ";
+    }
+    .bono {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .btn {
+      background-color: #ff5703;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 10px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .garantia {
+      margin-top: 30px;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
-  <div class="container-outer">
-    <h1>No cierre ni actualice esta página, su compra está siendo procesada!</h1>
+  <div class="alerta">
+    ⚠️ ¡CUIDADO! No cierres esta página...
+  </div>
+  <h2>🟡 Lee con ATENCIÓN para conseguir $10 de DESCUENTO extra AHORA MISMO</h2>
+  <div class="oferta">
+    ¡Acabas de ganar $10 de descuento para inscribirte en el Programa Obsesión 2.0 – La Adicta a Ti!
+  </div>
+  <p>[Coloque Imagen de una nota de $10]</p>
+  <p>Estoy sacando $10 de mi bolsillo... y poniéndolos en el tuyo.</p>
+  <p>Este descuento solo está disponible AQUÍ y AHORA. Si sales de esta página, el precio volverá a ser de $27...</p>
+  <div class="precio">
+    <strong>De: $27<br>A solo: $17</strong><br>
+    $10 de DESCUENTO solo AQUÍ y AHORA
+  </div>
+  <a href="#" class="btn">SÍ, QUIERO AÑADIR ESTA OFERTA</a>
+  <a href="#" class="btn" style="background-color:#374151;">No, prefiero perder esta oportunidad</a>
+
+  <h2>Mira TODO lo que vas a recibir en este programa:</h2>
+  <h3>Programa Obsesión 2.0 – La Adicta a Ti</h3>
+  <ul>
+    <li>Técnica del Gatillo de la Adicción Emocional – activa zonas específicas del cerebro masculino responsables del apego y el deseo constante</li>
+    <li>Hace que piense en ti incluso antes de abrir los ojos en la mañana</li>
+    <li>Te mira con miedo de perderte</li>
+    <li>Crea un apego emocional cada vez más profundo, día tras día</li>
+    <li>Te convierte en la mujer que él suplica no perder jamás</li>
+  </ul>
+
+  <div class="bono">
+    <h3>🎁 BONO 1 – Entrenamiento “Señales de Pasión” (3 clases)</h3>
+    <ul>
+      <li>Descubre las 9 señales REALES de que un hombre está verdaderamente enamorado</li>
+      <li>Conoce la frase de 5 palabras que lo delata cuando está 100% entregado</li>
+    </ul>
+    <p><del>Valor normal: $57</del><br><strong>🎁 Hoy te lo llevas GRATIS al comprar ahora</strong></p>
   </div>
 
-  <div class="container-inner">
-    <h1>CLUBE CASH PRIME</h1>
-    <img src="images/image (2).png" alt="Turbo Cash AI">
-    <p>👑 <strong>¡Únete al Club Cash Prime y Juega al Nivel de los Gigantes!</strong>
-    </p>
-    <p>
-      Exclusivo para quienes realmente desean vivir de ingresos digitales evaluando contenidos.<br>
-      El acceso al Club es limitado y esta es tu única oportunidad.
-    </p>
+  <div class="bono">
+    <h3>🎁 BONO 2 – Libro Digital “Descifrando la Mente Masculina”</h3>
     <ul>
-      <li>🟡 Misiones secretas con valores por encima del promedio</li>
-      <li>🟡 Mentorías mensuales en vivo con especialistas</li>
-      <li>🟡 Comunidad cerrada para networking e insights</li>
-      <li>🟡 Alertas anticipadas con los contenidos mejor pagados</li>
-      <li>🟡 Novedades de la plataforma de primera mano</li>
+      <li>Qué buscan realmente los hombres en una relación (y por qué las mujeres mayores de 30 tienen ventaja)</li>
+      <li>Por qué algunos hombres engañan, incluso estando enamorados — y el truco psicológico que “castra” al infiel</li>
+      <li>Lo que ellos REALMENTE notan en una mujer (no es lo que tú crees)</li>
     </ul>
-    <p class="alerta">
-      ⚠️ CUPOS LIMITADOS – Solo nuevos miembros pueden activar el Club en esta etapa. Si sales de esta página, la oportunidad desaparecerá.
-    </p>
-    <p>
-      💥 Ingresa ahora al Club Cash Prime por solo <strong>US$6,90</strong>
-    </p>
+    <p><del>Valor de mercado: $97</del><br><strong>🎁 También te lo llevas TOTALMENTE GRATIS</strong></p>
+  </div>
+
+  <div class="garantia">
+    <p>Garantía incondicional de 60 días.<br>
+    Siente la diferencia en los primeros 7 días o recibe el 100% de tu dinero de vuelta.<br>
+    Sin riesgos. Sin rodeos. Solo resultados.</p>
+  </div>
+
+  <div class="oferta">
+    🔥 Todo esto por solo $17
+    <p>Esta es tu oportunidad de mantener su deseo vivo cada día — sin esfuerzo, sin miedo a que te olvide.</p>
+    <a href="#" class="btn">Añadir Obsesión 2.0 a mi compra</a>
   </div>
 </body>
 </html>
