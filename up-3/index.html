@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¡CUIDADO! Oferta Exclusiva</title>
   <style>
+    {
+    scroll-behavior: smooth;
+  }
     body {
       margin: 0;
       padding: 20px;
@@ -80,9 +83,12 @@
   <p>Este descuento solo está disponible AQUÍ y AHORA. Si sales de esta página,<p>el precio volverá a ser de <span style="color: red; font-weight: bold;">$27</span>...</p>
   <div class="precio">
     <p style="color: yellow;">Oportunidad Única</p>
-    <strong>De: $27<br>A solo: <span style="color: limegreen;">$17</span></strong><br>
-    $10 de DESCUENTO solo AQUÍ y AHORA
-  </div>
+    <div id="oferta" class="precio">
+  <strong>De: $27<br>A solo: <span style="color: limegreen;">$17</span></strong><br>
+  $10 de DESCUENTO solo AQUÍ y AHORA
+</div>
+
+    
   <!-- HOTMART - Sales Funnel Widget -->
 <!--- sales funnel container --->
 <div id="hotmart-sales-funnel"></div>
@@ -132,7 +138,7 @@ checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
   <div class="oferta">
     🔥 Todo esto por solo $17
     <p>Esta es tu oportunidad de mantener su deseo vivo cada día — sin esfuerzo, sin miedo a que te olvide.</p>
-    <a href="#" class="btn">Añadir Obsesión 2.0 a mi compra</a>
+   <a href="#oferta" class="btn">Añadir Obsesión 2.0 a mi compra</a>
   </div>
 </body>
 </html>
