@@ -83,8 +83,16 @@
     <strong>De: $27<br>A solo: <span style="color: limegreen;">$17</span></strong><br>
     $10 de DESCUENTO solo AQUÍ y AHORA
   </div>
-  <a href="#" class="btn">SÍ, QUIERO AÑADIR ESTA OFERTA</a>
-  <a href="#" class="btn" style="background-color:#374151;">No, prefiero perder esta oportunidad</a>
+  <!-- HOTMART - Sales Funnel Widget -->
+<!--- sales funnel container --->
+<div id="hotmart-sales-funnel"></div>
+
+<!--- script load and setup --->
+<script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+<script>
+checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+</script>
+<!-- HOTMART - Sales Funnel Widget -->
 
   <h2>Mira TODO lo que vas a recibir en este programa:</h2>
   <h3>Programa Obsesión 2.0 – La Adicta a Ti</h3>
