@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (exibirPopup) {
             Swal.fire({
                 title: 'Saldo actualizado.',
-                html: `<strong>Recibiste: <span style="color: green;">+$${incremento.toFixed(2)}</span></strong>`,
+                html: `<strong>Recebeste: <span style="color: green;">+$${incremento.toFixed(2)}</span></strong>`,
                 icon: 'success',
                 showConfirmButton: false, // Remove o botão OK
                 timer: 2000, // Fecha o pop-up automaticamente após 2 segundos
@@ -388,10 +388,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (botao.classList.contains("atualizar-saldo")) {
                         if (index === 5) {
                             // Pergunta 6: Atualiza saldo sem exibir o pop-up
-                            atualizarSaldo(41, false);
+                            atualizarSaldo(44, false);
                         } else {
                             // Atualiza saldo normalmente com pop-up
-                            atualizarSaldo(41, true);
+                            atualizarSaldo(44, true);
                         }
                     }
 
