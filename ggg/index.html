@@ -1,88 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <title>Comentários</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: auto;
-        }
-        .comentario {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        .foto {
-            width: 50px;
-            height: 50px;
-            background-color: #ccc;
-            margin-right: 10px;
-        }
-        .conteudo {
-            background: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            width: 100%;
-        }
-        .nome {
-            font-weight: bold;
-            color: #0a55c3;
-        }
-        .acoes {
-            font-size: 12px;
-            color: #555;
-            margin-top: 5px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout Estilo Kuenha</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-
-    <div class="comentario">
-        <div class="foto">[Foto Eduardo Manjate]</div>
-        <div class="conteudo">
-            <div class="nome">Eduardo Manjate</div>
-            <div>Bro, vi o vídeo e nem acreditei... já saquei 18.500 meticais só com perguntas básicas! Esse sistema tá real mesmo! Obrigado maning 🙌🔥</div>
-            <div class="acoes">Curtir · Responder · 🔵 1 · 1 m</div>
-        </div>
+<body class="bg-white flex items-center justify-center min-h-screen">
+  <div class="w-full max-w-md bg-white shadow-md border border-gray-200 rounded-xl p-6">
+    <!-- Produto -->
+    <div class="flex items-center mb-4">
+      <img src="job-em-dolar.png" alt="Imagem Produto" class="w-16 h-16 rounded mr-4">
+      <div>
+        <h2 class="font-semibold text-gray-800">Nome do Produto</h2>
+        <p class="text-green-600 font-bold text-sm">197,00 MZN</p>
+      </div>
     </div>
 
-    <div class="comentario">
-        <div class="foto">[Foto Carlos Nhantumbo]</div>
-        <div class="conteudo">
-            <div class="nome">Carlos Nhantumbo</div>
-            <div>Essa cena aqui tá a bater mesmo. Comecei à 4 dias, já caiu 7 mil no Mpesa. Só a ferrar e a responder... isso é tipo magia. Ninguém me segura agora, tou bazar para albazine 😂🤣</div>
-            <div class="acoes">Curtir · Responder · 🔵 13 · 1 h</div>
-        </div>
-    </div>
+    <hr class="mb-4">
 
-    <div class="comentario">
-        <div class="foto">[Foto Fernando Mabunda]</div>
-        <div class="conteudo">
-            <div class="nome">Fernando Mabunda</div>
-            <div>Moçambique todo devia saber disso. Isso que o man partilhou no vídeo é ouro. Já tô com saldo pra sacar, valeu mano 💯💯</div>
-            <div class="acoes">Curtir · Responder · 🔵 130 · 10 h</div>
-        </div>
-    </div>
+    <!-- Formulário -->
+    <form id="checkoutForm" class="space-y-4">
+      <input type="text" name="nome" placeholder="Seu nome completo" class="w-full p-3 border border-gray-300 rounded placeholder-gray-400">
+      <input type="email" name="email" placeholder="Seu e-mail" class="w-full p-3 border border-gray-300 rounded placeholder-gray-400">
 
-    <div class="comentario">
-        <div class="foto">[Foto Sheila Ussene]</div>
-        <div class="conteudo">
-            <div class="nome">Sheila Ussene</div>
-            <div>Kkkk juro que pensei que era mais uma burla, mas testei e não é! Já caiu 11.200 na minha conta do M-Pesa. É só seguir como no vídeo diz. Sistema tá blindado 🤎</div>
-            <div class="acoes">Curtir · Responder · 🔵 1300 · 1 d</div>
-        </div>
-    </div>
+      <div class="bg-green-100 border border-green-200 text-green-800 px-4 py-2 rounded text-sm flex items-center">
+        <span class="material-icons mr-2">lock</span>
+        Pagamento seguro
+      </div>
 
-    <div class="comentario">
-        <div class="foto">[Foto Elias Zandamela]</div>
-        <div class="conteudo">
-            <div class="nome">Elias Zandamela</div>
-            <div>Quem ainda tá a duvidar é porque gosta de sofrer. Isso é dos truques mais fresh que já vi online. Frelimo nunca ia mostrar isso pra nós kkk</div>
-            <div class="acoes">Curtir · Responder · 🔵 12 · 10 s</div>
+      <div class="flex space-x-2">
+        <div id="mpesaBox" class="w-1/2 border border-green-500 rounded-lg p-2 flex items-center justify-center cursor-pointer">
+          <img src="mpesa.png" class="h-6 mr-2" alt="M-Pesa">
+          <span class="text-sm">M-Pesa</span>
         </div>
-    </div>
+        <div id="emolaBox" class="w-1/2 border border-gray-300 rounded-lg p-2 flex items-center justify-center cursor-pointer">
+          <img src="emola.png" class="h-6 mr-2" alt="e-Mola">
+          <span class="text-sm">E-Mola</span>
+        </div>
+      </div>
 
+      <input type="tel" name="telefone" placeholder="84XXXXXXX" class="w-full p-3 border border-gray-300 rounded placeholder-gray-400">
+
+      <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded font-semibold">
+        Finalizar compra 197 MZN
+      </button>
+
+      <p class="text-xs text-gray-500 text-center mt-2">100% seguro. Suporte disponível após o pagamento.</p>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('checkoutForm');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const campos = form.querySelectorAll('input');
+      let valid = true;
+
+      campos.forEach(campo => {
+        if (!campo.value.trim()) {
+          campo.classList.add('border-red-500');
+          if (!campo.nextElementSibling || !campo.nextElementSibling.classList.contains('text-red-500')) {
+            const aviso = document.createElement('p');
+            aviso.className = 'text-red-500 text-xs mt-1';
+            aviso.textContent = 'Preencha este campo';
+            campo.parentNode.insertBefore(aviso, campo.nextSibling);
+          }
+          valid = false;
+        } else {
+          campo.classList.remove('border-red-500');
+          if (campo.nextElementSibling && campo.nextElementSibling.classList.contains('text-red-500')) {
+            campo.nextElementSibling.remove();
+          }
+        }
+      });
+
+      if (valid) {
+        // Aqui entra a lógica de envio do pagamento
+        alert('Pagamento iniciado!');
+      }
+    });
+  </script>
 </body>
 </html>
