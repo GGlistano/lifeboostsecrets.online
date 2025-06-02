@@ -1035,3 +1035,17 @@ function confirmarPagamento() {
     window.scrollTo({top: 0, behavior: 'smooth'});
   }, 2000);
 }
+function confirmarPagamento() {
+  var comprovativo = document.getElementById("comprovativo-file");
+
+  if (comprovativo && comprovativo.files.length > 0) {
+    fbq('track', 'Purchase', {
+      value: 3.28,
+      currency: 'USD'
+    });
+    // Se quiser redirecionar depois, pode descomentar:
+    // window.location.href = 'URL-da-pagina-de-acesso';
+  } else {
+    alert("Por favor, envie o comprovativo de pagamento antes de continuar.");
+  }
+}
