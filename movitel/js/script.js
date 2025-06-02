@@ -793,7 +793,7 @@ function showPaymentInstructions() {
               <span style="font-size: 14px;">📲</span>
             </span>
             <div>
-              <p style="margin: 0; font-weight: bold;">E-Molo</p>
+              <p style="margin: 0; font-weight: bold;">E-Mola</p>
               <p style="margin: 3px 0 0 0; font-size: 0.9rem; color: #666;">Número: <span id="emola-number" style="font-weight: bold;">863881471</span></p>
             </div>
           </div>
