@@ -458,5 +458,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 	</script>
 
+<script>
+  (function salvarUTMs() {
+    const url = new URL(window.location.href);
+    const utms = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+
+    utms.forEach(param => {
+      const valor = url.searchParams.get(param);
+      if (valor) {
+        localStorage.setItem(param, valor);
+      }
+    });
+  })();
+</script>
 
 </body></html>
