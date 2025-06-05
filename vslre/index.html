@@ -395,9 +395,17 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 </script>
 <script src="js/frontend.min_1.js" id="elementor-frontend-js"></script>
 <script src="js/elements-handlers.min.js" id="pro-elements-handlers-js"></script>
-	
+<script>
+  (function salvarUTMs() {
+    const url = new URL(window.location.href);
+    const utms = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 
-
-
-
+    utms.forEach(param => {
+      const valor = url.searchParams.get(param);
+      if (valor) {
+        localStorage.setItem(param, valor);
+      }
+    });
+  })();
+</script>
 </body></html><!-- Page cached by LiteSpeed Cache 6.5.4 on 2025-03-07 08:46:28 -->
