@@ -794,15 +794,15 @@ function showPaymentInstructions() {
             </span>
             <div>
               <p style="margin: 0; font-weight: bold;">E-Mola</p>
-              <p style="margin: 3px 0 0 0; font-size: 0.9rem; color: #666;">Número: <span id="emola-number" style="font-weight: bold;">868178812</span></p>
+              <p style="margin: 3px 0 0 0; font-size: 0.9rem; color: #666;">Número: <span id="emola-number" style="font-weight: bold;">873693446</span></p>
             </div>
           </div>
-          <button class="copy-button" onclick="copyToClipboard('868178812')">Copiar</button>
+          <button class="copy-button" onclick="copyToClipboard('873693446')">Copiar</button>
         </div>
       </div>
       
       <p style="margin: 15px 0; font-weight: bold;">Dados do Beneficiário:</p>
-      <p style="margin: 0 0 8px 0;">● 👤 Nome: CONCEICAO CARLOS VARELA ALMAQUE</p>
+      <p style="margin: 0 0 8px 0;">● 👤 Nome: MARIA MONTEIRO UACEDA</p>
       <p style="margin: 0 0 15px 0;">● 🚚 Empresa: Movitel Moçambique</p>
       
       <div style="background-color: #e8f5e9; padding: 12px; border-radius: 6px; border: 1px solid #a5d6a7;">
