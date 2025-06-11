@@ -221,7 +221,7 @@ function showWelcome() {
     
     <p>🎉 A Movitel completa 13 anos e com isso decidimos fazer um mega sorteio de uma Geleira Hisense 223L aos nossos usuários!</p>
     
-    <img src="imagens/IMAGEM 1.jpg" alt="Gileira Hisense 223L">
+    <img src="iloveimg-compressed (1)/IMAGEM 1.jpg" alt="Gileira Hisense 223L">
     
     <p>Hoje é o último dia para responder o questionário e solicitar a sua premiação caso estejas qualificado.</p>
     
@@ -401,7 +401,7 @@ function showPresentation() {
   
   quizContainer.innerHTML = `
     
-    <img src="imagens/Untitled design (1).png" alt="Celebração Movitel">
+    <img src="iloveimg-compressed (1)/Untitled design (1).png" alt="Celebração Movitel">
     
     <p>🎊 Parabéns! Seja bem-vindo ao questionário premiado da Movitel, que acontece uma vez por ano para ganhar uma Gileira Hisense 223L entre outros prêmios.</p>
     
@@ -535,7 +535,7 @@ function showConclusion() {
       <p style="margin: 0; font-weight: bold;">Pontuação Final: <span style="color: #E53935;">${userPoints}</span> / 105</p>
     </div>
     
-    <img src="imagens/PARABENS.png" alt="Parabéns">
+    <img src="iloveimg-compressed (1)/PARABENS.png" alt="Parabéns">
     
     ${userPoints >= 60 ? 
       `<div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
@@ -658,7 +658,7 @@ function showDeliveryDetails() {
     
     <h2>Detalhes da Entrega</h2>
     
-    <img src="imagens/PD.png" alt="Entrega">
+    <img src="iloveimg-compressed (1)/PD.png" alt="Entrega">
     
     <p>🎉 Parabéns! Qualificamos você para ganhar a Geleira Hisense 223L exclusiva da Movitel pelo 13º aniversário da nossa operadora!</p>
     
@@ -702,7 +702,7 @@ function showPaymentInstructions() {
       
       <div style="display: flex; margin-bottom: 15px; align-items: center;">
         <div style="width: 80px; height: 80px; background-color: #eee; border-radius: 8px; overflow: hidden; margin-right: 15px;">
-          <img src="imagens/20250611_1704_Recibo de Envio_simple_compose_01jxfr9366exysz84jsj1k3ce1.png" alt="Hisensen 223L" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="iloveimg-compressed (1)/20250611_1704_Recibo de Envio_simple_compose_01jxfr9366exysz84jsj1k3ce1.png" alt="Hisensen 223L" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div>
           <p style="margin: 0 0 5px 0; font-weight: bold;">iPhone 14 Pro</p>
