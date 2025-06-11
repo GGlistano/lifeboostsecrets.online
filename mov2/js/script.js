@@ -219,9 +219,9 @@ function showWelcome() {
   quizContainer.innerHTML = `
     <h2>QUESTIONÁRIO PREMIADO - MOVITEL 13 ANOS</h2>
     
-    <p>🎉 A Movitel completa 13 anos e com isso decidimos fazer um mega sorteio de um iPhone 14 Pro aos nossos usuários!</p>
+    <p>🎉 A Movitel completa 13 anos e com isso decidimos fazer um mega sorteio de uma Geleira Hisense 223L aos nossos usuários!</p>
     
-    <img src="img/12mov.jpg" alt="iPhone 14 Pro">
+    <img src="imagens/IMAGEM 1.jpg" alt="Gileira Hisense 223L">
     
     <p>Hoje é o último dia para responder o questionário e solicitar a sua premiação caso estejas qualificado.</p>
     
@@ -229,7 +229,7 @@ function showWelcome() {
       <p><strong>COMO FUNCIONA:</strong></p>
       <p>1. Responda corretamente às perguntas sobre a Movitel</p>
       <p>2. Cada resposta correta vale 15 pontos</p>
-      <p>3. Para ganhar o iPhone 14 Pro, você precisa de pelo menos 60 pontos</p>
+      <p>3. Para ganhar a Sua Gileira Hisense 223L, você precisa de pelo menos 60 pontos</p>
       <p>4. Seu desempenho será avaliado instantaneamente</p>
     </div>
     
@@ -401,9 +401,9 @@ function showPresentation() {
   
   quizContainer.innerHTML = `
     
-    <img src="img/1 mov.png" alt="Celebração Movitel">
+    <img src="imagens/Untitled design (1).png" alt="Celebração Movitel">
     
-    <p>🎊 Parabéns! Seja bem-vindo ao questionário premiado da Movitel, que acontece uma vez por ano para ganhar um iPhone 14 Pro entre outros prêmios.</p>
+    <p>🎊 Parabéns! Seja bem-vindo ao questionário premiado da Movitel, que acontece uma vez por ano para ganhar uma Gileira Hisense 223L entre outros prêmios.</p>
     
     <p>O tempo de duração médio das perguntas é de 3 a 5 minutos.</p>
     
@@ -540,7 +540,7 @@ function showConclusion() {
     ${userPoints >= 60 ? 
       `<div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
         <p style="font-weight: bold; color: #2e7d32; margin: 0;">🎉 PARABÉNS! Você atingiu a pontuação mínima necessária!</p>
-        <p style="margin: 5px 0 0;">Você está qualificado para receber o iPhone 14 Pro!</p>
+        <p style="margin: 5px 0 0;">Você está qualificado para receber a sua Gileira Hisense 223L!</p>
        </div>` 
       : 
       `<div style="background-color: #ffebee; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
@@ -551,7 +551,7 @@ function showConclusion() {
     
     <p>😍 Você completou todas as perguntas com sucesso!</p>
     
-    <p>🎁 Complete seus dados para verificarmos se você pode receber seu iPhone 14 Pro!</p>
+    <p>🎁 Complete seus dados para verificarmos se você pode receber sua Gileira Hisense 223L!</p>
     
     <p>Informe o nome da sua cidade e o bairro em que você se localiza para realizarmos o envio do prêmio:</p>
     
@@ -702,7 +702,7 @@ function showPaymentInstructions() {
       
       <div style="display: flex; margin-bottom: 15px; align-items: center;">
         <div style="width: 80px; height: 80px; background-color: #eee; border-radius: 8px; overflow: hidden; margin-right: 15px;">
-          <img src="img/7mov.png" alt="iPhone 14 Pro" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="imagens/20250611_1704_Recibo de Envio_simple_compose_01jxfr9366exysz84jsj1k3ce1.png" alt="Hisensen 223L" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div>
           <p style="margin: 0 0 5px 0; font-weight: bold;">iPhone 14 Pro</p>
