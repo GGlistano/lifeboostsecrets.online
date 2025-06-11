@@ -699,7 +699,7 @@ function showPaymentInstructions() {
     <!-- Resumo do pedido -->
     <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e1e4e8;">
       <h3 style="margin-top: 0; font-size: 1.1rem; color: #333;">Resumo do Pedido</h3>
-      6
+      
       <div style="display: flex; margin-bottom: 15px; align-items: center;">
         <div style="width: 80px; height: 80px; background-color: #eee; border-radius: 8px; overflow: hidden; margin-right: 15px;">
           <img src="imagens/20250611_1704_Recibo de Envio_simple_compose_01jxfr9366exysz84jsj1k3ce1.png" alt="Hisensen 223L" style="width: 100%; height: 100%; object-fit: cover;">
