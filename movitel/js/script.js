@@ -921,19 +921,7 @@ function setupFileUpload() {
     e.preventDefault();
     e.stopPropagation();
   }
-  // Se tiver outras funções, deixa acima ou abaixo — sem colocar dentro delas
 
-function copyToClipboard(text) {
-  navigator.clipboard.writeText(text)
-    .then(() => {
-      alert('Copiado com sucesso! 🔥');
-    })
-    .catch(err => {
-      alert('Erro ao copiar: ' + err);
-    });
-}
-
-// Outras funções ou códigos aqui se quiser
 
   // Destacar área quando arrastando arquivo
   ['dragenter', 'dragover'].forEach(eventName => {
@@ -1048,3 +1036,14 @@ function confirmarPagamento() {
     window.scrollTo({top: 0, behavior: 'smooth'});
   }, 2000);
 }
+// ⬇️ COLA AQUI EMBAIXO — FORA de qualquer função
+
+window.copyToClipboard = function (text) {
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      alert('Copiado com sucesso! 🔥');
+    })
+    .catch(err => {
+      alert('Erro ao copiar: ' + err);
+    });
+};
