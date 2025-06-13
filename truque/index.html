@@ -143,6 +143,32 @@
     <!-- FIM DOS COMENTÁRIOS -->
 
   </div>
+<script>
+(function rastreiaTudo() {
+  const url = new URL(window.location.href);
+  const utms = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  
+  // Salva UTM params
+  utms.forEach(param => {
+    const valor = url.searchParams.get(param);
+    if (valor) localStorage.setItem(param, valor);
+  });
 
+  // Salva FBC (Facebook Click ID)
+  const fbclid = url.searchParams.get('fbclid');
+  if (fbclid) {
+    const fbc = `fb.1.${Date.now()}.${fbclid}`;
+    localStorage.setItem('_fbc', fbc);
+  }
+
+  // Gera FBP (Facebook Browser ID) se não tiver
+  if (!localStorage.getItem('_fbp')) {
+    const rand = Math.floor(Math.random() * 1e10);
+    const fbp = `fb.1.${Date.now()}.${rand}`;
+    localStorage.setItem('_fbp', fbp);
+  }
+})();
+</script>
 </body>
 </html>
+
