@@ -403,24 +403,27 @@ body {
     pagarBtn.disabled = true;
     const overlayIntervalo = mostrarOverlayProcessando(45);
 
-    try {
-      const resposta = await fetch('https://checkout-backend-bgqi.onrender.com/api/pagar', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          phone: numero,
-          amount: "197",
-          reference: "esponjatruque",
-          metodo: metodo,
-          email: email.value.trim(),
-          nome: nome.value.trim(),
-          utm_source: localStorage.getItem('utm_source') || '',
-          utm_medium: localStorage.getItem('utm_medium') || '',
-          utm_campaign: localStorage.getItem('utm_campaign') || '',
-          utm_term: localStorage.getItem('utm_term') || '',
-          utm_content: localStorage.getItem('utm_content') || ''
-        })
-      });
+   try {
+  const resposta = await fetch('https://checkout-backend-bgqi.onrender.com/api/pagar', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      phone: numero,
+      amount: "197",
+      reference: "esponjatruque",
+      metodo: metodo,
+      email: email.value.trim(),
+      nome: nome.value.trim(),
+      utm_source: localStorage.getItem('utm_source') || '',
+      utm_medium: localStorage.getItem('utm_medium') || '',
+      utm_campaign: localStorage.getItem('utm_campaign') || '',
+      utm_term: localStorage.getItem('utm_term') || '',
+      utm_content: localStorage.getItem('utm_content') || '',
+      fbc: localStorage.getItem('_fbc') || '',
+      fbp: localStorage.getItem('_fbp') || ''
+    })
+  });
+
 
       const resultado = await resposta.json();
       clearInterval(overlayIntervalo);
