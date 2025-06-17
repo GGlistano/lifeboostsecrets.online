@@ -291,10 +291,11 @@ body {
     <div id="email-erro" class="error-message" style="display:none;">Por favor, preencha seu e-mail.</div>
     
     <label for="whatsapp-input">Número de WhatsApp</label>
-<input id="whatsapp-input" type="tel" placeholder="Ex: 84XXXXXXX" />
+<input id="whatsapp-input" type="tel" />
 <div id="whatsapp-erro" class="error-message" style="display:none;">
-  Por favor, preencha o número de WhatsApp corretamente.
+  Por favor, preencha o número de WhatsApp.
 </div>
+
 
 
     <div class="coupon-toggle" onclick="toggleCupom()">Tem um cupom de desconto?</div>
@@ -375,6 +376,7 @@ body {
     const nome = document.getElementById('nome-input');
     const email = document.getElementById('email-input');
     const phone = document.getElementById('phone-input');
+    const whatsapp = document.getElementById('whatsapp-input');
     const metodo = phone.dataset.metodo;
     const pagarBtn = document.getElementById('pagar-btn');
     const statusDiv = document.getElementById('pagamento-status');
@@ -384,6 +386,7 @@ body {
     document.getElementById('nome-erro').style.display = 'none';
     document.getElementById('email-erro').style.display = 'none';
     document.getElementById('phone-erro').style.display = 'none';
+    document.getElementById('whatsapp-erro').style.display = 'none';
 
     // Validação básica
     if (!nome.value.trim()) {
@@ -396,6 +399,13 @@ body {
       document.getElementById('email-erro').style.display = 'block';
       erro = true;
     }
+    
+    if (!whatsapp.value.trim()) {
+  whatsapp.classList.add('error');
+  document.getElementById('whatsapp-erro').style.display = 'block';
+  erro = true;
+}
+
 
     const numero = phone.value.trim();
     const numeroValido = validarNumero(numero, metodo);
