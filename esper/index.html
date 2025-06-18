@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="pt"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Premiada</title>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      overflow-x: hidden;
+      padding-bottom: 140px;
+    }
+
+    .vsl-container {
+      width: 100%;
+      background-color: #000;
+      position: relative;
+      z-index: 20; /* vsl acima dos comentários */
+    }
+
+    .live-viewers {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      color: #fff;
+      font-size: 14px;
+      background: #1c1e21;
+    }
+
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      background: red;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .comment-stream {
+      position: fixed;
+      bottom: 100px;
+      left: 0;
+      width: 100%;
+      padding: 0 12px;
+      pointer-events: none;
+      z-index: 5; /* menor que a VSL */
+      max-height: 55vh;
+    }
+
+    .comment {
+      background: #f0f2f5;
+      border-radius: 18px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #050505;
+      max-width: 95%;
+      animation: floatUp 6s linear forwards;
+    }
+
+    .comment .name {
+      color: #1877f2;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0); }
+      85% { opacity: 1; transform: translateY(-100px); }
+      100% { opacity: 0; transform: translateY(-130px); }
+    }
+
+    .comment-box {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px 12px;
+      background: #fff;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      border-top: 1px solid #ccc;
+      z-index: 10;
+      opacity: 0.6;
+    }
+
+    .comment-box input {
+      flex: 1;
+      padding: 10px 12px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      pointer-events: none;
+    }
+
+    .comment-box button {
+      background: none;
+      border: none;
+      padding: 6px;
+      cursor: not-allowed;
+    }
+
+    .comment-box button svg {
+      fill: #ccc;
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .live-viewers, .comment {
+        font-size: 13px;
+      }
+      .comment {
+        max-width: 100%;
+      }
+    }
+</style>
+
+<script src="js/player.js" async=""></script></head>
+<body>
+
+  <!-- TOP BAR ESTILO FACEBOOK -->
+  <div style="display: flex; align-items: center; justify-content: space-between; background: #1877f2; padding: 10px 12px; color: #fff; font-family: Arial, sans-serif;">
+    <div style="font-weight: bold; font-size: 18px;">facebook</div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 24 24">
+        <path d="M12 24c1.104 0 1.99-.896 1.99-2h-3.979c0 1.104.886 2 1.989 2zm8.707-6.293l-1.414-1.414c-.388-.387-.586-.9-.586-1.414v-4.879c0-3.519-2.613-6.432-6-6.928v-.572c0-.828-.672-1.5-1.5-1.5S9.5 2.672 9.5 3.5v.572C6.113 4.977 3.5 7.89 3.5 11.409v4.879c0 .514-.198 1.027-.586 1.414L1.5 17.707V19h21v-1.293l-1.793-1.707z"></path>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 24 24">
+        <path d="M17 10.5V6c0-1.103-.897-2-2-2H4C2.897 4 2 4.897 2 6v12c0 1.103.897 2 2 2h11c1.103 0 2-.897 2-2v-4.5l5 5V5.5l-5 5z"></path>
+      </svg>
+      <img src="images/tvsucesso.jpg" style="width: 24px; height: 24px; border-radius: 50%; box-shadow: 0 0 0 2px #1877f2;">
+    </div>
+  </div>
+
+  <!-- O restante do conteúdo permanece igual -->
+ <div class="live-viewers">
+    <div class="live-dot"></div>
+    <div><span id="viewerCount">756</span> pessoas assistindo agora</div>
+  </div>
+
+  <div class="vsl-container">
+  <div id="vid_685026ce6fc9a4e8d5c93f74" style="position: relative; width: 100%; padding: 56.25% 0 0;"> <img id="thumb_685026ce6fc9a4e8d5c93f74" src="images/thumbnail.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;" alt="thumbnail"> <div id="backdrop_685026ce6fc9a4e8d5c93f74" style=" -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); position: absolute; top: 0; height: 100%; width: 100%; "></div> </div> <script type="text/javascript" id="scr_685026ce6fc9a4e8d5c93f74"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/5485bd73-e7b1-4fbf-82f3-41d2de5f5cb8/players/685026ce6fc9a4e8d5c93f74/player.js", s.async=!0,document.head.appendChild(s); </script>
+  </div>
+
+  <div class="comment-stream" id="commentStream"><div class="comment">
+        <div style="display: flex; align-items: center;">
+          <img src="images/foto1.jpg" style="width: 32px; height: 32px; border-radius: 50%; margin-right: 10px;">
+          <div>
+            <span class="name">Geraldo Gabriel</span>
+            <div>Recebi meu fogao hoje de manhã, muito obrigada! 🙏🏾</div>
+          </div>
+        </div>
+      </div></div>
+
+  <div class="comment-box">
+    <input type="text" placeholder="Deixe o seu Comentario..." id="userComment">
+    <button onclick="addUserComment()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"></path></svg>
+    </button>
+  </div>
+
+  <script>
+    const comments = [
+      { name: "Geraldo Gabriel", message: "Recebi meu fogao hoje de manhã, muito obrigada! 🙏🏾", avatar: "imagens/foto1.jpg" },
+      { name: "Celso Ermelindo", message: "Confirmei agora, é real mesmo 🔥", avatar: "imagens/foto2.png" },
+      { name: "Lurdes Mugebe", message: "Chorei de emoção ao ver meu congelador😭❤️", avatar: "imagens/foto3.jpg" },
+      { name: "João Cossa", message: "Não acreditei, mas chegou o congelador!", avatar: "imagens/foto4.jpg" },
+      { name: "Ivone Matavele", message: "Já fiz o pagamento, espero que dê certo!", avatar: "imagens/foto5.png" },
+      { name: "Fatima Juma", message: "Indiquei para meus primos também 💯", avatar: "imagens/foto6.png" },
+      { name: "Manuel Nhantumbo", message: "Essa campanha tá top demais 👏🏾", avatar: "imagens/foto7.jpg" },
+      { name: "Helena Mausse", message: "Minha irmã também recebeu o congelador, obrigada!", avatar: "imagens/semperfil.jpg" },
+     { name: "Isaque Tivane", message: "Recebi meu fogao aqui em casa, muito feliz!", avatar: "imagens/foto8.png" },
+  { name: "Beatriz Mucavele", message: "Fiquei sem palavras 😭🙏🏾", avatar: "imagens/foto9.png" },
+  { name: "Carlos Ussene", message: "Valeu a pena confiar, muito obrigado!", avatar: "imagens/foto10.png" },
+  { name: "Nilza Manjate", message: "Minha mãe até chorou de alegria 😢❤️", avatar: "imagens/foto11.png" },
+  { name: "Afonso Mabjaia", message: "Demorou um pouco, mas o congelador chegou!", avatar: "imagens/foto12.png" },
+  { name: "Djamila Jafar", message: "Tô emocionada, nunca pensei receber 🙌🏾", avatar: "imagens/foto13.png" },
+  { name: "Abílio Zavale", message: "Já indiquei pros meus amigos todos!", avatar: "imagens/foto14.png" },
+  { name: "Sandra Guambe", message: "Muito obrigada TV Sucesso, meu congelador chegou!", avatar: "imagens/foto15.png" },
+  { name: "Edson Muchanga", message: "Confirmado! Recebi o meu hoje ✌🏾", avatar: "imagens/foto16.png" },
+  { name: "Tatiana Sitoe", message: "Finalmente algo sério nesse país!", avatar: "imagens/foto17.png" },
+  { name: "Joaquim Nhaca", message: "Funcionários muito simpáticos 👏🏾", avatar: "imagens/foto18.png" },
+  { name: "Vânia Fumo", message: "Foi meu vizinho que me contou, agora recebi também!", avatar: "imagens/foto19.png" },
+  { name: "Henrique Zandamela", message: "Minha esposa ficou tão feliz, obrigado!", avatar: "imagens/foto20.png" },
+  { name: "Celina Ali", message: "Já partilhei no grupo da família 💬", avatar: "imagens/foto21.png" },
+  { name: "Adelino Chibue", message: "Recebi meu fogao com muito orgulho 🙏🏾", avatar: "imagens/foto22.png" },
+  { name: "Marisa Cumbe", message: "Minha filha dançou quando viu o congelador 😅", avatar: "imagens/foto23.png" },
+  { name: "Nelson Tamele", message: "Tô a ver que a TV Sucesso é mesmo de confiança!", avatar: "imagens/foto24.png" },
+  { name: "Gracinda Bila", message: "Nunca imaginei ser escolhida ❤️", avatar: "imagens/semperfil.jpg" },
+  { name: "Benjamim Salomão", message: "Parece sonho, mas é verdade!", avatar: "imagens/foto26.png" },
+  { name: "Raquel Muthombene", message: "Foi meu primeiro prêmio na vida 🙌🏾", avatar: "imagens/foto27.png" },
+  { name: "Fernando Nhassave", message: "Recomendo a todos que ainda duvidam 🔥", avatar: "imagens/semperfil.png" },
+  { name: "Iracema Chirrime", message: "Obrigada por realizarem esse sonho 🙏🏽", avatar: "imagens/foto29.png" },
+  { name: "Leonardo Matusse", message: "Já recebi o congelador, tudo certo!", avatar: "imagens/semperfil.jpg" },
+  { name: "Rosária Tembe", message: "Minha vizinha viu e já quer participar também 😄", avatar: "imagens/foto31.png" },
+  { name: "Filipe Muchine", message: "Fiquei surpreendido, mas é real mesmo!", avatar: "imagens/semperfil.jpg" },
+  { name: "Ana Fabião", message: "Obrigada TV Sucesso! Nunca mais uso gelo comprado 🧊", avatar: "imagens/foto33.png" },
+  { name: "Ismael Manhique", message: "Fui tratado com respeito até na entrega 👌🏾", avatar: "imagens/semperfil.jpg" },
+  { name: "Neusa Macamo", message: "Não parei de sorrir desde que chegou 😍", avatar: "imagens/foto35.png" },
+  { name: "Custódio Machava", message: "Era o que a minha família mais precisava 🙏", avatar: "imagens/foto36.png" },
+  { name: "Leila Momade", message: "Agora sim posso guardar carne sem stress 🥩", avatar: "imagens/foto37.png" },
+  { name: "Henrique Cumbe", message: "Os homens vieram com fardas e foram muito educados 👏🏽", avatar: "imagens/semperfil.jpg" },
+  { name: "Clara Malambe", message: "Não é mentira, gente. Recebi com meus próprios olhos!", avatar: "imagens/foto39.png" },
+  { name: "Samuel Jone", message: "Essa campanha devia durar pra sempre 🔁", avatar: "imagens/foto40.png" },
+  { name: "Vera Jamal", message: "Gratidão é a palavra. Que Deus abençoe vocês!", avatar: "imagens/semperfil.jpg" }
+ 
+    ];
+
+    let i = 0;
+    const container = document.getElementById("commentStream");
+
+    function showComment() {
+      const c = comments[i];
+      const div = document.createElement("div");
+      div.className = "comment";
+      div.innerHTML = `
+        <div style="display: flex; align-items: center;">
+          <img src="${c.avatar}" style="width: 32px; height: 32px; border-radius: 50%; margin-right: 10px;">
+          <div>
+            <span class="name">${c.name}</span>
+            <div>${c.message}</div>
+          </div>
+        </div>
+      `;
+      container.appendChild(div);
+      setTimeout(() => div.remove(), 6000);
+      i = (i + 1) % comments.length;
+      setTimeout(showComment, 3500);
+    }
+
+    function addUserComment() {
+      const input = document.getElementById("userComment");
+      const message = input.value.trim();
+      if (!message) return;
+      const div = document.createElement("div");
+      div.className = "comment";
+      div.innerHTML = `
+        <div style="display: flex; align-items: center;">
+          <img src="imagens/semperfil.jpg" style="width: 32px; height: 32px; border-radius: 50%; margin-right: 10px;">
+          <div>
+            <span class="name">Você</span>
+            <div>${message}</div>
+          </div>
+        </div>
+      `;
+      container.appendChild(div);
+      input.value = "";
+      setTimeout(() => div.remove(), 6000);
+    }
+
+    let viewers = 756;
+    const viewerCount = document.getElementById("viewerCount");
+    setInterval(() => {
+      viewers += Math.floor(Math.random() * 3);
+      viewerCount.textContent = viewers;
+    }, 5000);
+
+    let totalSeconds = 600;
+    const countdownEl = document.getElementById("countdown");
+    function updateCountdown() {
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      countdownEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      if (totalSeconds > 0) totalSeconds--;
+    }
+    setInterval(updateCountdown, 1000);
+
+    window.onload = () => {
+      showComment();
+    };
+  </script>
+
+
+
+</body></html>
