@@ -79,16 +79,16 @@ const valorSpanSaque = document.getElementById('valor-saque');
 const valorSpanMoney = document.getElementById('valor-money');
 
 function atualizarValor() {
-    valorSpan.textContent = `R$ ${valor.toFixed(2)}`;
-    valorSpanSaque.textContent = `R$ ${valor.toFixed(2)}`;
-    valorSpanMoney.textContent = `R$ ${valor.toFixed(2)}`;
+    valorSpan.textContent = `MT ${valor.toFixed(2)}`;
+    valorSpanSaque.textContent = `MT ${valor.toFixed(2)}`;
+    valorSpanMoney.textContent = `MT ${valor.toFixed(2)}`;
     setCookie('valor', valor.toFixed(2), 365); // Armazena o valor como um cookie vÃ¡lido por 1 ano
 }
 
 atualizarValor(); // Atualiza o valor inicial na caixa de valor
 
 // Array com os valores desejados
-const valoresDesejados = [33, 34, 47, 43, 52, 32, 32, 27, 30, 43];
+const valoresDesejados = [1000, 1190, 1349, 900, 870, 810, 814, 810, 600, 907];
 
 // FunÃ§Ã£o para aumentar o valor
 function aumentarValor() {
