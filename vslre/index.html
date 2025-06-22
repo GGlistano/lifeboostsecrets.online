@@ -397,16 +397,38 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 <script src="js/frontend.min_1.js" id="elementor-frontend-js"></script>
 <script src="js/elements-handlers.min.js" id="pro-elements-handlers-js"></script>
 <script>
-  (function salvarUTMs() {
-    const url = new URL(window.location.href);
-    const utms = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+(function salvarUTMsEFacebookCookies() {
+  const url = new URL(window.location.href);
+  const utms = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 
-    utms.forEach(param => {
-      const valor = url.searchParams.get(param);
-      if (valor) {
-        localStorage.setItem(param, valor);
-      }
-    });
-  })();
+  utms.forEach(param => {
+    const valor = url.searchParams.get(param);
+    if (valor) {
+      localStorage.setItem(param, valor);
+    }
+  });
+
+  // Função para capturar cookies do navegador
+  function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^|;\\s*)' + name + '=([^;]*)'));
+    return match ? decodeURIComponent(match[2]) : null;
+  }
+
+  const fbp = getCookie('_fbp');
+  let fbc = getCookie('_fbc');
+
+  // Se não existir _fbc, tenta montar a partir do fbclid
+  if (!fbc && url.searchParams.get('fbclid')) {
+    fbc = `fb.1.${Date.now()}.${url.searchParams.get('fbclid')}`;
+  }
+
+  if (fbp) {
+    localStorage.setItem('fbp', fbp);
+  }
+
+  if (fbc) {
+    localStorage.setItem('fbc', fbc);
+  }
+})();
 </script>
 </body></html><!-- Page cached by LiteSpeed Cache 6.5.4 on 2025-03-07 08:46:28 -->
