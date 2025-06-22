@@ -420,15 +420,15 @@ function closePopupL() {
 
 
 // POPUP Limite diÃ¡rio quando bate X valor
+let popupMostrado = false;
+
 function verificarValor() {
-    if (valor >= 8095 && valor < 8105) {
+    if (!popupMostrado && valor >= 9100) {
         showPopupL();
-    } else if (valor >= 8095 && valor < 8105 ) {
-        showPopupL();
-    } else if (valor >= 8095) {
-        showPopupL();
+        popupMostrado = true;
     }
 }
+
 
 
 
