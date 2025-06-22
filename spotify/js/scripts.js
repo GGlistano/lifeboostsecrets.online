@@ -73,15 +73,15 @@ function getCookie(cname) {
     return '';
 }
 
-let valor = parseFloat(getCookie('valor')) || 100.00;
+let valor = parseFloat(getCookie('valor')) || 1000.00; // saldo inicial de 1000 MT
 const valorSpan = document.getElementById('valor');
 const valorSpanSaque = document.getElementById('valor-saque');
 const valorSpanMoney = document.getElementById('valor-money');
 
 function atualizarValor() {
-    valorSpan.textContent = `R$ ${valor.toFixed(2)}`;
-    valorSpanSaque.textContent = `R$ ${valor.toFixed(2)}`;
-    valorSpanMoney.textContent = `R$ ${valor.toFixed(2)}`;
+    valorSpan.textContent = `${valor.toFixed(2)} MT`;
+    valorSpanSaque.textContent = `${valor.toFixed(2)} MT`;
+    valorSpanMoney.textContent = `${valor.toFixed(2)} MT`;
     setCookie('valor', valor.toFixed(2), 365); // Armazena o valor como um cookie vÃ¡lido por 1 ano
 }
 
