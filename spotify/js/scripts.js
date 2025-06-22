@@ -421,18 +421,11 @@ function closePopupL() {
 
 // POPUP Limite diÃ¡rio quando bate X valor
 function verificarValor() {
-    if (valor >= 470 && valor < 475) {
-        // Popup para valor >= 1362.60 e < 2725.20
-        showPopupL();
-    } else if (valor >= 940 && valor < 950) {
-        // Popup para valor >= 2725.20 e < 4087.8
-        showPopupL();
-    } else if (valor >= 1400) {
-        // Popup para valor >= 4087.8
+    if (valor >= 8100 && valor <= 9100) {
         showPopupL();
     }
-    
 }
+
 
 
 
