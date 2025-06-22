@@ -88,7 +88,7 @@ function atualizarValor() {
 atualizarValor(); // Atualiza o valor inicial na caixa de valor
 
 // Array com os valores desejados
-const valoresDesejados = [33, 34, 47, 43, 52, 32, 32, 27, 30, 43];
+const valoresDesejados = [800, 900, 700, 950, 850, 750, 900, 750, 750, 750];
 
 // FunÃ§Ã£o para aumentar o valor
 function aumentarValor() {
