@@ -335,7 +335,62 @@ limite diario!</p>
 
 <p style="margin-bottom: 18px; margin-top: 23px; color: rgb(101, 101, 101); text-align: center; font-weight: bold;">Selecione como deseja levantar</p>
 
-<div class="button-container"><button class="square-button" onclick="toggleButton(1)"><img alt="Botao 1" decoding="async" src="Images/Mpesa.png"></button><button class="square-button" onclick="toggleButton(2)"><img alt="Botao 2" decoding="async" src="Images/eMola.png"></button><button class="square-button" onclick="toggleButton(3)"><img</button></div>
+<div class="button-container" id="payMethods">
+  <button class="square-button" type="button">
+    <img alt="M-Pesa" src="images/mpesa250.png" />
+  </button>
+  <button class="square-button" type="button">
+    <img alt="E-Mola" src="images/emola250.png" />
+  </button>
+</div>
+
+<style>
+  .button-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 12px;
+  }
+
+  .square-button {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    border: 3px solid transparent; /* sem cor por padrão */
+    border-radius: 16px;
+    background: #fff;
+    padding: 0; /* sem espaço atrás da imagem */
+    cursor: pointer;
+    overflow: hidden; /* corta qualquer sobra da imagem */
+    transition: transform 0.08s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .square-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .square-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* preenche todo o botão */
+    display: block;
+  }
+
+  /* estado selecionado com verde claro */
+  .square-button.is-selected {
+    border-color: #4ade80; /* verde claro */
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.6);
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll('.square-button');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('is-selected'));
+      btn.classList.add('is-selected');
+    });
+  });
+</script>
 
 <div style="margin-bottom: 15px;"></div>
 
