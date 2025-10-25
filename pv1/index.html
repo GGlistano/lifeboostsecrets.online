@@ -1,72 +1,483 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consejos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            font-family: 'Georgia', serif;
-        }
-        h2 {
-            color: #16a085;
-            font-family: 'Verdana', sans-serif;
-        }
-        p {
-            margin: 15px 0;
-        }
-        .highlight {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-        .italic {
-            font-style: italic;
-        }
-        .cta {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 1.2em;
-        }
-        .cta a {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .cta a:hover {
-            background-color: #2980b9;
-        }
-        footer {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 0.9em;
-            color: #7f8c8d;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Transforme Sua Vida Íntima - Método Natural</title>
+  <meta name="description" content="VSL com comentários dinâmicos e contador de audiência ao vivo." />
+  <style>
+    :root{
+      --bg:#f7f7f8;--text:#0f172a;--muted:#475569;--brand:#dc2626;--card:#ffffff;--border:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;overflow-x:hidden}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;color:var(--text);background:var(--bg)}
+    .container{max-width:960px;margin:0 auto;padding:0 16px}
+    .hero{background:linear-gradient(90deg,#000000,#000000);color:#fff;padding:56px 16px;text-align:center}
+    .hero h1{margin:0 0 12px;font-size:clamp(24px,4vw,40px);line-height:1.2;font-weight:800}
+    .hero p{margin:0;font-size:clamp(14px,2.6vw,18px);opacity:.95}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 10px 25px rgba(15,23,42,.06)}
+    .video-wrap{margin:-32px auto 8px;max-width:960px;padding:0 16px}
+    .ratio{position:relative;width:100%;padding-bottom:56.25%;background:#000;border-radius:14px;overflow:hidden}
+    .ratio > *{position:absolute;inset:0;width:100%;height:100%}
+    .viewers{display:flex;align-items:center;justify-content:center;gap:8px;color:#0f172a;font-weight:600;margin:10px 0 24px}
+    .dot{position:relative;width:10px;height:10px;background:#22c55e;border-radius:999px;animation:pulse 2s cubic-bezier(0.4,0,0.6,1) infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    .comments{padding:24px}
+    .comments h2{display:flex;align-items:center;gap:8px;margin:0 0 16px;font-size:20px}
+    .comment{display:flex;gap:10px;padding:14px 0;border-top:1px solid var(--border)}
+    .comment:first-child{border-top:0}
+    .avatar{width:42px;height:42px;border-radius:999px;background:#e5e7eb;display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;border:1px solid var(--border);flex-shrink:0}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    input,textarea,select{font-size:16px!important;touch-action:manipulation}
+    .bubble{background:#f8fafc;border-radius:12px;padding:12px;flex:1}
+    .name{font-weight:700}
+    .text{margin:6px 0 0 0}
+    .meta{display:flex;gap:14px;margin-top:6px;color:var(--muted);font-size:13px;align-items:center}
+    .btn{appearance:none;border:0;background:none;color:var(--muted);cursor:pointer;font-weight:600;padding:4px 8px;border-radius:6px;transition:all 0.2s}
+    .btn:hover{color:var(--brand);background:rgba(220,38,38,0.05)}
+    .btn:active{transform:scale(0.95)}
+    .reply{margin-left:50px}
+    .more{display:block;margin:16px auto 0;text-align:center}
+    .more button{background:#111827;color:#fff;border:0;padding:10px 16px;border-radius:10px;font-weight:800;cursor:pointer;transition:opacity 0.2s}
+    .more button:hover{opacity:.92}
+    .more button:disabled{opacity:.5;cursor:not-allowed}
+    .avatar-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .hero h1 {
+      font-size: 20px;
+      line-height: 1.1;
+      max-width: 1000px;
+    }
+
+    /* Notificação de compra */
+    .purchase-notification{
+      position:fixed;
+      bottom:24px;
+      right:24px;
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.15);
+      padding:16px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      transform:translateX(400px);
+      transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      z-index:9999;
+      max-width:320px;
+    }
+    .purchase-notification.show{transform:translateX(0)}
+    .purchase-notification .check{
+      width:48px;
+      height:48px;
+      background:#22c55e;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:24px;
+      flex-shrink:0;
+    }
+    .purchase-notification .info{flex:1}
+    .purchase-notification .info strong{display:block;color:#0f172a;font-size:14px}
+    .purchase-notification .info span{color:#64748b;font-size:13px}
+
+    @media (max-width:480px){
+      .comments{padding:16px}
+      .reply{margin-left:46px}
+      .purchase-notification{right:16px;bottom:16px;max-width:calc(100% - 32px)}
+    }
+  </style>
 </head>
 <body>
-    <h1>eres guapo para hacer esto</h1>
-<div id="vid_677b2230483cde1e348e0114" style="position: relative; width: 100%; padding: 56.25% 0 0;"> <img id="thumb_677b2230483cde1e348e0114" src="https://images.converteai.net/cac4de09-12d0-474a-a50c-d298b19b1b5d/players/677b2230483cde1e348e0114/thumbnail.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;" alt="thumbnail"> <div id="backdrop_677b2230483cde1e348e0114" style=" -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); position: absolute; top: 0; height: 100%; width: 100%; "></div> </div> <script type="text/javascript" id="scr_677b2230483cde1e348e0114"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/cac4de09-12d0-474a-a50c-d298b19b1b5d/players/677b2230483cde1e348e0114/player.js", s.async=!0,document.head.appendChild(s); </script> <style> .elementor-element:has(#smartplayer) { width: 100%; } </style>
-    <div class="cta">
-        <p><span style="font-size:1.1em;">Haz clic en el botón de abajo para acceder a nuestros consejos exclusivos y gratuitos:</span></p>
-        <a href="https://lifeboostsecrets.online/pv1/">Acceder Ahora</a>
+  <!-- PRÉ-SELL 18+ -->
+  <section id="pre-sell" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;text-align:center;font-family:'Poppins',sans-serif;">
+    <div style="max-width:700px;padding:20px;">
+      <h2 style="color:#ff0000;font-weight:700;font-size:1.6rem;display:flex;align-items:center;justify-content:center;gap:8px;">
+        ⚠️ AVISO: Este sítio é apenas para adultos!
+      </h2>
+      <p style="margin-top:25px;font-size:1.2rem;">Você tem 18 anos ou mais?</p>
+      <button id="enterBtn" style="margin-top:20px;background:#ff0000;color:#fff;font-weight:700;font-size:1.1rem;border:none;padding:14px 28px;border-radius:8px;cursor:pointer;box-shadow:0 0 15px rgba(255,0,0,0.4);transition:all 0.3s;">
+        SIM, TENHO 18+
+      </button>
+      <p style="margin-top:60px;color:#ccc;font-size:0.9rem;line-height:1.5;">
+        Ao aceder a este sítio Web, reconheço que tenho 18 anos de idade ou mais e que concordo com as
+        <a href="#" style="color:#ff0000;text-decoration:underline;">Condições de Serviço</a>, que estão disponíveis aqui.
+      </p>
     </div>
+  </section>
 
-    <footer>
-        <p><a href="https://lifeboostsecrets.online/pv/termos.html">Términos de Uso</a> | <a href="https://lifeboostsecrets.online/pv/privacidade.html">Política de Privacidad</a></p>
-        <p>Este sitio es solo para fines informativos. Consulta a un profesional de salud antes de comenzar cualquier programa </p>
-    </footer>
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main id="main" style="display:none;">
+    <!-- HEADLINE -->
+    <header class="hero">
+      <div class="container">
+        <h1 style="color:#ffffff;">
+          ATRIZ PORNÔ REVELA O
+          <span style="color:#ff9900;">SEGREDO USADO</span>
+          PARA DURAR 30 MINUTOS
+          <span style="color:#ff9900;">TRANSANDO</span>.
+        </h1>
+        <p style="color:#ffffff;">ASSISTA O VÍDEO PARA ENTENDER COMO FAZER!</p>
+      </div>
+    </header>
+
+    <!-- VSL -->
+    <section class="video-wrap">
+      <div class="card" style="padding:12px">
+        <div class="ratio">
+          <vturb-smartplayer id="vid-68fd40cad4cc9d4913d1d72d" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/9d93e4b2-3654-4bea-bda0-107c1328d520/players/68fd40cad4cc9d4913d1d72d/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+        </div>
+      </div>
+      <div class="viewers">
+        <span class="dot" aria-hidden="true"></span>
+        <span><strong id="viewCount">1.247</strong> pessoas assistindo agora</span>
+      </div>
+    </section>
+
+    <!-- COMENTÁRIOS -->
+    <section id="comments" class="container">
+      <div class="card comments">
+        <h2>💬 Comentários</h2>
+
+        <!-- Composer no topo -->
+        <form id="composer" class="composer" style="margin:4px 0 16px">
+          <div style="display:flex;gap:10px">
+            <img src="img/eu.png" alt="avatar" class="avatar-img" />
+            <div style="flex:1">
+              <textarea id="composeText" required placeholder="Adicione um comentário..." rows="2" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;resize:none;font-family:inherit"></textarea>
+              <div style="display:flex;gap:8px;margin-top:8px">
+                <button type="submit" style="background:#dc2626;color:#fff;border:0;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer">Comentar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div id="commentList"></div>
+        <div class="more"><button id="loadMore">Ver mais comentários</button></div>
+      </div>
+    </section>
+
+    <!-- Notificação de compra -->
+    <div id="purchaseNotif" class="purchase-notification">
+      <div class="check">✓</div>
+      <div class="info">
+        <strong id="purchaseName">João Silva</strong>
+        <span>acabou de comprar</span>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // ===== PRÉ-SELL =====
+      const enterBtn = document.getElementById('enterBtn');
+      const preSell = document.getElementById('pre-sell');
+      const mainContent = document.getElementById('main');
+
+      // Garantir que o pré-sell está visível e o main está oculto
+      if (preSell) preSell.style.display = 'flex';
+      if (mainContent) mainContent.style.display = 'none';
+
+      if (enterBtn) {
+        enterBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Botão clicado!');
+          if (preSell) {
+            preSell.style.display = 'none';
+            console.log('Pré-sell ocultado');
+          }
+          if (mainContent) {
+            mainContent.style.display = 'block';
+            console.log('Main exibido');
+          }
+        }, false);
+        console.log('Event listener adicionado ao botão');
+      } else {
+        console.error('Botão enterBtn não encontrado!');
+      }
+
+      // ===== Utilidades =====
+      const $ = (sel, ctx=document) => ctx.querySelector(sel);
+      const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+      const rand = (min,max) => Math.floor(Math.random()*(max-min+1))+min;
+
+    // ===== Contador de audiência ao vivo =====
+    const viewEl = $('#viewCount');
+    let viewers = rand(450, 2000);
+    const clamp = (v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+    const fmt = n => n.toLocaleString('pt-BR');
+    function tickViewers(){
+      viewers = clamp(viewers + rand(-30,45), 450, 2000);
+      viewEl.textContent = fmt(viewers);
+    }
+    viewEl.textContent = fmt(viewers);
+    setInterval(tickViewers, rand(3000,7000));
+
+    // ===== Notificações de compra (após 3 minutos) =====
+    const purchaseNames = [
+      'João Silva', 'Maria Santos', 'Pedro Oliveira', 'Ana Costa', 'Carlos Mendes',
+      'Juliana Almeida', 'Roberto Silva', 'Fernanda Castro', 'Ricardo Santos',
+      'Camila Rodrigues', 'André Martins', 'Patricia Ferreira', 'Marcos Ribeiro',
+      'Amanda Lima', 'Fernando Costa', 'Luciana Martins', 'Paulo Souza',
+      'Beatriz Oliveira', 'Diego Pereira', 'Mariana Souza', 'Rafael Lima',
+      'Gabriela Costa', 'Thiago Martins', 'Vanessa Santos', 'Bruno Alves'
+    ];
+    const notif = $('#purchaseNotif');
+    const nameEl = $('#purchaseName');
+    let showNotifications = false;
+
+    function showPurchaseNotif(){
+      if(!showNotifications) return;
+      const name = purchaseNames[rand(0, purchaseNames.length-1)];
+      nameEl.textContent = name;
+      notif.classList.add('show');
+      setTimeout(() => notif.classList.remove('show'), 5000);
+    }
+
+    setTimeout(() => {
+      showNotifications = true;
+      showPurchaseNotif();
+      setInterval(showPurchaseNotif, rand(10000, 25000));
+    }, 180000); // 3 minutos
+
+    // ===== Comentários base =====
+    const baseComments = [
+      {name:'Carlos Mendes', avatarUrl:'img/homem6.jpeg', text:'Será que isso realmente funciona? Alguém aqui já testou?', likes:rand(8,40), mins:rand(80,160), replies:[
+        {name:'Roberto Silva',  avatarUrl:'img/homem5.jpeg', text:'Sim funciona cara! Eu tava com problema há uns 2 anos e em 3 semanas já senti diferença. Vale muito a pena!', likes:rand(20,70), mins:rand(60,120)},
+        {name:'Fernando Costa',  avatarUrl:'img/homem4.png', text:'Funciona sim mano, eu tava desconfiado mas resolvi testar. Melhor decisão que tomei', likes:rand(15,45), mins:rand(45,90)}
+      ]},
+      {name:'Juliana Almeida', avatarUrl:'img/img2.jpeg', text:'Comprei pro meu marido e a diferença foi absurda. Nossa relação mudou! ❤️', likes:rand(120,260), mins:rand(140,220), replies:[]},
+      {name:'Pedro Oliveira', avatarUrl:'img/homem3.png', text:'Eu tinha vergonha de falar sobre isso, mas esse produto salvou meu casamento. Me sinto com 20 anos!', likes:rand(90,210), mins:rand(240,360), replies:[
+        {name:'Rafael Costa',  avatarUrl:'img/homem6.jpeg', text:'Valeu compartilhar, irmão. Tava precisando de um depoimento real assim.', likes:rand(6,24), mins:rand(120,220)}
+      ]},
+      {name:'Mariana Silva', avatarUrl:'img/img4.jpeg', text:'O atendimento foi ótimo e chegou rápido. Recomendo!', likes:rand(15,55), mins:rand(60,140), replies:[]},
+      {name:'Bruno Santos',avatarUrl:'img/homem1.png', text:'Seguinte: façam certinho como é recomendado que dá bom!', likes:rand(20,65), mins:rand(200,320), replies:[]},
+      {name:'Renato Lopes', avatarUrl:'img/homem.jpg', text:'Achei o vídeo bem didático. Explicou o mecanismo sem enrolar.', likes:rand(10,45), mins:rand(80,180), replies:[]},
+      {name:'Letícia Moraes',  avatarUrl:'img/img5.jpeg', text:'Voltei pra dizer que funcionou pra gente aqui também. 👏', likes:rand(40,120), mins:rand(90,150), replies:[]},
+      {name:'Ricardo Alves', avatarUrl:'', text:'Comprei faz 1 mês e posso confirmar: mudou minha vida completamente', likes:rand(35,85), mins:rand(100,200), replies:[]},
+      {name:'Patricia Lima',avatarUrl:'img/img6.jpeg', text:'Meu marido estava sem esperança. Hoje ele está outra pessoa! Gratidão 🙏', likes:rand(50,130), mins:rand(150,250), replies:[]},
+      {name:'André Rocha',  avatarUrl:'', text:'Método 100% natural, sem química. Isso fez toda diferença pra mim', likes:rand(25,70), mins:rand(180,300), replies:[]},
+    ];
+
+    const poolComments = [
+      'Achei o conteúdo da VSL muito claro. Parabéns!',
+      'No começo fiquei cético, mas hoje recomendo de olhos fechados.',
+      'Voltei aqui só pra agradecer. Confiança lá em cima novamente 🙏',
+      'Importante: sigam o passo a passo direitinho que dá resultado.',
+      'Meu relacionamento agradece. Obrigado mesmo!',
+      'Tava com receio, mas o vídeo me convenceu pelo mecanismo explicado.',
+      'Vim por indicação de um amigo. Curti demais o conteúdo.',
+      'Apoio 100% métodos naturais. Essa abordagem faz sentido real.'
+    ];
+
+    // ===== Render =====
+    const listEl = $('#commentList');
+    const composer = $('#composer');
+    const composeText = $('#composeText');
+
+    composer.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      const text = composeText.value.trim();
+      if(!text) {
+        alert('Por favor, escreva um comentário antes de enviar.');
+        return;
+      }
+      const c = {name:'Você', avatarUrl:'img/eu.png', text, likes:0, mins:0, replies:[]};
+      c._id = 'you-' + Date.now();
+      listEl.insertAdjacentHTML('afterbegin', commentHTML(c));
+      composeText.value = '';
+    });
+
+    let rendered = 0;
+    const PAGE = 5;
+
+    function timeAgo(mins){
+      if(mins === 0) return 'Agora';
+      if(mins < 60) return `${mins} min atrás`;
+      const h = Math.floor(mins/60);
+      return `${h}h atrás`;
+    }
+
+    function commentHTML(c){
+      const avatarContent = c.avatarUrl ? `<img src="${c.avatarUrl}" alt="${c.name}" />` : (c.avatar || '🗣️');
+      return `
+        <article class="comment">
+          <div class="avatar">${avatarContent}</div>
+          <div style="flex:1">
+            <div class="bubble">
+              <strong class="name">${c.name}</strong>
+              <p class="text">${c.text}</p>
+            </div>
+            <div class="meta">
+              <button class="btn btn-like" data-id="${c._id}" onclick="event.stopPropagation();">👍 <span>${c.likes}</span></button>
+              <span>${timeAgo(c.mins)}</span>
+              <button class="btn btn-reply" data-id="${c._id}" onclick="event.stopPropagation();">Responder</button>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function replyHTML(r){
+      const avatarContent = r.avatarUrl ? `<img src="${r.avatarUrl}" alt="${r.name}" />` : (r.avatar || '🗣️');
+      return `
+        <article class="comment reply">
+          <div class="avatar">${avatarContent}</div>
+          <div style="flex:1">
+            <div class="bubble">
+              <strong class="name">${r.name}</strong>
+              <p class="text">${r.text}</p>
+            </div>
+            <div class="meta">
+              <button class="btn btn-like" data-id="${r._id}" onclick="event.stopPropagation();">👍 <span>${r.likes}</span></button>
+              <span>${timeAgo(r.mins)}</span>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function renderChunk(){
+      const slice = baseComments.slice(rendered, rendered+PAGE);
+      slice.forEach((c, idx)=>{
+        c._id = `c${rendered+idx}-${Date.now()}`;
+        listEl.insertAdjacentHTML('beforeend', commentHTML(c));
+        (c.replies||[]).forEach((r,i)=>{
+          r._id = `r${rendered+idx}-${i}-${Date.now()}`;
+          listEl.insertAdjacentHTML('beforeend', replyHTML(r));
+        });
+      });
+      rendered += slice.length;
+      if(rendered >= baseComments.length) $('#loadMore').disabled = true;
+    }
+
+    // Likes locais
+    listEl.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const btn = e.target.closest('.btn-like');
+      if(!btn) return;
+      const span = btn.querySelector('span');
+      span.textContent = (+span.textContent + 1);
+    });
+
+    // "Responder"
+    listEl.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const btn = e.target.closest('.btn-reply');
+      if(!btn) return;
+      const art = btn.closest('.comment');
+      if(art.querySelector('form')) return;
+
+      const form = document.createElement('form');
+      form.innerHTML = `
+        <div class="reply" style="margin-top:8px;display:flex;gap:10px">
+          <div class="avatar">😊</div>
+          <div style="flex:1">
+            <textarea name="text" required placeholder="Escreva sua resposta..." rows="2" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;resize:none;font-family:inherit"></textarea>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button type="submit" style="background:#dc2626;color:#fff;border:0;padding:6px 12px;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px">Publicar</button>
+              <button type="button" class="cancel-btn" style="background:#e5e7eb;color:#0f172a;border:0;padding:6px 12px;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px">Cancelar</button>
+            </div>
+          </div>
+        </div>`;
+
+      art.appendChild(form);
+
+      form.querySelector('.cancel-btn').addEventListener('click', (ev)=>{
+        ev.stopPropagation();
+        form.remove();
+      });
+
+      form.addEventListener('submit', (ev)=>{
+        ev.preventDefault();
+        ev.stopPropagation();
+        const text = form.text.value.trim();
+        if(!text) return;
+        const reply = {name:'Você', avatarUrl:'img/eu.png', text, likes:0, mins:0};
+        reply._id = 'reply-' + Date.now();
+        form.insertAdjacentHTML('beforebegin', replyHTML(reply));
+        form.remove();
+      });
+    });
+
+    // Carregar mais
+    $('#loadMore').addEventListener('click', (e)=>{
+      e.stopPropagation();
+      renderChunk();
+    });
+
+    // Render inicial
+    renderChunk();
+
+    // ===== Randomizador de likes =====
+    setInterval(()=>{
+      const likeSpans = $$('.btn-like span');
+      if(!likeSpans.length) return;
+      const picks = rand(1, Math.min(3, likeSpans.length));
+      for(let i=0;i<picks;i++){
+        const target = likeSpans[rand(0, likeSpans.length-1)];
+        target.textContent = (+target.textContent + rand(1,3));
+      }
+    }, rand(3500, 6200));
+
+    // ===== Novos comentários espontâneos (híbrido) =====
+    let injected = 0, MAX_INJECT = 6;
+
+    const avatarPool = [
+      { url: 'img/homem1.png' },
+      { url: 'img/homem3.png' },
+      { url: 'img/homem4.png' },
+      { url: 'img/homem5.jpeg' },
+      { url: 'img/homem6.jpeg' },
+      { url: 'img/img2.jpeg' },
+      { url: 'img/img4.jpeg' },
+      { url: 'img/img5.jpeg' },
+      { url: 'img/img6.jpeg' },
+      { emoji: '👨' }, { emoji: '👩' }, { emoji: '🧑' }
+    ];
+
+    function injectRandomComment(){
+      if(injected >= MAX_INJECT) return;
+
+      const text = poolComments[rand(0, poolComments.length-1)];
+      const namePool = ['André Lima','Beatriz Rocha','Cláudio Nunes','Daniela Pires','Eduardo Matos','Fernanda Reis','Gustavo Azevedo','Helena Moura'];
+      const picked = avatarPool[rand(0, avatarPool.length-1)];
+
+      const c = {
+        name: namePool[rand(0, namePool.length-1)],
+        avatarUrl: picked.url || '',
+        avatar: picked.emoji || '',
+        text,
+        likes: rand(3,25),
+        mins: rand(1,15),
+        replies: []
+      };
+      c._id = `auto-${Date.now()}`;
+      listEl.insertAdjacentHTML('afterbegin', commentHTML(c));
+      injected++;
+    }
+
+    setInterval(()=>{
+      if(Math.random() < 0.6) injectRandomComment();
+    }, rand(9000, 15000));
+
+    // Prevenir que inputs/textareas interfiram com o player (exceto o botão de entrada)
+    document.addEventListener('click', (e) => {
+      if (e.target.id === 'enterBtn') return; // Permitir o botão de entrada
+      const isInteractive = e.target.matches('input, textarea, button, a, .btn');
+      if (isInteractive) {
+        e.stopPropagation();
+      }
+    }, true);
+
+    }); // Fim do DOMContentLoaded
+  </script>
 </body>
 </html>
