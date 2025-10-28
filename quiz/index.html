@@ -17,6 +17,12 @@
             min-height: 100vh;
         }
 
+        body.celebration-active {
+            overflow: hidden !important;
+            position: fixed !important;
+            width: 100% !important;
+        }
+
         .hidden {
             display: none !important;
         }
@@ -306,27 +312,26 @@
         }
 
         .celebration-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(0, 0, 0, 0.9);
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100% !important;
+            height: 100vh !important;
+            z-index: 99999 !important;
+            background-color: rgba(0, 0, 0, 0.9) !important;
             backdrop-filter: blur(4px);
-            animation: fadeIn 0.3s ease-out;
-            overflow-y: auto;
-            padding: 1rem;
+            overflow-y: auto !important;
             -webkit-overflow-scrolling: touch;
+            display: none;
         }
 
-        .celebration-overlay:not(.hidden) {
+        .celebration-overlay.active {
             display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            animation: fadeIn 0.3s ease-out !important;
         }
 
         .celebration-card {
@@ -334,15 +339,18 @@
             border-radius: 1.5rem;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
             max-width: 28rem;
-            width: 100%;
-            max-height: 95vh;
+            width: 90%;
+            max-height: 90vh;
             overflow-y: auto;
             padding: 2rem;
             transform: scale(0.5);
             opacity: 0;
-            animation: scaleIn 0.5s ease-out forwards;
             position: relative;
-            margin: auto;
+            margin: 2rem auto;
+        }
+
+        .celebration-overlay.active .celebration-card {
+            animation: scaleIn 0.5s ease-out forwards;
         }
 
         @keyframes fadeIn {
@@ -546,15 +554,10 @@
                 height: 12rem;
             }
 
-            .celebration-overlay {
-                align-items: flex-start;
-                padding: 0.5rem;
-            }
-
             .celebration-card {
+                width: 95%;
                 padding: 1.5rem;
-                margin-top: 2rem;
-                margin-bottom: 2rem;
+                margin: 1rem auto;
             }
 
             .btn {
@@ -576,7 +579,7 @@
         </div>
 
         <div style="margin-top: 3rem;">
-            <h1 class="title">Bem-vindo!teste</h1>
+            <h1 class="title">Bem-vindo!</h1>
             <p class="subtitle">Que tal conhecer o Cupom da Vez?</p>
         </div>
 
@@ -705,7 +708,7 @@
 </div>
 
 <!-- Celebration Overlay -->
-<div id="celebration" class="celebration-overlay hidden">
+<div id="celebration" class="celebration-overlay">
     <div class="celebration-card">
         <div style="text-align: center;">
             <div style="position: relative; margin-bottom: 1.5rem;">
@@ -743,7 +746,7 @@
                 <div class="animate-ping" style="width: 0.75rem; height: 0.75rem; background-color: #10b981; border-radius: 50%;"></div>
             </div>
 
-            <button id="celebrationBtn" class="btn btn-green hidden" onclick="continueCelebration()" style="width: 100%; display: none; align-items: center; justify-content: center; gap: 0.5rem; z-index: 10; position: relative; font-size: 1.125rem; padding: 1rem 2rem; margin-top: 0.5rem;">
+            <button id="celebrationBtn" class="btn btn-green" onclick="continueCelebration()" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; z-index: 10; position: relative; font-size: 1.125rem; padding: 1rem 2rem; margin-top: 0.5rem; visibility: hidden;">
                 <span style="font-size: 1.125rem;">Continuar</span>
                 <span>→</span>
             </button>
@@ -1270,24 +1273,16 @@ function revealCoupon() {
 
 function validateCoupon(event) {
     event.preventDefault();
-    console.log('Validate coupon called');
+    console.log('=== VALIDATE START ===');
 
     const code = document.getElementById('couponCode').value;
     const coupon = state.coupons[state.currentCoupon - 1];
 
-    console.log('Code entered:', code);
-    console.log('Expected code:', coupon.barcode);
-    console.log('Match:', code === coupon.barcode);
+    console.log('Code:', code, 'Expected:', coupon.barcode);
 
     if (code === coupon.barcode) {
         document.getElementById('couponError').classList.add('hidden');
-
-        // Scroll to top first
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        setTimeout(() => {
-            showCelebration(coupon);
-        }, 300);
+        showCelebration(coupon);
     } else {
         document.getElementById('couponError').textContent = 'Código incorreto! Verifique o código na imagem.';
         document.getElementById('couponError').classList.remove('hidden');
@@ -1296,55 +1291,28 @@ function validateCoupon(event) {
 
 // Celebration
 function showCelebration(coupon) {
-    console.log('=== CELEBRATION START ===');
-    console.log('Coupon:', coupon.product, coupon.value);
+    console.log('=== SHOW CELEBRATION ===', coupon.product);
 
-    try {
-        // Update text content
-        const valueEl = document.getElementById('celebrationValue');
-        const productEl = document.getElementById('celebrationProduct');
+    // Update content
+    document.getElementById('celebrationValue').textContent = coupon.value.toLocaleString() + ' MTS';
+    document.getElementById('celebrationProduct').textContent = coupon.product;
 
-        if (!valueEl || !productEl) {
-            console.error('Elements not found!', { valueEl, productEl });
-            return;
-        }
+    // Show overlay with active class
+    const celebration = document.getElementById('celebration');
+    const btn = document.getElementById('celebrationBtn');
 
-        valueEl.textContent = coupon.value.toLocaleString() + ' MTS';
-        productEl.textContent = coupon.product;
-        console.log('Text updated');
+    celebration.classList.add('active');
+    document.body.classList.add('celebration-active');
 
-        // Show celebration
-        const celebration = document.getElementById('celebration');
-        if (!celebration) {
-            console.error('Celebration element not found!');
-            return;
-        }
+    console.log('Overlay shown');
 
-        celebration.classList.remove('hidden');
-        celebration.style.display = 'flex';
-        celebration.style.visibility = 'visible';
-        celebration.style.opacity = '1';
-        console.log('Celebration visible:', celebration.style.display);
+    createMoneyFall();
 
-        // Disable body scroll
-        document.body.style.overflow = 'hidden';
-
-        createMoneyFall();
-
-        setTimeout(() => {
-            const btn = document.getElementById('celebrationBtn');
-            if (btn) {
-                btn.classList.remove('hidden');
-                btn.style.display = 'flex';
-                btn.style.visibility = 'visible';
-                console.log('Button visible now');
-            } else {
-                console.error('Button not found!');
-            }
-        }, 1500);
-    } catch (error) {
-        console.error('Error in showCelebration:', error);
-    }
+    // Show button after delay
+    setTimeout(() => {
+        btn.style.visibility = 'visible';
+        console.log('Button shown');
+    }, 1500);
 }
 
 function createMoneyFall() {
@@ -1363,33 +1331,30 @@ function createMoneyFall() {
 }
 
 function continueCelebration() {
-    console.log('=== CONTINUE CLICKED ===');
-    console.log('Current coupon:', state.currentCoupon);
+    console.log('=== CONTINUE ===');
 
     const coupon = state.coupons[state.currentCoupon - 1];
     state.totalValue += coupon.value;
 
+    // Hide celebration
     const celebration = document.getElementById('celebration');
     const btn = document.getElementById('celebrationBtn');
 
-    celebration.classList.add('hidden');
-    celebration.style.display = 'none';
-    celebration.style.visibility = 'hidden';
-    btn.classList.add('hidden');
-    btn.style.display = 'none';
+    celebration.classList.remove('active');
+    btn.style.visibility = 'hidden';
+    document.body.classList.remove('celebration-active');
 
-    // Re-enable body scroll
-    document.body.style.overflow = 'auto';
+    console.log('Overlay hidden');
 
     if (state.currentCoupon < 6) {
         state.currentCoupon++;
-        console.log('Moving to coupon:', state.currentCoupon);
+        console.log('Next coupon:', state.currentCoupon);
 
         setTimeout(() => {
             initCouponPage();
-        }, 100);
+        }, 300);
     } else {
-        console.log('All coupons done, going to limit page');
+        console.log('Going to limit page');
         goToPage('limit');
     }
 }
