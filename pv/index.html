@@ -1,26 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt-BR" dir="ltr">
-
+<html lang="pt-BR">
 <head>
-   
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://domínio.com">
-    <meta property="og:title" content="retozeroazucar">
-    <meta property="og:description" content="retozeroazucar">
-    <meta property="og:image" content="https://img.imageboss.me/atm/cdn/format:auto/u/umsGbYu2QNOfeAn5fEqSwCDI4VE3/l/rBhIAv7621085.png">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conteúdo Exclusivo">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Dosis:wght@200;300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&family=Signika:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/com.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Transforme Sua Vida Íntima - Método Natural</title>
+  <meta name="description" content="VSL com comentários dinâmicos e contador de audiência ao vivo." />
+  <style>
+    :root{
+      --bg:#f7f7f8;--text:#0f172a;--muted:#475569;--brand:#dc2626;--card:#ffffff;--border:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;overflow-x:hidden}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;color:var(--text);background:var(--bg)}
+    .container{max-width:960px;margin:0 auto;padding:0 16px}
+    .hero{background:linear-gradient(90deg,#000000,#000000);color:#fff;padding:56px 16px;text-align:center}
+    .hero h1{margin:0 0 12px;font-size:clamp(24px,4vw,40px);line-height:1.2;font-weight:800}
+    .hero p{margin:0;font-size:clamp(14px,2.6vw,18px);opacity:.95}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 10px 25px rgba(15,23,42,.06)}
+    .video-wrap{margin:-32px auto 8px;max-width:960px;padding:0 16px}
+    .ratio{position:relative;width:100%;padding-bottom:56.25%;background:#000;border-radius:14px;overflow:hidden}
+    .ratio > *{position:absolute;inset:0;width:100%;height:100%}
+    .viewers{display:flex;align-items:center;justify-content:center;gap:8px;color:#0f172a;font-weight:600;margin:10px 0 24px}
+    .dot{position:relative;width:10px;height:10px;background:#22c55e;border-radius:999px;animation:pulse 2s cubic-bezier(0.4,0,0.6,1) infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    .comments{padding:24px}
+    .comments h2{display:flex;align-items:center;gap:8px;margin:0 0 16px;font-size:20px}
+    .comment{display:flex;gap:10px;padding:14px 0;border-top:1px solid var(--border)}
+    .comment:first-child{border-top:0}
+    .avatar{width:42px;height:42px;border-radius:999px;background:#e5e7eb;display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;border:1px solid var(--border);flex-shrink:0}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    input,textarea,select{font-size:16px!important;touch-action:manipulation}
+    .bubble{background:#f8fafc;border-radius:12px;padding:12px;flex:1}
+    .name{font-weight:700}
+    .text{margin:6px 0 0 0}
+    .meta{display:flex;gap:14px;margin-top:6px;color:var(--muted);font-size:13px;align-items:center}
+    .btn{appearance:none;border:0;background:none;color:var(--muted);cursor:pointer;font-weight:600;padding:4px 8px;border-radius:6px;transition:all 0.2s}
+    .btn:hover{color:var(--brand);background:rgba(220,38,38,0.05)}
+    .btn:active{transform:scale(0.95)}
+    .reply{margin-left:50px}
+    .more{display:block;margin:16px auto 0;text-align:center}
+    .more button{background:#111827;color:#fff;border:0;padding:10px 16px;border-radius:10px;font-weight:800;cursor:pointer;transition:opacity 0.2s}
+    .more button:hover{opacity:.92}
+    .more button:disabled{opacity:.5;cursor:not-allowed}
+    .avatar-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .hero h1 {
+      font-size: 20px;
+      line-height: 1.1;
+      max-width: 1000px;
+    }
 
-  <!-- Título da Página -->
-  <title>bienestar con glenda</title>
-<!-- Meta Pixel Code -->
+    /* Notificação de compra */
+    .purchase-notification{
+      position:fixed;
+      bottom:24px;
+      right:24px;
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.15);
+      padding:16px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      transform:translateX(400px);
+      transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      z-index:9999;
+      max-width:320px;
+    }
+    .purchase-notification.show{transform:translateX(0)}
+    .purchase-notification .check{
+      width:48px;
+      height:48px;
+      background:#22c55e;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:24px;
+      flex-shrink:0;
+    }
+    .purchase-notification .info{flex:1}
+    .purchase-notification .info strong{display:block;color:#0f172a;font-size:14px}
+    .purchase-notification .info span{color:#64748b;font-size:13px}
+
+    @media (max-width:480px){
+      .comments{padding:16px}
+      .reply{margin-left:46px}
+      .purchase-notification{right:16px;bottom:16px;max-width:calc(100% - 32px)}
+    }
+  </style>
+</head>
+<body>
+  <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -30,512 +106,413 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '548140224889278');
+fbq('init', '1539451210573895');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=548140224889278&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1539451210573895&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-   <script>
-  window.pixelId = "67791f93b22534cd21e2558c";
+  <script>
+  window.pixelId = "68fdef4ca9375f47b7e3849c";
   var a = document.createElement("script");
   a.setAttribute("async", "");
   a.setAttribute("defer", "");
   a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
   document.head.appendChild(a);
 </script>
-  <style type="text/css">
-    header {
-      color: white;
-      background-image: rgb(8, 0, 45);
-      background-color: rgb(255, 255, 255);
-      background-position: center;
-      background-size: cover;
-      background-attachment: fixed;
-      background-blend-mode: darken;
-    }
-  </style>
+  <!-- PRÉ-SELL 18+ -->
+  <section id="pre-sell" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;text-align:center;font-family:'Poppins',sans-serif;">
+    <div style="max-width:700px;padding:20px;">
+      <h2 style="color:#ff0000;font-weight:700;font-size:1.6rem;display:flex;align-items:center;justify-content:center;gap:8px;">
+        ⚠️ AVISO: Este sítio é apenas para adultos!
+      </h2>
+      <p style="margin-top:25px;font-size:1.2rem;">Você tem 18 anos ou mais?</p>
+      <button id="enterBtn" style="margin-top:20px;background:#ff0000;color:#fff;font-weight:700;font-size:1.1rem;border:none;padding:14px 28px;border-radius:8px;cursor:pointer;box-shadow:0 0 15px rgba(255,0,0,0.4);transition:all 0.3s;">
+        SIM, TENHO 18+
+      </button>
+      <p style="margin-top:60px;color:#ccc;font-size:0.9rem;line-height:1.5;">
+        Ao aceder a este sítio Web, reconheço que tenho 18 anos de idade ou mais e que concordo com as
+        <a href="#" style="color:#ff0000;text-decoration:underline;">Condições de Serviço</a>, que estão disponíveis aqui.
+      </p>
+    </div>
+  </section>
 
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-    }
-    img, div {
-        margin: 0;
-        padding: 0;
-    }
-</style>
-</head>
-
-<body>
-   <body>
-<!-- Barra Laranja no Topo -->
-<div style="background-color: #FF8800; padding: 14px 0; text-align: center;">
-    <span style="color: white; font-size: 25px; font-weight: bold;">SALUD</span>
-</div>
-
-<img src="assets/img/WhatsApp Image 2025-01-11 at 19.26.41.jpeg" alt="Descrição da imagem" style="max-width: 100%; height: auto; display: block;">
-
-   <!-- VSL -->
-<div id="vid_67827c540f28aac6bc761a3e" style="position: relative; width: 100%; padding: 56.25% 0 0;"> <img id="thumb_67827c540f28aac6bc761a3e" src="https://images.converteai.net/cac4de09-12d0-474a-a50c-d298b19b1b5d/players/67827c540f28aac6bc761a3e/thumbnail.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;" alt="thumbnail"> <div id="backdrop_67827c540f28aac6bc761a3e" style=" -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); position: absolute; top: 0; height: 100%; width: 100%; "></div> </div> <script type="text/javascript" id="scr_67827c540f28aac6bc761a3e"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/cac4de09-12d0-474a-a50c-d298b19b1b5d/players/67827c540f28aac6bc761a3e/player.js", s.async=!0,document.head.appendChild(s); </script> <style> .elementor-element:has(#smartplayer) { width: 100%; } </style>
-        </div>
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main id="main" style="display:none;">
+    <!-- HEADLINE -->
+    <header class="hero">
+      <div class="container">
+        <h1 style="color:#ffffff;">
+          ATRIZ PORNÔ REVELA O
+          <span style="color:#ff9900;">SEGREDO USADO</span>
+          PARA DURAR 30 MINUTOS
+          <span style="color:#ff9900;">TRANSANDO</span>.
+        </h1>
+        <p style="color:#ffffff;">ASSISTA O VÍDEO PARA ENTENDER COMO FAZER!</p>
       </div>
     </header>
 
-  <section class="comments py-4" 
-         style="background-color: white; 
-                border-radius: 10px; 
-                padding: 20px; 
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-                max-width: 800px; 
-                margin: 20px auto;">
-    <div class="container">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script>$.get("https://ipinfo.io/json", function (response) {
-        $("#address").html(response.city);
-      }, "jsonp");
-    </script>
-      
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="fb-comments" style="margin-top: 5px;">
-            <div class="fb-comments-header">
-              <span>21 de 174 comentarios</span>
-            </div>
-            <div class="fb-comments-wrapper" id="2">
-              <table class="fb-comments-comment">
-                <tbody>
-                  <tr>
-                    <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m2.jpeg"></td>
-                    <td>
-                      <font class="fb-comments-comment-name">
-                        <name>Edileuza Andrade</name>
-                      </font>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-text">Dra. Glenda, soy de Bogotá y llevo 15 días consecutivos tomando la receta que me preparaste. He perdido 9 kg y he reducido 10 centímetros de cintura. Voy a seguir tomándola y estoy encantado 😊</td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-actions">
-                      <like>Me gusta</like>
-                      ·
-                      <reply>Responder</reply>
-                      ·
-                      <likes>8</likes>
-
-                      <date>4 min</date>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="fb-comments-wrapper" id="3">
-              <table class="fb-comments-comment">
-                <tbody>
-                  <tr>
-                    <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m3.jpeg"></td>
-                    <td>
-                      <font class="fb-comments-comment-name">
-                        <name>Catherine L.</name>
-                      </font>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-text">soy de <span id="address" style="color:#000000;">Salvador</span> y debo admitir que estaba escéptico al principio, pero después de solo un mes siguiendo la receta de la Dra. Glenda, ¡he perdido 13 kg y nunca me he sentido mejor! Recomiendo esto a cualquiera que quiera ver resultados reales y rápidos. ¡Gracias, Dra. Glenda!</td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-actions">
-                      <like>Me gusta</like>
-                      ·
-                      <reply>Responder</reply>
-                      ·
-                      <likes>9</likes>
-
-                      <date>5 min</date>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="fb-comments-wrapper" id="4">
-              <table class="fb-comments-comment">
-                <tbody>
-                  <tr>
-                    <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m4.jpeg"></td>
-                    <td>
-                      <font class="fb-comments-comment-name">
-                        <name>Anna Diaz</name>
-                      </font>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-text">FINALMENTE ALGUIEN QUE NO ANDA CON RODEOS PARA PEDIR DINERO AL FINAL, ¡GRACIAS! EMPECÉ HOY ❤️</td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-actions">
-                      <like>Me gusta</like>
-                      ·
-                      <reply>Responder</reply>
-                      ·
-                      <likes>11</likes>
-
-                      <date>12 min</date>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="fb-comments-wrapper" id="5">
-              <table class="fb-comments-comment">
-                <tbody>
-                  <tr>
-                    <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/h2.jpeg"></td>
-                    <td>
-                      <font class="fb-comments-comment-name">
-                        <name>Laura Romero</name>
-                      </font>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-text">¿Por qué nadie me lo había contado antes? Jaja, y aquí estoy haciendo dieta y ejercicio como una locaaa</td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-actions">
-                      <like>Me gusta</like>
-                      ·
-                      <reply>Responder</reply>
-                      ·
-                      <likes>15</likes>
-
-                      <date>19 min</date>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="fb-comments-wrapper" id="6">
-              <table class="fb-comments-comment">
-                <tbody>
-                  <tr>
-                    <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m6.jpeg"></td>
-                    <td>
-                      <font class="fb-comments-comment-name">
-                        <name>Julia Valero</name>
-                      </font>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-text">¡Muchas gracias! Me alegra saber que mis explicaciones son útiles. ¡Espero que obtengas excelentes resultados con la receta! No dudes en volver aquí para compartir tus resultados. ¡Buena suerte!</td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-actions">
-                      <like>Me gusta</like>
-                      ·
-                      <reply>Responder</reply>
-                      ·
-                      <likes>17</likes>
-
-                      <date>24 min</date>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="fb-comments-wrapper" id="7">
-              <table class="fb-comments-comment">
-                <tbody>
-                  <tr>
-                    <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m7.jpeg"></td>
-                    <td>
-                      <font class="fb-comments-comment-name">
-                        <name>Maria Luisa P.</name>
-                      </font>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-text">FINALMENTE ALGUIEN CON ALGO QUE FUNCIONA! ¡GRACIAS! EMPECÉ HOY Y ME ENCANTA.</td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-actions">
-                      <like>Me gusta</like>
-                      ·
-                      <reply>Responder</reply>
-                      ·
-                      <likes>18</likes>
-
-                      <date>26 min</date>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="fb-comments-wrapper" id="9">
-              <table class="fb-comments-comment">
-                <tbody>
-                  <tr>
-                    <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m11.jpeg">
-                    </td>
-                    <td>
-                      <font class="fb-comments-comment-name">
-                        <name>Carmen González</name>
-                      </font>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-text">¿Qué receta es esta, gente? Necesito, mi autoestima últimamente está horrible, quiero mucho adelgazar pero no puedo 😔</td>
-                  </tr>
-                  <tr>
-                    <td class="fb-comments-comment-actions">
-                      <like>Me gusta</like>
-                      ·
-                      <reply>Responder</reply>
-                      ·
-                      <likes>22</likes>
-
-                      <date>39 min</date>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <button class="fb-comments-loadmore" onclick="javascript:loadMore();">Ver más comentarios</button>
-            <div style="display:none" id="more">
-              <div class="fb-comments-wrapper">
-                <table class="fb-comments-comment" id="10">
-                  <tbody>
-                    <tr>
-                      <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m12.jpeg">
-                      </td>
-                      <td>
-                        <font class="fb-comments-comment-name">
-                          <name>Lucía Fernandez</name>
-                        </font>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="fb-comments-comment-text">Estaba así, empecé a tomar sin hablar con nadie, ¡15 kg menos después, todos se quedaron sin entender nada! ¡He adelgazado mucho! Funciona 😊</td>
-                    </tr>
-                    <tr>
-                      <td class="fb-comments-comment-actions">
-                        <like>Me gusta</like>
-                        ·
-                        <reply>Responder</reply>
-                        ·
-                        <likes>41</likes>
-
-                        <date>1 h</date>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="fb-comments-wrapper" id="11">
-                <table class="fb-comments-comment">
-                  <tbody>
-                    <tr>
-                      <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m15.jpeg">
-                      </td>
-                      <td>
-                        <font class="fb-comments-comment-name">
-                          <name>Maria Isabel Alvarez</name>
-                        </font>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="fb-comments-comment-text">Después de tantas promesas vacías, finalmente algo que cumple lo que promete. ¡Estoy muy agradecida con la Dra. Glenda!</td>
-                    </tr>
-                    <tr>
-                      <td class="fb-comments-comment-actions">
-                        <like>Me gusta</like>
-                        ·
-                        <reply>Responder</reply>
-                        ·
-                        <likes>40</likes>
-
-                        <date>1 h</date>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="fb-comments-wrapper" id="12">
-                <table class="fb-comments-comment">
-                  <tbody>
-                    <tr>
-                      <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m16.jpeg">
-                      </td>
-                      <td>
-                        <font class="fb-comments-comment-name">
-                          <name>Maria Sanchez</name>
-                        </font>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="fb-comments-comment-text">No podía creer en los resultados hasta que lo intenté por mí mismo. Resultados visibles en las primeras semanas. ¡Esto sí que es revolucionario!</td>
-                    </tr>
-                    <tr>
-                      <td class="fb-comments-comment-actions">
-                        <like>Me gusta</like>
-                        ·
-                        <reply>Responder</reply>
-                        ·
-                        <likes>47</likes>
-
-                        <date>1 h</date>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="fb-comments-wrapper" id="13">
-                <table class="fb-comments-comment">
-                  <tbody>
-                    <tr>
-                      <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m17.jpeg"></td>
-                      <td>
-                        <font class="fb-comments-comment-name">
-                          <name>Marta Gomez</name>
-                        </font>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="fb-comments-comment-text">Cada día me siento mejor y más saludable. Gracias, Dra. Glenda, por esta maravillosa receta. Es increíble cómo algo tan simple puede cambiar la vida.</td>
-                    </tr>
-                    <tr>
-                      <td class="fb-comments-comment-actions">
-                        <like>Me gusta</like>
-                        ·
-                        <reply>Responder</reply>
-                        ·
-                        <likes>50</likes>
-
-                        <date>1 h</date>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="fb-comments-wrapper">
-                <table class="fb-comments-comment" id="14">
-                  <tbody>
-                    <tr>
-                      <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m18.jpeg">
-                      </td>
-                      <td>
-                        <font class="fb-comments-comment-name">
-                          <name>Maria Angeles</name>
-                        </font>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="fb-comments-comment-text">Ya estoy empezando a notar que mi ropa también se ensancha. Gracias por compartir tu experiencia conmigo!</td>
-                    </tr>
-                    <tr>
-                      <td class="fb-comments-comment-actions">
-                        <like>Me gusta</like>
-                        ·
-                        <reply>Responder</reply>
-                        ·
-                        <likes>66</likes>
-
-                        <date>1 h</date>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          </div>
+    <!-- VSL -->
+    <section class="video-wrap">
+      <div class="card" style="padding:12px">
+        <div class="ratio">
+          <vturb-smartplayer id="vid-68fcde386cb1b30ad41dc6c3" style="display:block;margin:0 auto;width:100%;height:100%"></vturb-smartplayer>
+          <script type="text/javascript" async src="https://scripts.converteai.net/9d93e4b2-3654-4bea-bda0-107c1328d520/players/68fcde386cb1b30ad41dc6c3/v4/player.js"></script>
         </div>
       </div>
+      <div class="viewers">
+        <span class="dot" aria-hidden="true"></span>
+        <span><strong id="viewCount">1.247</strong> pessoas assistindo agora</span>
+      </div>
     </section>
-     <div style="text-align: center; margin-top: 40px;">
-    <div style="color: white; 
-                font-size: 16px; 
-                font-weight: bold; 
-                text-align: center; 
-                margin-bottom: 10px; /* Espaço entre texto e imagem */ 
-                line-height: 1.5;">
-        <span>ME HAS VISTO EN...</span>
+
+    <!-- COMENTÁRIOS -->
+    <section id="comments" class="container">
+      <div class="card comments">
+        <h2>💬 Comentários</h2>
+
+        <!-- Composer no topo -->
+        <form id="composer" class="composer" style="margin:4px 0 16px">
+          <div style="display:flex;gap:10px">
+            <img src="img/eu.png" alt="avatar" class="avatar-img" />
+            <div style="flex:1">
+              <textarea id="composeText" required placeholder="Adicione um comentário..." rows="2" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;resize:none;font-family:inherit"></textarea>
+              <div style="display:flex;gap:8px;margin-top:8px">
+                <button type="submit" style="background:#dc2626;color:#fff;border:0;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer">Comentar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div id="commentList"></div>
+        <div class="more"><button id="loadMore">Ver mais comentários</button></div>
+      </div>
+    </section>
+
+    <!-- Notificação de compra -->
+    <div id="purchaseNotif" class="purchase-notification">
+      <div class="check">✓</div>
+      <div class="info">
+        <strong id="purchaseName">João Silva</strong>
+        <span>acabou de comprar</span>
+      </div>
     </div>
-  <footer class="bg-white py-3 text-center">
+  </main>
 
-    <span style="color:#6C757D">Copyright 2025 – Contenido Exclusivo ®
-        <br>Todos los derechos reservados.</span><br><br>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // ===== PRÉ-SELL =====
+      const enterBtn = document.getElementById('enterBtn');
+      const preSell = document.getElementById('pre-sell');
+      const mainContent = document.getElementById('main');
 
-      <div class="text-secondary"><a href="termos.html" class="text-secondary">Términos de uso</a> – <a href="privacidade.html"
-          class="text-secondary">Política de privacidad</a></div><br>
+      // Garantir que o pré-sell está visível e o main está oculto
+      if (preSell) preSell.style.display = 'flex';
+      if (mainContent) mainContent.style.display = 'none';
 
-<script>
-    let prefix = ["https://payment.hotmart.com", "https://pay.hotmart.com", "https://go.hotmart.com"];
+      if (enterBtn) {
+        enterBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Botão clicado!');
+          if (preSell) {
+            preSell.style.display = 'none';
+            console.log('Pré-sell ocultado');
+          }
+          if (mainContent) {
+            mainContent.style.display = 'block';
+            console.log('Main exibido');
+          }
+        }, false);
+        console.log('Event listener adicionado ao botão');
+      } else {
+        console.error('Botão enterBtn não encontrado!');
+      }
 
-function getParams() {
-    let t = "",
-        e = window.top.location.href,
-        r = new URL(e);
-    if (null != r) {
-        let a = r.searchParams.get("utm_source"),
-            n = r.searchParams.get("utm_medium"),
-            o = r.searchParams.get("utm_campaign"),
-            m = r.searchParams.get("utm_term"),
-            c = r.searchParams.get("utm_content"); - 1 !== e.indexOf("?") && (t = `&sck=${a}|${n}|${o}|${m}|${c}`), console.log(t)
+      // ===== Utilidades =====
+      const $ = (sel, ctx=document) => ctx.querySelector(sel);
+      const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+      const rand = (min,max) => Math.floor(Math.random()*(max-min+1))+min;
+
+    // ===== Contador de audiência ao vivo =====
+    const viewEl = $('#viewCount');
+    let viewers = rand(450, 2000);
+    const clamp = (v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+    const fmt = n => n.toLocaleString('pt-BR');
+    function tickViewers(){
+      viewers = clamp(viewers + rand(-30,45), 450, 2000);
+      viewEl.textContent = fmt(viewers);
     }
-    return t
-}! function() {
-    var t = new URLSearchParams(window.location.search);
-    t.toString() && document.querySelectorAll("a").forEach(function(e) {
-        for (let r = 0; r < prefix.length; r++) - 1 !== e.href.indexOf(prefix[r]) && (-1 === e.href.indexOf("?") ? e.href += "?" + t.toString() + getParams() : e.href += "&" + t.toString() + getParams())
-    })
-}();
-</script>
+    viewEl.textContent = fmt(viewers);
+    setInterval(tickViewers, rand(3000,7000));
 
-        <script type="text/javascript">
-    </script>
-          
-  </footer>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-  <script src="./assets/js/com.js"></script>
-</div> <!-- Fechamento de outros elementos -->
-<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.22/bundled/lenis.min.js"></script>
+    // ===== Notificações de compra (após 3 minutos) =====
+    const purchaseNames = [
+      'João Silva', 'Maria Santos', 'Pedro Oliveira', 'Ana Costa', 'Carlos Mendes',
+      'Juliana Almeida', 'Roberto Silva', 'Fernanda Castro', 'Ricardo Santos',
+      'Camila Rodrigues', 'André Martins', 'Patricia Ferreira', 'Marcos Ribeiro',
+      'Amanda Lima', 'Fernando Costa', 'Luciana Martins', 'Paulo Souza',
+      'Beatriz Oliveira', 'Diego Pereira', 'Mariana Souza', 'Rafael Lima',
+      'Gabriela Costa', 'Thiago Martins', 'Vanessa Santos', 'Bruno Alves'
+    ];
+    const notif = $('#purchaseNotif');
+    const nameEl = $('#purchaseName');
+    let showNotifications = false;
 
-<script>
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
-    })
-
-    lenis.on('scroll', (e) => {
-        console.log(e)
-    })
-
-    function raf(time) {
-        lenis.raf(time)
-        requestAnimationFrame(raf)
+    function showPurchaseNotif(){
+      if(!showNotifications) return;
+      const name = purchaseNames[rand(0, purchaseNames.length-1)];
+      nameEl.textContent = name;
+      notif.classList.add('show');
+      setTimeout(() => notif.classList.remove('show'), 5000);
     }
 
-    requestAnimationFrame(raf)
-</script>
+    setTimeout(() => {
+      showNotifications = true;
+      showPurchaseNotif();
+      setInterval(showPurchaseNotif, rand(10000, 25000));
+    }, 180000); // 3 minutos
+
+    // ===== Comentários base =====
+    const baseComments = [
+      {name:'Carlos Mendes', avatarUrl:'img/homem6.jpeg', text:'Será que isso realmente funciona? Alguém aqui já testou?', likes:rand(8,40), mins:rand(80,160), replies:[
+        {name:'Roberto Silva',  avatarUrl:'img/homem5.jpeg', text:'Sim funciona cara! Eu tava com problema há uns 2 anos e em 3 semanas já senti diferença. Vale muito a pena!', likes:rand(20,70), mins:rand(60,120)},
+        {name:'Fernando Costa',  avatarUrl:'img/homem4.png', text:'Funciona sim mano, eu tava desconfiado mas resolvi testar. Melhor decisão que tomei', likes:rand(15,45), mins:rand(45,90)}
+      ]},
+      {name:'Juliana Almeida', avatarUrl:'img/img2.jpeg', text:'Comprei pro meu marido e a diferença foi absurda. Nossa relação mudou! ❤️', likes:rand(120,260), mins:rand(140,220), replies:[]},
+      {name:'Pedro Oliveira', avatarUrl:'img/homem3.png', text:'Eu tinha vergonha de falar sobre isso, mas esse produto salvou meu casamento. Me sinto com 20 anos!', likes:rand(90,210), mins:rand(240,360), replies:[
+        {name:'Rafael Costa',  avatarUrl:'img/homem6.jpeg', text:'Valeu compartilhar, irmão. Tava precisando de um depoimento real assim.', likes:rand(6,24), mins:rand(120,220)}
+      ]},
+      {name:'Mariana Silva', avatarUrl:'img/img4.jpeg', text:'O atendimento foi ótimo e chegou rápido. Recomendo!', likes:rand(15,55), mins:rand(60,140), replies:[]},
+      {name:'Bruno Santos',avatarUrl:'img/homem1.png', text:'Seguinte: façam certinho como é recomendado que dá bom!', likes:rand(20,65), mins:rand(200,320), replies:[]},
+      {name:'Renato Lopes', avatarUrl:'img/homem.jpg', text:'Achei o vídeo bem didático. Explicou o mecanismo sem enrolar.', likes:rand(10,45), mins:rand(80,180), replies:[]},
+      {name:'Letícia Moraes',  avatarUrl:'img/img5.jpeg', text:'Voltei pra dizer que funcionou pra gente aqui também. 👏', likes:rand(40,120), mins:rand(90,150), replies:[]},
+      {name:'Ricardo Alves', avatarUrl:'', text:'Comprei faz 1 mês e posso confirmar: mudou minha vida completamente', likes:rand(35,85), mins:rand(100,200), replies:[]},
+      {name:'Patricia Lima',avatarUrl:'img/img6.jpeg', text:'Meu marido estava sem esperança. Hoje ele está outra pessoa! Gratidão 🙏', likes:rand(50,130), mins:rand(150,250), replies:[]},
+      {name:'André Rocha',  avatarUrl:'', text:'Método 100% natural, sem química. Isso fez toda diferença pra mim', likes:rand(25,70), mins:rand(180,300), replies:[]},
+    ];
+
+    const poolComments = [
+      'Achei o conteúdo da VSL muito claro. Parabéns!',
+      'No começo fiquei cético, mas hoje recomendo de olhos fechados.',
+      'Voltei aqui só pra agradecer. Confiança lá em cima novamente 🙏',
+      'Importante: sigam o passo a passo direitinho que dá resultado.',
+      'Meu relacionamento agradece. Obrigado mesmo!',
+      'Tava com receio, mas o vídeo me convenceu pelo mecanismo explicado.',
+      'Vim por indicação de um amigo. Curti demais o conteúdo.',
+      'Apoio 100% métodos naturais. Essa abordagem faz sentido real.'
+    ];
+
+    // ===== Render =====
+    const listEl = $('#commentList');
+    const composer = $('#composer');
+    const composeText = $('#composeText');
+
+    composer.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      const text = composeText.value.trim();
+      if(!text) {
+        alert('Por favor, escreva um comentário antes de enviar.');
+        return;
+      }
+      const c = {name:'Você', avatarUrl:'img/eu.png', text, likes:0, mins:0, replies:[]};
+      c._id = 'you-' + Date.now();
+      listEl.insertAdjacentHTML('afterbegin', commentHTML(c));
+      composeText.value = '';
+    });
+
+    let rendered = 0;
+    const PAGE = 5;
+
+    function timeAgo(mins){
+      if(mins === 0) return 'Agora';
+      if(mins < 60) return `${mins} min atrás`;
+      const h = Math.floor(mins/60);
+      return `${h}h atrás`;
+    }
+
+    function commentHTML(c){
+      const avatarContent = c.avatarUrl ? `<img src="${c.avatarUrl}" alt="${c.name}" />` : (c.avatar || '🗣️');
+      return `
+        <article class="comment">
+          <div class="avatar">${avatarContent}</div>
+          <div style="flex:1">
+            <div class="bubble">
+              <strong class="name">${c.name}</strong>
+              <p class="text">${c.text}</p>
+            </div>
+            <div class="meta">
+              <button class="btn btn-like" data-id="${c._id}" onclick="event.stopPropagation();">👍 <span>${c.likes}</span></button>
+              <span>${timeAgo(c.mins)}</span>
+              <button class="btn btn-reply" data-id="${c._id}" onclick="event.stopPropagation();">Responder</button>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function replyHTML(r){
+      const avatarContent = r.avatarUrl ? `<img src="${r.avatarUrl}" alt="${r.name}" />` : (r.avatar || '🗣️');
+      return `
+        <article class="comment reply">
+          <div class="avatar">${avatarContent}</div>
+          <div style="flex:1">
+            <div class="bubble">
+              <strong class="name">${r.name}</strong>
+              <p class="text">${r.text}</p>
+            </div>
+            <div class="meta">
+              <button class="btn btn-like" data-id="${r._id}" onclick="event.stopPropagation();">👍 <span>${r.likes}</span></button>
+              <span>${timeAgo(r.mins)}</span>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function renderChunk(){
+      const slice = baseComments.slice(rendered, rendered+PAGE);
+      slice.forEach((c, idx)=>{
+        c._id = `c${rendered+idx}-${Date.now()}`;
+        listEl.insertAdjacentHTML('beforeend', commentHTML(c));
+        (c.replies||[]).forEach((r,i)=>{
+          r._id = `r${rendered+idx}-${i}-${Date.now()}`;
+          listEl.insertAdjacentHTML('beforeend', replyHTML(r));
+        });
+      });
+      rendered += slice.length;
+      if(rendered >= baseComments.length) $('#loadMore').disabled = true;
+    }
+
+    // Likes locais
+    listEl.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const btn = e.target.closest('.btn-like');
+      if(!btn) return;
+      const span = btn.querySelector('span');
+      span.textContent = (+span.textContent + 1);
+    });
+
+    // "Responder"
+    listEl.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const btn = e.target.closest('.btn-reply');
+      if(!btn) return;
+      const art = btn.closest('.comment');
+      if(art.querySelector('form')) return;
+
+      const form = document.createElement('form');
+      form.innerHTML = `
+        <div class="reply" style="margin-top:8px;display:flex;gap:10px">
+          <div class="avatar">😊</div>
+          <div style="flex:1">
+            <textarea name="text" required placeholder="Escreva sua resposta..." rows="2" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;resize:none;font-family:inherit"></textarea>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button type="submit" style="background:#dc2626;color:#fff;border:0;padding:6px 12px;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px">Publicar</button>
+              <button type="button" class="cancel-btn" style="background:#e5e7eb;color:#0f172a;border:0;padding:6px 12px;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px">Cancelar</button>
+            </div>
+          </div>
+        </div>`;
+
+      art.appendChild(form);
+
+      form.querySelector('.cancel-btn').addEventListener('click', (ev)=>{
+        ev.stopPropagation();
+        form.remove();
+      });
+
+      form.addEventListener('submit', (ev)=>{
+        ev.preventDefault();
+        ev.stopPropagation();
+        const text = form.text.value.trim();
+        if(!text) return;
+        const reply = {name:'Você', avatarUrl:'img/eu.png', text, likes:0, mins:0};
+        reply._id = 'reply-' + Date.now();
+        form.insertAdjacentHTML('beforebegin', replyHTML(reply));
+        form.remove();
+      });
+    });
+
+    // Carregar mais
+    $('#loadMore').addEventListener('click', (e)=>{
+      e.stopPropagation();
+      renderChunk();
+    });
+
+    // Render inicial
+    renderChunk();
+
+    // ===== Randomizador de likes =====
+    setInterval(()=>{
+      const likeSpans = $$('.btn-like span');
+      if(!likeSpans.length) return;
+      const picks = rand(1, Math.min(3, likeSpans.length));
+      for(let i=0;i<picks;i++){
+        const target = likeSpans[rand(0, likeSpans.length-1)];
+        target.textContent = (+target.textContent + rand(1,3));
+      }
+    }, rand(3500, 6200));
+
+    // ===== Novos comentários espontâneos (híbrido) =====
+    let injected = 0, MAX_INJECT = 6;
+
+    const avatarPool = [
+      { url: 'img/homem1.png' },
+      { url: 'img/homem3.png' },
+      { url: 'img/homem4.png' },
+      { url: 'img/homem5.jpeg' },
+      { url: 'img/homem6.jpeg' },
+      { url: 'img/img2.jpeg' },
+      { url: 'img/img4.jpeg' },
+      { url: 'img/img5.jpeg' },
+      { url: 'img/img6.jpeg' },
+      { emoji: '👨' }, { emoji: '👩' }, { emoji: '🧑' }
+    ];
+
+    function injectRandomComment(){
+      if(injected >= MAX_INJECT) return;
+
+      const text = poolComments[rand(0, poolComments.length-1)];
+      const namePool = ['André Lima','Beatriz Rocha','Cláudio Nunes','Daniela Pires','Eduardo Matos','Fernanda Reis','Gustavo Azevedo','Helena Moura'];
+      const picked = avatarPool[rand(0, avatarPool.length-1)];
+
+      const c = {
+        name: namePool[rand(0, namePool.length-1)],
+        avatarUrl: picked.url || '',
+        avatar: picked.emoji || '',
+        text,
+        likes: rand(3,25),
+        mins: rand(1,15),
+        replies: []
+      };
+      c._id = `auto-${Date.now()}`;
+      listEl.insertAdjacentHTML('afterbegin', commentHTML(c));
+      injected++;
+    }
+
+    setInterval(()=>{
+      if(Math.random() < 0.6) injectRandomComment();
+    }, rand(9000, 15000));
+
+    // Prevenir que inputs/textareas interfiram com o player (exceto o botão de entrada)
+    document.addEventListener('click', (e) => {
+      if (e.target.id === 'enterBtn') return; // Permitir o botão de entrada
+      const isInteractive = e.target.matches('input, textarea, button, a, .btn');
+      if (isInteractive) {
+        e.stopPropagation();
+      }
+    }, true);
+
+    }); // Fim do DOMContentLoaded
+  </script>
+  <script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
 </body>
 </html>
+
+
