@@ -1,676 +1,502 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VSL - Vídeo Revelador</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Transforme Sua Vida Íntima - Método Natural</title>
+  <meta name="description" content="VSL com comentários dinâmicos e contador de audiência ao vivo." />
+  <style>
+    :root{
+      --bg:#f7f7f8;--text:#0f172a;--muted:#475569;--brand:#dc2626;--card:#ffffff;--border:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;overflow-x:hidden}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;color:var(--text);background:var(--bg)}
+    .container{max-width:960px;margin:0 auto;padding:0 16px}
+    .hero{background:linear-gradient(90deg,#000000,#000000);color:#fff;padding:56px 16px;text-align:center}
+    .hero h1{margin:0 0 12px;font-size:clamp(24px,4vw,40px);line-height:1.2;font-weight:800}
+    .hero p{margin:0;font-size:clamp(14px,2.6vw,18px);opacity:.95}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 10px 25px rgba(15,23,42,.06)}
+    .video-wrap{margin:-32px auto 8px;max-width:960px;padding:0 16px}
+    .ratio{position:relative;width:100%;padding-bottom:56.25%;background:#000;border-radius:14px;overflow:hidden}
+    .ratio > *{position:absolute;inset:0;width:100%;height:100%}
+    .viewers{display:flex;align-items:center;justify-content:center;gap:8px;color:#0f172a;font-weight:600;margin:10px 0 24px}
+    .dot{position:relative;width:10px;height:10px;background:#22c55e;border-radius:999px;animation:pulse 2s cubic-bezier(0.4,0,0.6,1) infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    .comments{padding:24px}
+    .comments h2{display:flex;align-items:center;gap:8px;margin:0 0 16px;font-size:20px}
+    .comment{display:flex;gap:10px;padding:14px 0;border-top:1px solid var(--border)}
+    .comment:first-child{border-top:0}
+    .avatar{width:42px;height:42px;border-radius:999px;background:#e5e7eb;display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;border:1px solid var(--border);flex-shrink:0}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    input,textarea,select{font-size:16px!important;touch-action:manipulation}
+    .bubble{background:#f8fafc;border-radius:12px;padding:12px;flex:1}
+    .name{font-weight:700}
+    .text{margin:6px 0 0 0}
+    .meta{display:flex;gap:14px;margin-top:6px;color:var(--muted);font-size:13px;align-items:center}
+    .btn{appearance:none;border:0;background:none;color:var(--muted);cursor:pointer;font-weight:600;padding:4px 8px;border-radius:6px;transition:all 0.2s}
+    .btn:hover{color:var(--brand);background:rgba(220,38,38,0.05)}
+    .btn:active{transform:scale(0.95)}
+    .reply{margin-left:50px}
+    .more{display:block;margin:16px auto 0;text-align:center}
+    .more button{background:#111827;color:#fff;border:0;padding:10px 16px;border-radius:10px;font-weight:800;cursor:pointer;transition:opacity 0.2s}
+    .more button:hover{opacity:.92}
+    .more button:disabled{opacity:.5;cursor:not-allowed}
+    .avatar-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .hero h1 {
+      font-size: 20px;
+      line-height: 1.1;
+      max-width: 1000px;
+    }
 
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2233811690435804');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2233811690435804&ev=PageView&noscript=1"
-    /></noscript>
+    /* Notificação de compra */
+    .purchase-notification{
+      position:fixed;
+      bottom:24px;
+      right:24px;
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.15);
+      padding:16px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      transform:translateX(400px);
+      transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      z-index:9999;
+      max-width:320px;
+    }
+    .purchase-notification.show{transform:translateX(0)}
+    .purchase-notification .check{
+      width:48px;
+      height:48px;
+      background:#22c55e;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:24px;
+      flex-shrink:0;
+    }
+    .purchase-notification .info{flex:1}
+    .purchase-notification .info strong{display:block;color:#0f172a;font-size:14px}
+    .purchase-notification .info span{color:#64748b;font-size:13px}
 
-    <!-- Utmify Pixel -->
-    <script>
-    !function(e,t,n){var s=e.utmify=e.utmify||{};if(!s.load){var a=t.createElement("script");a.async=!0,a.src="https://app.utmify.com.br/scripts/pixel/"+n+".js";var r=t.getElementsByTagName("script")[0];r.parentNode.insertBefore(a,r),s.load=!0,s.config={pixelId:n}}}(window,document,"691e43c8c0846a163d9be7f3");
-    </script>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #000;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* PRÉ-SELL SCREEN */
-        #preSellScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            padding: 20px;
-        }
-
-        #preSellScreen.hidden {
-            display: none;
-        }
-
-        .warning-icon {
-            width: 120px;
-            height: 120px;
-            border: 4px solid #dc2626;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            font-weight: bold;
-            color: #dc2626;
-            margin-bottom: 30px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .warning-text {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .warning-subtext {
-            font-size: 16px;
-            color: #9ca3af;
-            margin-bottom: 40px;
-            text-align: center;
-            max-width: 500px;
-        }
-
-        #enterBtn {
-            background: #dc2626;
-            color: #fff;
-            border: none;
-            padding: 18px 50px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        #enterBtn:hover {
-            background: #b91c1c;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
-        }
-
-        .terms {
-            margin-top: 30px;
-            font-size: 12px;
-            color: #6b7280;
-            text-align: center;
-            max-width: 600px;
-        }
-
-        /* MAIN CONTENT */
-        #mainContent {
-            display: none;
-            min-height: 100vh;
-        }
-
-        #mainContent.visible {
-            display: block;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .headline {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .headline h1 {
-            font-size: clamp(24px, 5vw, 42px);
-            font-weight: bold;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .headline h1 span {
-            color: #ff9900;
-        }
-
-        .subheadline {
-            font-size: clamp(16px, 3vw, 22px);
-            color: #9ca3af;
-            font-weight: 500;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            margin: 30px 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .live-counter {
-            background: rgba(220, 38, 38, 0.9);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin: 20px auto;
-            display: flex;
-            justify-content: center;
-            max-width: fit-content;
-        }
-
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background: #fff;
-            border-radius: 50%;
-            animation: blink 1.5s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        /* COMMENTS SECTION */
-        .comments-section {
-            background: #111;
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 50px;
-        }
-
-        .comments-header {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #333;
-        }
-
-        .comment {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .comment-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .comment-content {
-            flex: 1;
-        }
-
-        .comment-author {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #fff;
-        }
-
-        .comment-text {
-            color: #d1d5db;
-            line-height: 1.5;
-            margin-bottom: 8px;
-        }
-
-        .comment-actions {
-            display: flex;
-            gap: 15px;
-            font-size: 13px;
-            color: #9ca3af;
-        }
-
-        .comment-action {
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .comment-action:hover {
-            color: #ff9900;
-        }
-
-        .comment-action.liked {
-            color: #dc2626;
-            font-weight: bold;
-        }
-
-        .load-more {
-            background: transparent;
-            border: 2px solid #333;
-            color: #fff;
-            padding: 12px 30px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            display: block;
-            margin: 30px auto 0;
-            transition: all 0.3s;
-        }
-
-        .load-more:hover {
-            border-color: #ff9900;
-            color: #ff9900;
-        }
-
-        /* PURCHASE NOTIFICATION */
-        .purchase-notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-            color: #fff;
-            padding: 16px 24px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(22, 163, 74, 0.4);
-            display: none;
-            align-items: center;
-            gap: 12px;
-            z-index: 1000;
-            animation: slideIn 0.5s ease, slideOut 0.5s ease 4.5s;
-        }
-
-        .purchase-notification.show {
-            display: flex;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideOut {
-            from {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-        }
-
-        .notification-icon {
-            width: 24px;
-            height: 24px;
-            background: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #16a34a;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
-            }
-
-            .comments-section {
-                padding: 20px 15px;
-            }
-
-            .purchase-notification {
-                right: 10px;
-                left: 10px;
-                bottom: 10px;
-            }
-        }
-    </style>
+    @media (max-width:480px){
+      .comments{padding:16px}
+      .reply{margin-left:46px}
+      .purchase-notification{right:16px;bottom:16px;max-width:calc(100% - 32px)}
+    }
+  </style>
 </head>
 <body>
-    <!-- PRÉ-SELL SCREEN -->
-    <div id="preSellScreen">
-        <div class="warning-icon">18+</div>
-        <div class="warning-text">ATENÇÃO: CONTEÚDO ADULTO</div>
-        <div class="warning-subtext">
-            Este conteúdo contém material sensível e é destinado apenas para maiores de 18 anos.
-        </div>
-        <button id="enterBtn">SIM, TENHO 18+</button>
-        <div class="terms">
-            Ao continuar, você declara que é maior de 18 anos e concorda com nossos Termos de Serviço e Política de Privacidade.
-        </div>
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2233811690435804');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2233811690435804&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+  <script>
+  window.pixelId = "691e43c8c0846a163d9be7f3";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+  <!-- PRÉ-SELL 18+ -->
+  <section id="pre-sell" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;text-align:center;font-family:'Poppins',sans-serif;">
+    <div style="max-width:700px;padding:20px;">
+      <h2 style="color:#ff0000;font-weight:700;font-size:1.6rem;display:flex;align-items:center;justify-content:center;gap:8px;">
+        ⚠️ AVISO: Este sítio é apenas para adultos!
+      </h2>
+      <p style="margin-top:25px;font-size:1.2rem;">Você tem 18 anos ou mais?</p>
+      <button id="enterBtn" style="margin-top:20px;background:#ff0000;color:#fff;font-weight:700;font-size:1.1rem;border:none;padding:14px 28px;border-radius:8px;cursor:pointer;box-shadow:0 0 15px rgba(255,0,0,0.4);transition:all 0.3s;">
+        SIM, TENHO 18+
+      </button>
+      <p style="margin-top:60px;color:#ccc;font-size:0.9rem;line-height:1.5;">
+        Ao aceder a este sítio Web, reconheço que tenho 18 anos de idade ou mais e que concordo com as
+        <a href="#" style="color:#ff0000;text-decoration:underline;">Condições de Serviço</a>, que estão disponíveis aqui.
+      </p>
     </div>
+  </section>
 
-    <!-- MAIN CONTENT (Oculto até passar da pré-sell) -->
-    <div id="mainContent">
-        <div class="container">
-            <!-- Headline -->
-            <div class="headline">
-                <h1>
-                    ATOR PORNÔ REVELA O <span>SEGREDO USADO</span> PARA DURAR 30 MINUTOS TRANSANDO
-                </h1>
-                <p class="subheadline">ASSISTA O VÍDEO PARA ENTENDER COMO FAZER!</p>
-            </div>
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main id="main" style="display:none;">
+    <!-- HEADLINE -->
+    <header class="hero">
+      <div class="container">
+        <h1 style="color:#ffffff;">
+          ACTOR PORNÔ REVELA O
+          <span style="color:#ff9900;">SEGREDO USADO</span>
+          PARA DURAR 30 MINUTOS
+          <span style="color:#ff9900;">TRANSANDO</span>.
+        </h1>
+        <p style="color:#ffffff;">ASSISTA O VÍDEO PARA ENTENDER COMO FAZER!</p>
+      </div>
+    </header>
 
-            <!-- Live Counter -->
-            <div class="live-counter">
-                <span class="live-dot"></span>
-                <span id="liveCount">1.247</span> pessoas assistindo agora
-            </div>
-
-            <!-- Video Container -->
-            <div class="video-container" id="videoContainer">
-                <!-- VÍDEO DA VTURB (SÓ CARREGA DEPOIS DA PRÉ-SELL) -->
-            </div>
-
-            <!-- Comments Section -->
-            <div class="comments-section">
-                <div class="comments-header">Comentários</div>
-                <div id="commentsContainer"></div>
-                <button class="load-more" onclick="loadMoreComments()">Ver mais comentários</button>
-            </div>
+    <!-- VSL -->
+    <section class="video-wrap">
+      <div class="card" style="padding:12px">
+        <div class="ratio">
+          <vturb-smartplayer id="vid-691e2131929a71f0a16d4776" style="display:block;margin:0 auto;width:100%;height:100%"></vturb-smartplayer>
+          <script type="text/javascript" async src="https://scripts.converteai.net/9d93e4b2-3654-4bea-bda0-107c1328d520/players/691e2131929a71f0a16d4776/v4/player.js"></script>
         </div>
+      </div>
+      <div class="viewers">
+        <span class="dot" aria-hidden="true"></span>
+        <span><strong id="viewCount">1.247</strong> pessoas assistindo agora</span>
+      </div>
+    </section>
+
+    <!-- COMENTÁRIOS -->
+    <section id="comments" class="container">
+      <div class="card comments">
+        <h2>💬 Comentários</h2>
+
+        <!-- Composer no topo -->
+        <form id="composer" class="composer" style="margin:4px 0 16px">
+          <div style="display:flex;gap:10px">
+            <img src="img/eu.png" alt="avatar" class="avatar-img" />
+            <div style="flex:1">
+              <textarea id="composeText" required placeholder="Adicione um comentário..." rows="2" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;resize:none;font-family:inherit"></textarea>
+              <div style="display:flex;gap:8px;margin-top:8px">
+                <button type="submit" style="background:#dc2626;color:#fff;border:0;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer">Comentar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div id="commentList"></div>
+        <div class="more"><button id="loadMore">Ver mais comentários</button></div>
+      </div>
+    </section>
+
+    <!-- Notificação de compra -->
+    <div id="purchaseNotif" class="purchase-notification">
+      <div class="check">✓</div>
+      <div class="info">
+        <strong id="purchaseName">João Silva</strong>
+        <span>acabou de comprar</span>
+      </div>
     </div>
+  </main>
 
-    <!-- Purchase Notification -->
-    <div class="purchase-notification" id="purchaseNotification">
-        <div class="notification-icon">✓</div>
-        <div>
-            <strong id="buyerName">João Silva</strong> acabou de comprar!
-        </div>
-    </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // ===== PRÉ-SELL =====
+      const enterBtn = document.getElementById('enterBtn');
+      const preSell = document.getElementById('pre-sell');
+      const mainContent = document.getElementById('main');
 
-    <script>
-        // ==================== PRÉ-SELL LOGIC ====================
-        const preSellScreen = document.getElementById('preSellScreen');
-        const mainContent = document.getElementById('mainContent');
-        const enterBtn = document.getElementById('enterBtn');
-        const videoContainer = document.getElementById('videoContainer');
+      // Garantir que o pré-sell está visível e o main está oculto
+      if (preSell) preSell.style.display = 'flex';
+      if (mainContent) mainContent.style.display = 'none';
 
-        enterBtn.addEventListener('click', function() {
-            // Esconde a pré-sell
-            preSellScreen.classList.add('hidden');
+      if (enterBtn) {
+        enterBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Botão clicado!');
+          if (preSell) {
+            preSell.style.display = 'none';
+            console.log('Pré-sell ocultado');
+          }
+          if (mainContent) {
+            mainContent.style.display = 'block';
+            console.log('Main exibido');
+          }
+        }, false);
+        console.log('Event listener adicionado ao botão');
+      } else {
+        console.error('Botão enterBtn não encontrado!');
+      }
 
-            // Mostra o conteúdo principal
-            mainContent.classList.add('visible');
+      // ===== Utilidades =====
+      const $ = (sel, ctx=document) => ctx.querySelector(sel);
+      const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+      const rand = (min,max) => Math.floor(Math.random()*(max-min+1))+min;
 
-            // AGORA SIM injeta o vídeo da Vturb (para começar só depois da pré-sell)
-            videoContainer.innerHTML = `
-                <vturb-smartplayer id="vid-691e2131929a71f0a16d4776" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
-                <script type="text/javascript">
-                var s=document.createElement("script");
-                s.src="https://scripts.converteai.net/9d93e4b2-3654-4bea-bda0-107c1328d520/players/691e2131929a71f0a16d4776/v4/player.js",
-                s.async=!0,document.head.appendChild(s);
-                <\/script>
-            `;
+    // ===== Contador de audiência ao vivo =====
+    const viewEl = $('#viewCount');
+    let viewers = rand(450, 2000);
+    const clamp = (v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+    const fmt = n => n.toLocaleString('pt-BR');
+    function tickViewers(){
+      viewers = clamp(viewers + rand(-30,45), 450, 2000);
+      viewEl.textContent = fmt(viewers);
+    }
+    viewEl.textContent = fmt(viewers);
+    setInterval(tickViewers, rand(3000,7000));
 
-            // Inicia os demais scripts
-            initMainContent();
+    // ===== Notificações de compra (após 3 minutos) =====
+    const purchaseNames = [
+      'João Silva', 'Maria Santos', 'Pedro Oliveira', 'Ana Costa', 'Carlos Mendes',
+      'Juliana Almeida', 'Roberto Silva', 'Fernanda Castro', 'Ricardo Santos',
+      'Camila Rodrigues', 'André Martins', 'Patricia Ferreira', 'Marcos Ribeiro',
+      'Amanda Lima', 'Fernando Costa', 'Luciana Martins', 'Paulo Souza',
+      'Beatriz Oliveira', 'Diego Pereira', 'Mariana Souza', 'Rafael Lima',
+      'Gabriela Costa', 'Thiago Martins', 'Vanessa Santos', 'Bruno Alves'
+    ];
+    const notif = $('#purchaseNotif');
+    const nameEl = $('#purchaseName');
+    let showNotifications = false;
+
+    function showPurchaseNotif(){
+      if(!showNotifications) return;
+      const name = purchaseNames[rand(0, purchaseNames.length-1)];
+      nameEl.textContent = name;
+      notif.classList.add('show');
+      setTimeout(() => notif.classList.remove('show'), 5000);
+    }
+
+    setTimeout(() => {
+      showNotifications = true;
+      showPurchaseNotif();
+      setInterval(showPurchaseNotif, rand(15000, 25000));
+    }, 480000); // 3 minutos
+
+    // ===== Comentários base =====
+    const baseComments = [
+      {name:'Carlos Mendes', avatarUrl:'img/homem6.jpeg', text:'Será que isso realmente funciona? Alguém aqui já testou?', likes:rand(8,40), mins:rand(80,160), replies:[
+        {name:'Roberto Silva',  avatarUrl:'img/homem5.jpeg', text:'Sim funciona cara! Eu tava com problema há uns 2 anos e em 3 semanas já senti diferença. Vale muito a pena!', likes:rand(20,70), mins:rand(60,120)},
+        {name:'Fernando Costa',  avatarUrl:'img/homem4.png', text:'Funciona sim mano, eu tava desconfiado mas resolvi testar. Melhor decisão que tomei', likes:rand(15,45), mins:rand(45,90)}
+      ]},
+      {name:'Juliana Almeida', avatarUrl:'img/img2.jpeg', text:'Comprei pro meu marido e a diferença foi absurda. Nossa relação mudou! ❤️', likes:rand(120,260), mins:rand(140,220), replies:[]},
+      {name:'Pedro Oliveira', avatarUrl:'img/homem3.png', text:'Eu tinha vergonha de falar sobre isso, mas esse produto salvou meu casamento. Me sinto com 20 anos!', likes:rand(90,210), mins:rand(240,360), replies:[
+        {name:'Rafael Costa',  avatarUrl:'img/homem6.jpeg', text:'Valeu compartilhar, irmão. Tava precisando de um depoimento real assim.', likes:rand(6,24), mins:rand(120,220)}
+      ]},
+      {name:'Mariana Silva', avatarUrl:'img/img4.jpeg', text:'O atendimento foi ótimo e chegou rápido. Recomendo!', likes:rand(15,55), mins:rand(60,140), replies:[]},
+      {name:'Bruno Santos',avatarUrl:'img/homem1.png', text:'Seguinte: façam certinho como é recomendado que dá bom!', likes:rand(20,65), mins:rand(200,320), replies:[]},
+      {name:'Renato Lopes', avatarUrl:'img/homem.jpg', text:'Achei o vídeo bem didático. Explicou o mecanismo sem enrolar.', likes:rand(10,45), mins:rand(80,180), replies:[]},
+      {name:'Letícia Moraes',  avatarUrl:'img/img5.jpeg', text:'Voltei pra dizer que funcionou pra gente aqui também. 👏', likes:rand(40,120), mins:rand(90,150), replies:[]},
+      {name:'Ricardo Alves', avatarUrl:'', text:'Comprei faz 1 mês e posso confirmar: mudou minha vida completamente', likes:rand(35,85), mins:rand(100,200), replies:[]},
+      {name:'Patricia Lima',avatarUrl:'img/img6.jpeg', text:'Meu marido estava sem esperança. Hoje ele está outra pessoa! Gratidão 🙏', likes:rand(50,130), mins:rand(150,250), replies:[]},
+      {name:'André Rocha',  avatarUrl:'', text:'Método 100% natural, sem química. Isso fez toda diferença pra mim', likes:rand(25,70), mins:rand(180,300), replies:[]},
+    ];
+
+    const poolComments = [
+      'Achei o conteúdo da VSL muito claro. Parabéns!',
+      'No começo fiquei cético, mas hoje recomendo de olhos fechados.',
+      'Voltei aqui só pra agradecer. Confiança lá em cima novamente 🙏',
+      'Importante: sigam o passo a passo direitinho que dá resultado.',
+      'Meu relacionamento agradece. Obrigado mesmo!',
+      'Tava com receio, mas o vídeo me convenceu pelo mecanismo explicado.',
+      'Vim por indicação de um amigo. Curti demais o conteúdo.',
+      'Apoio 100% métodos naturais. Essa abordagem faz sentido real.'
+    ];
+
+    // ===== Render =====
+    const listEl = $('#commentList');
+    const composer = $('#composer');
+    const composeText = $('#composeText');
+
+    composer.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      const text = composeText.value.trim();
+      if(!text) {
+        alert('Por favor, escreva um comentário antes de enviar.');
+        return;
+      }
+      const c = {name:'Você', avatarUrl:'img/eu.png', text, likes:0, mins:0, replies:[]};
+      c._id = 'you-' + Date.now();
+      listEl.insertAdjacentHTML('afterbegin', commentHTML(c));
+      composeText.value = '';
+    });
+
+    let rendered = 0;
+    const PAGE = 5;
+
+    function timeAgo(mins){
+      if(mins === 0) return 'Agora';
+      if(mins < 60) return `${mins} min atrás`;
+      const h = Math.floor(mins/60);
+      return `${h}h atrás`;
+    }
+
+    function commentHTML(c){
+      const avatarContent = c.avatarUrl ? `<img src="${c.avatarUrl}" alt="${c.name}" />` : (c.avatar || '🗣️');
+      return `
+        <article class="comment">
+          <div class="avatar">${avatarContent}</div>
+          <div style="flex:1">
+            <div class="bubble">
+              <strong class="name">${c.name}</strong>
+              <p class="text">${c.text}</p>
+            </div>
+            <div class="meta">
+              <button class="btn btn-like" data-id="${c._id}">👍 <span>${c.likes}</span></button>
+              <span>${timeAgo(c.mins)}</span>
+              <button class="btn btn-reply" data-id="${c._id}">Responder</button>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function replyHTML(r){
+      const avatarContent = r.avatarUrl ? `<img src="${r.avatarUrl}" alt="${r.name}" />` : (r.avatar || '🗣️');
+      return `
+        <article class="comment reply">
+          <div class="avatar">${avatarContent}</div>
+          <div style="flex:1">
+            <div class="bubble">
+              <strong class="name">${r.name}</strong>
+              <p class="text">${r.text}</p>
+            </div>
+            <div class="meta">
+              <button class="btn btn-like" data-id="${r._id}">👍 <span>${r.likes}</span></button>
+              <span>${timeAgo(r.mins)}</span>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function renderChunk(){
+      const slice = baseComments.slice(rendered, rendered+PAGE);
+      slice.forEach((c, idx)=>{
+        c._id = `c${rendered+idx}-${Date.now()}`;
+        listEl.insertAdjacentHTML('beforeend', commentHTML(c));
+        (c.replies||[]).forEach((r,i)=>{
+          r._id = `r${rendered+idx}-${i}-${Date.now()}`;
+          listEl.insertAdjacentHTML('beforeend', replyHTML(r));
         });
+      });
+      rendered += slice.length;
+      if(rendered >= baseComments.length) $('#loadMore').disabled = true;
+    }
 
-        // ==================== MAIN CONTENT LOGIC ====================
-        function initMainContent() {
-            // Live Counter Animation
-            function updateLiveCount() {
-                const liveCount = document.getElementById('liveCount');
-                const min = 450;
-                const max = 2000;
-                const count = Math.floor(Math.random() * (max - min + 1)) + min;
-                liveCount.textContent = count.toLocaleString('pt-BR');
-            }
+    // Likes locais
+    listEl.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.btn-like');
+      if(!btn) return;
+      const span = btn.querySelector('span');
+      span.textContent = (+span.textContent + 1);
+    });
 
-            setInterval(updateLiveCount, 5000);
+    // "Responder"
+    listEl.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.btn-reply');
+      if(!btn) return;
+      const art = btn.closest('.comment');
+      if(art.querySelector('form')) return;
 
-            // ==================== COMMENTS SYSTEM ====================
-            const baseComments = [
-                {
-                    author: "Carlos Silva",
-                    avatar: "https://i.pravatar.cc/150?img=12",
-                    text: "Cara, esse vídeo mudou minha vida! Minha esposa tá até desconfiada que eu tô tomando alguma coisa 😂",
-                    likes: 234,
-                    time: "2 horas atrás"
-                },
-                {
-                    author: "Rodrigo Almeida",
-                    avatar: "https://i.pravatar.cc/150?img=13",
-                    text: "Funcionou mesmo! Primeira vez que consegui esse resultado. Obrigado por compartilhar!",
-                    likes: 189,
-                    time: "3 horas atrás"
-                },
-                {
-                    author: "Fernando Costa",
-                    avatar: "https://i.pravatar.cc/150?img=14",
-                    text: "Achei que era mais uma daquelas promessas vazias, mas resolvi tentar. Melhor decisão que tomei esse ano!",
-                    likes: 312,
-                    time: "5 horas atrás"
-                },
-                {
-                    author: "Lucas Mendes",
-                    avatar: "https://i.pravatar.cc/150?img=15",
-                    text: "Mano, eu tava com problema de EP há anos e isso realmente funciona. Vida sexual voltou ao normal!",
-                    likes: 267,
-                    time: "6 horas atrás"
-                },
-                {
-                    author: "Paulo Roberto",
-                    avatar: "https://i.pravatar.cc/150?img=16",
-                    text: "Comprei ontem e já tô vendo resultado. Impressionante como é simples e eficaz!",
-                    likes: 198,
-                    time: "8 horas atrás"
-                },
-                {
-                    author: "André Santos",
-                    avatar: "https://i.pravatar.cc/150?img=17",
-                    text: "Pessoal, isso aqui é sério mesmo. Não é milagre, mas funciona se você seguir direitinho.",
-                    likes: 445,
-                    time: "10 horas atrás"
-                },
-                {
-                    author: "Ricardo Lima",
-                    avatar: "https://i.pravatar.cc/150?img=18",
-                    text: "Minha autoestima voltou! Tava com vergonha de ficar com alguém por causa desse problema.",
-                    likes: 523,
-                    time: "12 horas atrás"
-                },
-                {
-                    author: "Marcelo Ferreira",
-                    avatar: "https://i.pravatar.cc/150?img=19",
-                    text: "Galera, ele explica tudo no vídeo. Vale muito a pena assistir até o final!",
-                    likes: 356,
-                    time: "14 horas atrás"
-                },
-                {
-                    author: "Thiago Oliveira",
-                    avatar: "https://i.pravatar.cc/150?img=20",
-                    text: "Eu recomendo! Já indiquei pra 3 amigos e todos tiveram resultado positivo.",
-                    likes: 289,
-                    time: "16 horas atrás"
-                },
-                {
-                    author: "Daniel Souza",
-                    avatar: "https://i.pravatar.cc/150?img=21",
-                    text: "Finalmente algo que realmente funciona. Já tinha tentado várias coisas sem sucesso.",
-                    likes: 412,
-                    time: "18 horas atrás"
-                }
-            ];
+      const form = document.createElement('form');
+      form.innerHTML = `
+        <div class="reply" style="margin-top:8px;display:flex;gap:10px">
+          <div class="avatar">😊</div>
+          <div style="flex:1">
+            <textarea name="text" required placeholder="Escreva sua resposta..." rows="2" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;resize:none;font-family:inherit"></textarea>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button type="submit" style="background:#dc2626;color:#fff;border:0;padding:6px 12px;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px">Publicar</button>
+              <button type="button" class="cancel-btn" style="background:#e5e7eb;color:#0f172a;border:0;padding:6px 12px;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px">Cancelar</button>
+            </div>
+          </div>
+        </div>`;
 
-            const spontaneousComments = [
-                {
-                    author: "Bruno Martins",
-                    avatar: "https://i.pravatar.cc/150?img=22",
-                    text: "Acabei de comprar! Espero que funcione mesmo como vocês tão falando.",
-                    likes: 45
-                },
-                {
-                    author: "Rafael Cardoso",
-                    avatar: "https://i.pravatar.cc/150?img=23",
-                    text: "Alguém já recebeu o acesso? Comprei e ainda não chegou no email.",
-                    likes: 23
-                },
-                {
-                    author: "Gabriel Rocha",
-                    avatar: "https://i.pravatar.cc/150?img=24",
-                    text: "Isso funciona mesmo ou é só conversa?",
-                    likes: 67
-                },
-                {
-                    author: "Leandro Pereira",
-                    avatar: "https://i.pravatar.cc/150?img=25",
-                    text: "Meu irmão, isso é ouro puro! Funcionou comigo em 1 semana.",
-                    likes: 134
-                },
-                {
-                    author: "Eduardo Nunes",
-                    avatar: "https://i.pravatar.cc/150?img=26",
-                    text: "Galera desconfiada, mas quando testar vai ver que é real.",
-                    likes: 89
-                }
-            ];
+      art.appendChild(form);
 
-            let commentsShown = 0;
-            let spontaneousAdded = 0;
-            const maxSpontaneous = 6;
+      form.querySelector('.cancel-btn').addEventListener('click', (ev)=>{
+        form.remove();
+      });
 
-            function createCommentHTML(comment, index) {
-                return `
-                    <div class="comment" data-index="${index}">
-                        <img src="${comment.avatar}" alt="${comment.author}" class="comment-avatar">
-                        <div class="comment-content">
-                            <div class="comment-author">${comment.author}</div>
-                            <div class="comment-text">${comment.text}</div>
-                            <div class="comment-actions">
-                                <span class="comment-action like-btn" onclick="likeComment(${index})">
-                                    Curtir (<span class="like-count">${comment.likes}</span>)
-                                </span>
-                                <span class="comment-action">Responder</span>
-                                ${comment.time ? `<span>${comment.time}</span>` : '<span>Agora</span>'}
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
+      form.addEventListener('submit', (ev)=>{
+        ev.preventDefault();
+        const text = form.text.value.trim();
+        if(!text) return;
+        const reply = {name:'Você', avatarUrl:'img/eu.png', text, likes:0, mins:0};
+        reply._id = 'reply-' + Date.now();
+        form.insertAdjacentHTML('beforebegin', replyHTML(reply));
+        form.remove();
+      });
+    });
 
-            function loadInitialComments() {
-                const container = document.getElementById('commentsContainer');
-                baseComments.forEach((comment, index) => {
-                    container.innerHTML += createCommentHTML(comment, index);
-                });
-                commentsShown = baseComments.length;
-            }
+    // Carregar mais
+    $('#loadMore').addEventListener('click', ()=>{
+      renderChunk();
+    });
 
-            window.loadMoreComments = function() {
-                const container = document.getElementById('commentsContainer');
-                const moreComments = baseComments.slice(0, 5);
-                moreComments.forEach((comment, index) => {
-                    container.innerHTML += createCommentHTML(comment, commentsShown + index);
-                });
-                commentsShown += 5;
-            };
+    // Render inicial
+    renderChunk();
 
-            window.likeComment = function(index) {
-                const comment = document.querySelector(`[data-index="${index}"]`);
-                const likeBtn = comment.querySelector('.like-btn');
-                const likeCount = likeBtn.querySelector('.like-count');
+    // ===== Randomizador de likes =====
+    setInterval(()=>{
+      const likeSpans = $$('.btn-like span');
+      if(!likeSpans.length) return;
+      const picks = rand(1, Math.min(3, likeSpans.length));
+      for(let i=0;i<picks;i++){
+        const target = likeSpans[rand(0, likeSpans.length-1)];
+        target.textContent = (+target.textContent + rand(1,3));
+      }
+    }, rand(3500, 6200));
 
-                if (!likeBtn.classList.contains('liked')) {
-                    likeBtn.classList.add('liked');
-                    likeCount.textContent = parseInt(likeCount.textContent) + 1;
-                }
-            };
+    // ===== Novos comentários espontâneos (híbrido) =====
+    let injected = 0, MAX_INJECT = 6;
 
-            function addSpontaneousComment() {
-                if (spontaneousAdded >= maxSpontaneous) return;
+    const avatarPool = [
+      { url: 'img/homem1.png' },
+      { url: 'img/homem3.png' },
+      { url: 'img/homem4.png' },
+      { url: 'img/homem5.jpeg' },
+      { url: 'img/homem6.jpeg' },
+      { url: 'img/img2.jpeg' },
+      { url: 'img/img4.jpeg' },
+      { url: 'img/img5.jpeg' },
+      { url: 'img/img6.jpeg' },
+      { emoji: '👨' }, { emoji: '👩' }, { emoji: '🧑' }
+    ];
 
-                const container = document.getElementById('commentsContainer');
-                const randomComment = spontaneousComments[Math.floor(Math.random() * spontaneousComments.length)];
-                const commentHTML = createCommentHTML(randomComment, commentsShown);
-                container.insertAdjacentHTML('afterbegin', commentHTML);
-                commentsShown++;
-                spontaneousAdded++;
-            }
+    function injectRandomComment(){
+      if(injected >= MAX_INJECT) return;
 
-            loadInitialComments();
+      const text = poolComments[rand(0, poolComments.length-1)];
+      const namePool = ['André Lima','Beatriz Rocha','Cláudio Nunes','Daniela Pires','Eduardo Matos','Fernanda Reis','Gustavo Azevedo','Helena Moura'];
+      const picked = avatarPool[rand(0, avatarPool.length-1)];
 
-            // Add spontaneous comments randomly
-            setInterval(() => {
-                if (Math.random() > 0.7 && spontaneousAdded < maxSpontaneous) {
-                    addSpontaneousComment();
-                }
-            }, 45000);
+      const c = {
+        name: namePool[rand(0, namePool.length-1)],
+        avatarUrl: picked.url || '',
+        avatar: picked.emoji || '',
+        text,
+        likes: rand(3,25),
+        mins: rand(1,15),
+        replies: []
+      };
+      c._id = `auto-${Date.now()}`;
+      listEl.insertAdjacentHTML('afterbegin', commentHTML(c));
+      injected++;
+    }
 
-            // ==================== PURCHASE NOTIFICATIONS ====================
-            const buyerNames = [
-                "João Silva", "Pedro Santos", "Carlos Oliveira", "Rafael Costa",
-                "Lucas Almeida", "Fernando Rocha", "Rodrigo Lima", "André Martins",
-                "Bruno Ferreira", "Gabriel Souza", "Thiago Pereira", "Daniel Costa",
-                "Marcelo Santos", "Ricardo Alves", "Paulo Mendes", "Leonardo Silva",
-                "Gustavo Oliveira", "Felipe Rodrigues", "Diego Santos", "Matheus Lima",
-                "Vinícius Costa", "Henrique Almeida", "Caio Ferreira", "Igor Santos",
-                "Fábio Oliveira"
-            ];
+    setInterval(()=>{
+      if(Math.random() < 0.6) injectRandomComment();
+    }, rand(9000, 15000));
 
-            function showPurchaseNotification() {
-                const notification = document.getElementById('purchaseNotification');
-                const buyerName = document.getElementById('buyerName');
-                const randomName = buyerNames[Math.floor(Math.random() * buyerNames.length)];
-
-                buyerName.textContent = randomName;
-                notification.classList.add('show');
-
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 5000);
-            }
-
-            // Show first notification after 8 minutes
-            setTimeout(() => {
-                showPurchaseNotification();
-                // Then show every 2-4 minutes
-                setInterval(() => {
-                    showPurchaseNotification();
-                }, Math.random() * 120000 + 120000);
-            }, 480000);
-        }
-    </script>
+    }); // Fim do DOMContentLoaded
+  </script>
+  <script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
 </body>
 </html>
