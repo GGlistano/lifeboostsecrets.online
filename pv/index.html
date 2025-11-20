@@ -18,8 +18,6 @@
     .hero p{margin:0;font-size:clamp(14px,2.6vw,18px);opacity:.95}
     .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 10px 25px rgba(15,23,42,.06)}
     .video-wrap{margin:-32px auto 8px;max-width:960px;padding:0 16px}
-    .ratio{position:relative;width:100%;padding-bottom:56.25%;background:#000;border-radius:14px;overflow:hidden}
-    .ratio > *{position:absolute;inset:0;width:100%;height:100%}
     .viewers{display:flex;align-items:center;justify-content:center;gap:8px;color:#0f172a;font-weight:600;margin:10px 0 24px}
     .dot{position:relative;width:10px;height:10px;background:#22c55e;border-radius:999px;animation:pulse 2s cubic-bezier(0.4,0,0.6,1) infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
@@ -156,10 +154,8 @@ src="https://www.facebook.com/tr?id=2233811690435804&ev=PageView&noscript=1"
     <!-- VSL -->
     <section class="video-wrap">
       <div class="card" style="padding:12px">
-        <div class="ratio">
-          <vturb-smartplayer id="vid-691e2131929a71f0a16d4776" style="display:block;margin:0 auto;width:100%;height:100%"></vturb-smartplayer>
-          <script type="text/javascript" async src="https://scripts.converteai.net/9d93e4b2-3654-4bea-bda0-107c1328d520/players/691e2131929a71f0a16d4776/v4/player.js"></script>
-        </div>
+        <vturb-smartplayer id="vid-691e2131929a71f0a16d4776" style="display:block;margin:0 auto;width:100%;max-width:100%"></vturb-smartplayer>
+        <script type="text/javascript" async src="https://scripts.converteai.net/9d93e4b2-3654-4bea-bda0-107c1328d520/players/691e2131929a71f0a16d4776/v4/player.js"></script>
       </div>
       <div class="viewers">
         <span class="dot" aria-hidden="true"></span>
